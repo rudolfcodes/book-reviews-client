@@ -10,7 +10,20 @@ const useClubsStore = create<ClubsStoreState>((set) => ({
     try {
       const response = await axiosInstance.get("api/bookclubs/");
       const data = await response.data.json();
-      set({ clubs: data, loading: false });
+      if (data.currentPage * data.pageSize < data.totalClubs) {
+        set({ hasMore: true });
+      } else {
+        set({ hasMore: false });
+      }
+      set({
+        clubs:
+          data.currentPage === 1
+            ? data.clubs
+            : [...useClubsStore.getState().clubs, ...data.clubs],
+        loading: false,
+        currentPage: data.currentPage,
+        totalClubs: data.totalClubs,
+      });
       console.log({ clubs: response.data });
       console.log("Clubs fetched successfully");
     } catch (error) {
@@ -30,10 +43,13 @@ const useClubsStore = create<ClubsStoreState>((set) => ({
         club._id === updatedClub._id ? updatedClub : club
       ),
     })),
+  setSearchQuery: (query: string) => set({ searchQuery: query }),
   hasMore: false,
   searchQuery: "",
   selectedLocation: undefined,
-  page: 1,
+  totalClubs: 0,
+  pageSize: 10,
+  currentPage: 1,
   error: undefined,
 }));
 

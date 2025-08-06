@@ -48,6 +48,8 @@ type ClubFilterParams = {
       lng?: number;
     };
   };
+  currentPage?: number;
+  pageSize?: number;
 };
 
 type ClubSearchResponseDTO = {
@@ -69,10 +71,13 @@ type ClubsStoreState = {
   addClub: (club: ClubEntity) => void;
   removeClub: (clubId: string) => void;
   updateClub: (updatedClub: ClubEntity) => void;
+  setSearchQuery: (query: string) => void;
   hasMore: boolean;
   searchQuery?: string;
   selectedLocation?: ClubLocation;
-  page?: number;
+  pageSize?: number;
+  currentPage?: number;
+  totalClubs?: number;
   error?: string;
 };
 
