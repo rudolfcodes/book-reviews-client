@@ -61,6 +61,15 @@ type ClubSearchResponseDTO = {
   updatedAt: Date;
 };
 
+// Club state for zustand store
+type ClubsStoreState = {
+  clubs: ClubEntity[];
+  setClubs: (clubs: ClubEntity[]) => void;
+  addClub: (club: ClubEntity) => void;
+  removeClub: (clubId: string) => void;
+  updateClub: (updatedClub: ClubEntity) => void;
+};
+
 export type {
   ClubEntity,
   CreateClubDTO,
@@ -68,4 +77,5 @@ export type {
   ClubCardProps,
   ClubFilterParams,
   ClubSearchResponseDTO,
+  ClubsStoreState,
 };
