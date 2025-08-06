@@ -6,7 +6,10 @@ interface ClubEntity {
   _id: string;
   name: string;
   description: string;
+  location: ClubLocation;
+  clubImage?: string; // Optional image for the club
   members: ClubMember[];
+  memberCount: number;
   creator: string;
   createdAt: Date;
   updatedAt: Date;
@@ -30,11 +33,8 @@ interface ClubCardProps {
   _id: string;
   name: string;
   memberCount: number;
-  location: {
-    city: string;
-    canton: SwissCantonEnum;
-    venueType?: VenueEnum;
-  };
+  location: ClubLocation;
+  image?: string;
 }
 
 type ClubFilterParams = {
