@@ -3,6 +3,7 @@ interface UserType {
   username: string;
   email: string;
   password?: string;
+  avatar?: string;
 }
 
 type UserResponseType = {
