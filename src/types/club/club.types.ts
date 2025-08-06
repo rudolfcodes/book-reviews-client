@@ -64,10 +64,17 @@ type ClubSearchResponseDTO = {
 // Club state for zustand store
 type ClubsStoreState = {
   clubs: ClubEntity[];
+  loading: boolean;
+  fetchClubs: (params?: ClubFilterParams) => Promise<void>;
   setClubs: (clubs: ClubEntity[]) => void;
   addClub: (club: ClubEntity) => void;
   removeClub: (clubId: string) => void;
   updateClub: (updatedClub: ClubEntity) => void;
+  hasMore: boolean; // For pagination
+  searchQuery?: string; // For search functionality
+  selectedLocation?: ClubLocation; // For location-based filtering
+  page?: number; // For pagination
+  error?: string; // For error handling
 };
 
 export type {
