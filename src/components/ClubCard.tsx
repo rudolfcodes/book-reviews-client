@@ -9,16 +9,13 @@ const ClubCard = ({
   name,
   image,
 }: ClubCardProps) => {
-  // Render a card for each club with its name, member count, and location
   const [isPressed, setIsPressed] = useState(false);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [memberAvatars, setMemberAvatars] = useState<string[]>([]);
   const [distanceFromUser, setDistanceFromUser] = useState<number | null>(null);
   const router = useRouter();
 
-  // the user will go to the club page when they click on the card
   const handleCardClick = () => {
-    // navigate to the club page
     setIsPressed(!isPressed);
     setTimeout(() => setIsPressed(false), 150); // Reset after animation
     router.push(`/clubs/${_id}`);
