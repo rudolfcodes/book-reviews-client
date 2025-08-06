@@ -20,17 +20,25 @@ const ClubCard = ({
   const handleCardClick = () => {
     // navigate to the club page
     setIsPressed(!isPressed);
+    setTimeout(() => setIsPressed(false), 150); // Reset after animation
     router.push(`/clubs/${_id}`);
   };
 
   return (
-    <li className="club-card" key={_id} onClick={handleCardClick}>
+    <li
+      className={`club-card cursor-pointer min-h-[44px] rounded-lg border ${
+        isPressed ? "scale-95 opacity-80" : "scale-100"
+      } transition-transform duration-150 ease-out`}
+      key={_id}
+      onClick={handleCardClick}
+    >
       <h3 className="club-name">{name}</h3>
       <img
         src={image}
         alt={`${name} club image`}
         className={`club-image ${isImageLoaded ? "loaded" : "loading"}`}
         onLoad={() => setIsImageLoaded(true)}
+        onError={(e) => (e.currentTarget.src = "/images/default-club.jpg")}
       />
       <p className="club-members">Members: {memberCount}</p>
       {location && (
