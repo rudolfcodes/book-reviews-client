@@ -61,7 +61,6 @@ type ClubSearchResponseDTO = {
   updatedAt: Date;
 };
 
-// Club state for zustand store
 type ClubsStoreState = {
   clubs: ClubEntity[];
   loading: boolean;
@@ -70,11 +69,11 @@ type ClubsStoreState = {
   addClub: (club: ClubEntity) => void;
   removeClub: (clubId: string) => void;
   updateClub: (updatedClub: ClubEntity) => void;
-  hasMore: boolean; // For pagination
-  searchQuery?: string; // For search functionality
-  selectedLocation?: ClubLocation; // For location-based filtering
-  page?: number; // For pagination
-  error?: string; // For error handling
+  hasMore: boolean;
+  searchQuery?: string;
+  selectedLocation?: ClubLocation;
+  page?: number;
+  error?: string;
 };
 
 export type {
