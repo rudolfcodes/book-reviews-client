@@ -5,10 +5,17 @@ import Link from "next/link";
 import useUser from "@/hooks/useUser";
 
 const Header = () => {
+  // Header should have: logo, current user avatar on the right, and links to sign up and login if no user is logged in
+  // If user is logged in, show a dropdown with profile settings and logout option
   const { user, logout } = useUser();
 
   return (
     <header className="w-full h-20 bg-blue-cream sticky top-0 z-50">
+      <div>
+        <Link href="/" className="text-3xl font-bold text-white ml-8">
+          Bookclub CH
+        </Link>
+      </div>
       <div className="container mx-auto h-full max-w-desktop flex justify-between items-center font-raleway">
         {!user ? (
           <div>
