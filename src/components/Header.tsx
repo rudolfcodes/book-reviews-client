@@ -3,22 +3,13 @@
 import React from "react";
 import Link from "next/link";
 import useUser from "@/hooks/useUser";
-import BookIcon from "@/Icons/BookIcon";
-import WishListIcon from "@/Icons/WishListIcon";
 
 const Header = () => {
   const { user, logout } = useUser();
 
   return (
-    <header className="w-full h-20 bg-blue-cream">
+    <header className="w-full h-20 bg-blue-cream sticky top-0 z-50">
       <div className="container mx-auto h-full max-w-desktop flex justify-between items-center font-raleway">
-        <div className="text-2xl text-white">
-          <Link href="/">
-            <span>Book</span>
-            <span className="font-semibold">Review</span>
-          </Link>
-        </div>
-
         {!user ? (
           <div>
             <Link
@@ -36,16 +27,6 @@ const Header = () => {
           </div>
         ) : (
           <div className="flex text-xl text-white gap-9">
-            <div className="flex gap-3 items-center">
-              <BookIcon fillColor="#3A7CA5" />
-              <Link href="/my-books">my books</Link>
-            </div>
-
-            <div className="flex gap-3 items-center">
-              <WishListIcon fillColor="#3A7CA5" />
-              <Link href="/wishlist">wishlist</Link>
-            </div>
-
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="avatar placeholder">
                 <div className="bg-modern-accent w-11 rounded-full">
