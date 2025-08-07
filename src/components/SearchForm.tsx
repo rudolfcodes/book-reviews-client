@@ -9,7 +9,7 @@ interface SearchFormProps {
   handleSubmit?: (e: React.FormEvent) => void;
 }
 
-const SearchForm = ({ initialQuery, setInitialQuery }: SearchFormProps) => {
+const SearchForm = ({ initialQuery }: SearchFormProps) => {
   const router = useRouter();
   const [localQuery, setLocalQuery] = useState(initialQuery);
 

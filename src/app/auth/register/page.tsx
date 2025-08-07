@@ -77,7 +77,7 @@ const Register = () => {
   return (
     <div className="min-h-screen mx-5 flex flex-col items-center justify-center bg-off-white">
       <h1 className="text-black mb-11 text-3xl">
-        Book<span className="font-bold">Review</span>
+        Bookclub<span className="font-bold">CH</span>
       </h1>
       <div className="bg-white w-full md:w-[700px] shadow-custom-black pb-10">
         <form

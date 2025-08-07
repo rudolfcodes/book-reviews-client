@@ -3,7 +3,6 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import Link from "next/link";
-import axios from "axios";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -86,7 +85,7 @@ const SignIn = () => {
   return (
     <div className="min-h-screen mx-5 flex flex-col items-center justify-center bg-off-white">
       <h1 className="text-black mb-11 text-3xl">
-        Book<span className="font-bold">Review</span>
+        Bookclub<span className="font-bold">CH</span>
       </h1>
       <div className="bg-white sm:w-full md:w-[700px] shadow-custom-black pb-10">
         <form
