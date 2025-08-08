@@ -9,20 +9,15 @@ const useClubsStore = create<ClubsStoreState>((set) => ({
     set({ loading: true });
     try {
       const response = await axiosInstance.get("api/bookclubs/");
-      const data = await response.data.json();
-      if (data.currentPage * data.pageSize < data.totalClubs) {
-        set({ hasMore: true });
-      } else {
-        set({ hasMore: false });
-      }
+      const data = response.data;
+
+      console.log("API Response:", data);
+      const clubs = Array.isArray(data) ? data : [];
+
       set({
-        clubs:
-          data.currentPage === 1
-            ? data.clubs
-            : [...useClubsStore.getState().clubs, ...data.clubs],
+        clubs: clubs,
         loading: false,
-        currentPage: data.currentPage,
-        totalClubs: data.totalClubs,
+        hasMore: false, // Disable pagination for now
       });
       console.log({ clubs: response.data });
       console.log("Clubs fetched successfully");
