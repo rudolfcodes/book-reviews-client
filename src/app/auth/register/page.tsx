@@ -75,7 +75,7 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen mx-5 flex flex-col items-center justify-center bg-off-white">
+    <div className="min-h-screen mx-5 flex flex-col items-center justify-center bg-off-white w-full">
       <h1 className="text-black mb-11 text-3xl">
         Bookclub<span className="font-bold">CH</span>
       </h1>
