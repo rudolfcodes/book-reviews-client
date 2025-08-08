@@ -1,9 +1,13 @@
+"use client";
+
 import useClubsStore from "@/stores/clubsStore";
 import React, { useEffect } from "react";
 import ClubCard from "./ClubCard";
 
 const ClubDiscoveryFeed = () => {
   // State to manage clubs, loading states, and any filters or search functionality can be added here
+  // I need to implement infinite scroll or pagination for the club discovery feed and remove the load more
+  // button, so I will use Zustand store to manage the state
   const {
     clubs,
     loading,
@@ -24,7 +28,7 @@ const ClubDiscoveryFeed = () => {
   }
 
   return (
-    <div>
+    <div className="h-full p-4 bg-gray-100 rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-4">Discover Clubs</h2>
       <div className="mb-4">
         <input
