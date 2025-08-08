@@ -22,45 +22,63 @@ const ClubCard = ({
   };
 
   return (
-    <li
-      className={`club-card cursor-pointer min-h-[44px] rounded-lg border ${
+    <div
+      className={`club-card cursor-pointer min-h-[280px] w-full max-w-sm mx-auto rounded-lg border border-gray-200 bg-white shadow-sm hover:shadow-md ${
         isPressed ? "scale-95 opacity-80" : "scale-100"
-      } transition-transform duration-150 ease-out`}
-      key={_id}
+      } transition-all duration-150 ease-out overflow-hidden`}
       onClick={handleCardClick}
     >
-      <h3 className="club-name">{name}</h3>
-      <img
-        src={image}
-        alt={`${name} club image`}
-        className={`club-image ${isImageLoaded ? "loaded" : "loading"}`}
-        onLoad={() => setIsImageLoaded(true)}
-        onError={(e) => (e.currentTarget.src = "/images/default-club.jpg")}
-      />
-      <p className="club-members">Members: {memberCount}</p>
-      {location && (
-        <p className="club-location">
-          Location: {location.city}, {location.canton}
-        </p>
-      )}
-
-      {distanceFromUser !== null && (
-        <p className="club-distance">
-          Distance from you: {distanceFromUser} km
-        </p>
-      )}
-
-      <div className="member-avatars">
-        {memberAvatars.map((avatar, index) => (
-          <img
-            key={index}
-            src={avatar}
-            alt={`Member ${index + 1}`}
-            className="member-avatar rounded-full"
-          />
-        ))}
+      <div className="relative">
+        <img
+          src={image}
+          alt={`${name} club image`}
+          className={`w-full h-40 object-cover ${
+            isImageLoaded ? "loaded" : "loading"
+          }`}
+          onLoad={() => setIsImageLoaded(true)}
+          onError={(e) => (e.currentTarget.src = "/images/default-club.jpg")}
+        />
+        {!isImageLoaded && (
+          <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+        )}
       </div>
-    </li>
+
+      <div className="p-4">
+        <h3 className="font-semibold text-lg text-gray-900 mb-2 truncate">
+          {name}
+        </h3>
+        <p className="text-sm text-gray-600 mb-1">Members: {memberCount}</p>
+        {location && (
+          <p className="text-sm text-gray-500 truncate">
+            📍 {location.city}, {location.canton}
+          </p>
+        )}
+
+        {distanceFromUser !== null && (
+          <p className="text-xs text-gray-400 mt-2">
+            {distanceFromUser} km away
+          </p>
+        )}
+
+        {memberAvatars.length > 0 && (
+          <div className="flex -space-x-2 mt-3">
+            {memberAvatars.slice(0, 3).map((avatar, index) => (
+              <img
+                key={index}
+                src={avatar}
+                alt={`Member ${index + 1}`}
+                className="w-6 h-6 rounded-full border-2 border-white"
+              />
+            ))}
+            {memberAvatars.length > 3 && (
+              <div className="w-6 h-6 rounded-full bg-gray-300 border-2 border-white flex items-center justify-center text-xs text-gray-600">
+                +{memberAvatars.length - 3}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
 
