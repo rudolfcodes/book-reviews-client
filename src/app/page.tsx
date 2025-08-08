@@ -1,13 +1,11 @@
 import Header from "@/components/Header";
-import SectionContainer from "@/components/SectionContainer";
-import TextContainer from "@/components/TextContainer";
-import TitleContainer from "@/components/TitleContainer";
 import Head from "next/head";
 import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
 import { DecodedToken } from "@/types/token";
 import Footer from "@/components/Footer";
 import ClubDiscoveryFeed from "@/components/ClubDiscoveryFeed";
+import Hero from "@/components/Hero";
 
 export default async function Home() {
   const cookieStore = cookies();
@@ -42,10 +40,7 @@ export default async function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <SectionContainer>
-        <TitleContainer title="Welcome to BookClub CH" />
-        <TextContainer text="Join a community of book lovers and share your thoughts!" />
-      </SectionContainer>
+      <Hero />
       <ClubDiscoveryFeed />
       <Footer />
     </div>
