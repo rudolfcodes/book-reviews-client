@@ -85,7 +85,7 @@ const SignIn = () => {
   return (
     <div className="min-h-screen mx-5 flex flex-col items-center justify-center bg-off-white w-full">
       <h1 className="text-black mb-11 text-3xl">
-        Bookclub<span className="font-bold ml-3">CH</span>
+        Bookclub<span className="font-bold ml-2">CH</span>
       </h1>
       <div className="bg-white sm:w-full md:w-[700px] shadow-custom-black pb-10">
         <form
