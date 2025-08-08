@@ -13,7 +13,6 @@ const useClubsStore = create<ClubsStoreState>((set) => ({
 
       const clubs = Array.isArray(docs) ? docs : [];
 
-      // Pre-defined book-themed images that rotate (no repeated fetching)
       const bookClubImages = [
         "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=250&fit=crop&crop=center", // Books stack
         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=250&fit=crop&crop=center", // Reading group
@@ -27,7 +26,6 @@ const useClubsStore = create<ClubsStoreState>((set) => ({
         "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=250&fit=crop&crop=center", // Reading corner
       ];
 
-      // Add book-themed images, rotating through the pre-defined set
       const clubsWithImages = clubs.map((club, index) => ({
         ...club,
         clubImage:
