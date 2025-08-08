@@ -2,8 +2,9 @@ import { ClubsStoreState } from "@/types/club/club.types";
 import axiosInstance from "@/utils/axios";
 import { create } from "zustand";
 
-const useClubsStore = create<ClubsStoreState>((set) => ({
+const useClubsStore = create<ClubsStoreState>((set, get) => ({
   clubs: [],
+  allClubs: [],
   loading: false,
   fetchClubs: async () => {
     set({ loading: true });
@@ -33,15 +34,29 @@ const useClubsStore = create<ClubsStoreState>((set) => ({
       }));
 
       set({
-        clubs: clubsWithImages,
+        allClubs: clubsWithImages,
         loading: false,
         hasMore: false, // Disable pagination for now
       });
-      console.log("Clubs fetched successfully");
+      get().filterClubs();
     } catch (error) {
       console.error("Failed to fetch clubs:", error);
       set({ loading: false });
     }
+  },
+  filterClubs: () => {
+    const { searchQuery, allClubs } = get();
+    const filteredClubs = searchQuery
+      ? allClubs.filter(
+          (club) =>
+            club.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            club.location?.city
+              ?.toLowerCase()
+              .includes(searchQuery.toLowerCase())
+        )
+      : allClubs;
+
+    set({ clubs: filteredClubs });
   },
   setClubs: (clubs) => set({ clubs }),
   addClub: (club) => set((state) => ({ clubs: [...state.clubs, club] })),
@@ -55,7 +70,10 @@ const useClubsStore = create<ClubsStoreState>((set) => ({
         club._id === updatedClub._id ? updatedClub : club
       ),
     })),
-  setSearchQuery: (query: string) => set({ searchQuery: query }),
+  setSearchQuery: (query: string) => {
+    set({ searchQuery: query });
+    get().filterClubs();
+  },
   hasMore: false,
   searchQuery: "",
   selectedLocation: undefined,

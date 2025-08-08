@@ -65,8 +65,10 @@ type ClubSearchResponseDTO = {
 
 type ClubsStoreState = {
   clubs: ClubEntity[];
+  allClubs: ClubEntity[]; // All clubs fetched from API, used for filtering
   loading: boolean;
   fetchClubs: (params?: ClubFilterParams) => Promise<void>;
+  filterClubs: () => void;
   setClubs: (clubs: ClubEntity[]) => void;
   addClub: (club: ClubEntity) => void;
   removeClub: (clubId: string) => void;

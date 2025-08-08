@@ -3,6 +3,7 @@
 import useClubsStore from "@/stores/clubsStore";
 import React, { useEffect } from "react";
 import ClubCard from "./ClubCard";
+import { use } from "chai";
 
 const ClubDiscoveryFeed = () => {
   // State to manage clubs, loading states, and any filters or search functionality can be added here
@@ -14,14 +15,13 @@ const ClubDiscoveryFeed = () => {
     fetchClubs,
     hasMore,
     searchQuery,
-    selectedLocation,
     currentPage,
     error,
   } = useClubsStore((state) => state);
 
   useEffect(() => {
     fetchClubs();
-  }, [fetchClubs, searchQuery, selectedLocation, currentPage]);
+  }, []);
 
   if (error) {
     return <div className="error">Error fetching clubs: {error}</div>;
