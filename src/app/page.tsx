@@ -7,6 +7,7 @@ import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
 import { DecodedToken } from "@/types/token";
 import Footer from "@/components/Footer";
+import ClubDiscoveryFeed from "@/components/ClubDiscoveryFeed";
 
 export default async function Home() {
   const cookieStore = cookies();
@@ -29,7 +30,7 @@ export default async function Home() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen w-full">
       <Head>
         <title>
           Bookclub CH - Find your club and share your love for books
@@ -45,6 +46,7 @@ export default async function Home() {
         <TitleContainer title="Welcome to BookClub CH" />
         <TextContainer text="Join a community of book lovers and share your thoughts!" />
       </SectionContainer>
+      <ClubDiscoveryFeed />
       <Footer />
     </div>
   );
