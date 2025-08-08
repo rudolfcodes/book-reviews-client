@@ -25,7 +25,9 @@ export default function RootLayout({
         />
       </head>
       <body className={raleway.className}>
-        <UserProvider>{children}</UserProvider>
+        <div className="flex flex-1">
+          <UserProvider>{children}</UserProvider>
+        </div>
       </body>
     </html>
   );

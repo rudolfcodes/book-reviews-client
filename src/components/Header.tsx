@@ -10,26 +10,26 @@ const Header = () => {
   const { user, logout } = useUser();
 
   return (
-    <header className="w-full h-20 bg-blue-cream sticky top-0 z-50">
+    <header className="flex w-full h-[100px] bg-blue-cream sticky top-0 z-50 justify-between items-center px-[40px]">
       <div>
         <Link href="/" className="text-3xl font-bold text-white ml-8">
           Bookclub CH
         </Link>
       </div>
-      <div className="container mx-auto h-full max-w-desktop flex justify-between items-center font-raleway">
+      <div className="h-full max-w-desktop flex justify-between items-center font-raleway">
         {!user ? (
-          <div>
+          <div className="flex gap-4">
             <Link
-              className="w-44 text-2xl btn rounded-3xl bg-blue-cream border-none text-white hover:bg-white hover:text-modern-primary mr-8"
-              href="/auth/register"
-            >
-              sign up
-            </Link>
-            <Link
-              className="w-44 text-2xl btn rounded-3xl bg-modern-secondary border-none text-modern-primary hover:bg-modern-primary hover:text-white"
+              className="px-6 py-2 text-sm font-medium border border-gray-300 rounded-lg bg-white text-gray-700 hover:bg-gray-50 hover:scale-105 transition-all duration-200 transform"
               href="/auth/login"
             >
-              login
+              Log in
+            </Link>
+            <Link
+              className="px-6 py-2 text-sm font-medium rounded-lg bg-gray-900 text-white hover:bg-gray-700 hover:scale-105 transition-all duration-200 transform"
+              href="/auth/register"
+            >
+              Join community
             </Link>
           </div>
         ) : (
