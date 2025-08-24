@@ -7,7 +7,6 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ToastContainer, toast } from "react-toastify";
-import Cookies from "js-cookie";
 import useUser from "@/hooks/useUser";
 import { jwtDecode } from "jwt-decode";
 import { UserType } from "@/types/user";
@@ -55,7 +54,7 @@ const SignIn = () => {
       // if there is a res ok
       if (response.data) {
         const token = response.data.token;
-        Cookies.set("token", token, { expires: rememberMe ? 7 : 1 });
+        localStorage.setItem("token", token);
         const decodedUser = jwtDecode<UserType>(token);
         setUser(decodedUser);
         router.refresh();
