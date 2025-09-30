@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axiosInstance from "@/utils/axios";
 import Link from "next/link";
 import FormInput from "./FormInput";
+import BaseButton from "../buttons/BaseButton";
 
 interface IRegisterFormInput {
   username: string;
@@ -122,12 +123,20 @@ const RegisterForm = ({
             required
           />
 
-          <button
+          <BaseButton
+            type="submit"
+            className="bg-black text-white w-full h-8 min-h-0 mb-8 rounded-3xl"
+          >
+            Sign up
+          </BaseButton>
+
+          <BaseButton
             type="submit"
             className="btn bg-black text-white w-full h-8 min-h-0 mb-8 rounded-3xl"
           >
             Sign in
-          </button>
+          </BaseButton>
+
           <p className="text-sm mb-6">
             By signing up, you agree to the terms of service and our privacy
             policy
