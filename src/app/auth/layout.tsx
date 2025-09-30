@@ -27,14 +27,14 @@ export default function AuthLayout({
       <div className="w-1/2 flex items-center justify-center bg-blue-cream">
         <div className="max-w-md w-full p-8"></div>
         <div className="text-center text-white p-8">
-          <h2 className="text-3xl font-bold mb-10">{illustration.title}</h2>
+          <h2 className="text-3xl font-bold mb-10">{illustration?.title}</h2>
           <img
-            src={illustration.src}
-            alt={illustration.alt}
+            src={illustration?.src}
+            alt={illustration?.alt}
             className="mx-auto rounded-full border-2 border-[#C7E4FF]"
           />
-          {illustration.subtitle && (
-            <p className="mt-4">{illustration.title}</p>
+          {illustration?.subtitle && (
+            <p className="mt-4">{illustration?.title}</p>
           )}
         </div>
       </div>
