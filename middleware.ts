@@ -20,7 +20,9 @@ export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   // check if there already is a locale prefix
-  const hasPrefix = SUPPORTED.some((lang) => pathname.startsWith(`/${lang}/`));
+  const hasPrefix = SUPPORTED.some(
+    (lang) => pathname.startsWith(`/${lang}/`) || pathname === `/${lang}`
+  );
   if (hasPrefix) {
     return NextResponse.next();
   }
@@ -35,5 +37,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next|api|favicon.ico|robots.txt|sitemap.xml).*)"],
+  matcher: ["/((?!_next|api|favicon.ico|robots.txt|sitemap.xml|.*\\.).*)"],
 };
