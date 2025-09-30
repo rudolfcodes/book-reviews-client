@@ -13,6 +13,7 @@ import Link from "next/link";
 import FormInput from "./FormInput";
 import BaseButton from "../buttons/BaseButton";
 import TextContainer from "../TextContainer";
+import FlexContainer from "../FlexContainer";
 
 interface IRegisterFormInput {
   username: string;
@@ -143,15 +144,18 @@ const RegisterForm = ({
             className="text-sm mb-6"
           />
 
-          <div className="flex">
-            <p className="text-sm">Already have an account?</p>
+          <FlexContainer>
+            <TextContainer
+              text="Already have an account?"
+              className="text-sm"
+            />
             <Link
               href="/auth/login"
               className="text-black ml-2 text-sm underline hover:underline"
             >
               Sign in
             </Link>
-          </div>
+          </FlexContainer>
 
           <ToastContainer />
         </form>
