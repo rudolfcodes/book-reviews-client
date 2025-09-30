@@ -20,7 +20,7 @@ export default function AuthPageWrapper({
     <div className="min-h-screen flex w-full">
       <div className="w-1/2 flex items-center justify-center bg-white">
         <div className="max-w-md w-full p-8">
-          <Logo imageSrc="/logo.png" alt="Swiss Book Club Logo" />
+          <Logo imageSrc="/images/logo.png" alt="Swiss Book Club Logo" />
           {children}
         </div>
       </div>

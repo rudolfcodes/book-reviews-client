@@ -5,7 +5,7 @@ import AuthPageWrapper from "@/components/auth/AuthPageWrapper";
 
 const RegisterPage = () => {
   const illustration = {
-    src: "/illustrations/register-illustration.png",
+    src: "/images/register-illustration.png",
     alt: "Join our community",
     title: "Discover Switzerland, One Page at a Time",
     subtitle: "Join our community of book lovers across Switzerland",

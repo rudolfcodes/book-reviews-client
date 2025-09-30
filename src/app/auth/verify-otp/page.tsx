@@ -11,7 +11,7 @@ type Props = {};
 const VerifyOtp = (props: Props) => {
   return (
     <div className="auth-page min-h-screen mx-5 flex items-center justify-center w-full">
-      <Logo imageSrc="../../public/logo.png" alt="Logo" />
+      <Logo imageSrc="/images/logo.png" alt="Logo" />
       <div className="auth-left">
         <VerifyForm />
       </div>
@@ -20,7 +20,7 @@ const VerifyOtp = (props: Props) => {
         <h2 className="text-white mb-11 text-3xl font-bold">
           Discover Switzerland, One Page at a Time
         </h2>
-        <img src="../../public/verify-otp.png" alt="Discover Switzerland" />
+        <img src="/verify-otp.png" alt="Discover Switzerland" />
       </div>
     </div>
   );
