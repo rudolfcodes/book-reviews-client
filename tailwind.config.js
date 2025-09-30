@@ -19,7 +19,7 @@ module.exports = {
       },
       colors: {
         "off-white": "#F3F3F3",
-        "blue-cream": "#3A7CA5",
+        "blue-cream": "#63ABC3",
         "primary-grey": "#7C7C7C",
         "modern-primary": "#2D2D2A",
         "modern-secondary": "#FAF3E0",
