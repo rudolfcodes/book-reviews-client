@@ -12,6 +12,7 @@ import axiosInstance from "@/utils/axios";
 import Link from "next/link";
 import FormInput from "./FormInput";
 import BaseButton from "../buttons/BaseButton";
+import TextContainer from "../TextContainer";
 
 interface IRegisterFormInput {
   username: string;
@@ -137,10 +138,11 @@ const RegisterForm = ({
             Sign in
           </BaseButton>
 
-          <p className="text-sm mb-6">
-            By signing up, you agree to the terms of service and our privacy
-            policy
-          </p>
+          <TextContainer
+            text="By signing up, you agree to the terms of service and our privacy policy"
+            className="text-sm mb-6"
+          />
+
           <div className="flex">
             <p className="text-sm">Already have an account?</p>
             <Link
