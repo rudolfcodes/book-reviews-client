@@ -3,12 +3,10 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import Link from "next/link";
-import axios from "axios";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ToastContainer, toast } from "react-toastify";
-import Cookies from "js-cookie";
 import useUser from "@/hooks/useUser";
 import { jwtDecode } from "jwt-decode";
 import { UserType } from "@/types/user";
@@ -56,7 +54,7 @@ const SignIn = () => {
       // if there is a res ok
       if (response.data) {
         const token = response.data.token;
-        Cookies.set("token", token, { expires: rememberMe ? 7 : 1 });
+        localStorage.setItem("token", token);
         const decodedUser = jwtDecode<UserType>(token);
         setUser(decodedUser);
         router.refresh();
@@ -84,9 +82,9 @@ const SignIn = () => {
   }
 
   return (
-    <div className="min-h-screen mx-5 flex flex-col items-center justify-center bg-off-white">
+    <div className="min-h-screen mx-5 flex flex-col items-center justify-center bg-off-white w-full">
       <h1 className="text-black mb-11 text-3xl">
-        Book<span className="font-bold">Review</span>
+        Bookclub<span className="font-bold ml-2">CH</span>
       </h1>
       <div className="bg-white sm:w-full md:w-[700px] shadow-custom-black pb-10">
         <form

@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+// All headings need to be Inter 30px Extra Bold
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -15,11 +16,11 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        raleway: ["Raleway", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
       colors: {
         "off-white": "#F3F3F3",
-        "blue-cream": "#3A7CA5",
+        "blue-cream": "#63ABC3",
         "primary-grey": "#7C7C7C",
         "modern-primary": "#2D2D2A",
         "modern-secondary": "#FAF3E0",

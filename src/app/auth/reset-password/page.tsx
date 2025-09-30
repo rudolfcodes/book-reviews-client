@@ -2,7 +2,6 @@
 
 import axiosInstance from "@/utils/axios";
 import { yupResolver } from "@hookform/resolvers/yup";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
@@ -42,7 +41,7 @@ const ResetPassword = () => {
 
   const onSubmit = async (data: IFormInput) => {
     try {
-      await axiosInstance.post("/users/reset-password", {
+      await axiosInstance.post("/api/users/reset-password", {
         email: data.email,
         password: data.password,
         confirmPassword: data.confirmPassword,
@@ -61,9 +60,9 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className="min-h-screen mx-5 flex flex-col items-center justify-center bg-off-white">
+    <div className="min-h-screen mx-5 flex flex-col items-center justify-center bg-off-white w-full">
       <h1 className="text-black mb-11 text-3xl">
-        Book<span className="font-bold">Review</span>
+        Bookclub<span className="font-bold">CH</span>
       </h1>
       <div className="bg-white w-full md:w-[700px] shadow-custom-black pb-10">
         <form

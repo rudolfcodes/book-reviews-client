@@ -6,13 +6,7 @@ interface TextContainerProps {
 }
 
 const TextContainer = ({ text, className }: TextContainerProps) => {
-  return (
-    <p
-      className={`font-light text-2xl text-modern-primary tracking-wide leading-8 w-3/5 mx-auto ${className}`}
-    >
-      {text}
-    </p>
-  );
+  return <p className={className}>{text}</p>;
 };
 
 export default TextContainer;

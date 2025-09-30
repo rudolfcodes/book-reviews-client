@@ -1,8 +1,8 @@
 import UserProvider from "@/context/UserProvider";
 import "./globals.css";
-import { Raleway } from "next/font/google";
+import { Inter } from "next/font/google";
 
-const raleway = Raleway({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -24,8 +24,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={raleway.className}>
-        <UserProvider>{children}</UserProvider>
+      <body className={inter.className}>
+        <div className="flex flex-1">
+          <UserProvider>{children}</UserProvider>
+        </div>
       </body>
     </html>
   );

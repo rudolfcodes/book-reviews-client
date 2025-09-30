@@ -1,32 +1,49 @@
 "use client";
 
-import React, { FormEventHandler, useState } from "react";
-import SearchForm from "./SearchForm";
-import { useBookStore } from "@/stores/useBookStore";
+import React from "react";
 
 const Hero = () => {
-  const [initialQuery, setInitialQuery] = useState("");
-  const setSearchQuery = useBookStore((state) => state.setSearchQuery);
-
-  const handleSubmit: FormEventHandler = (e) => {
-    e.preventDefault();
-    setSearchQuery(initialQuery);
+  const scrollToClubs = () => {
+    const clubsSection = document.getElementById("discover-clubs");
+    if (clubsSection) {
+      clubsSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
   };
 
   return (
-    <section className="bg-off-white h-[600px]">
-      <div className="container flex h-full items-center justify-between mx-auto">
-        <div className="flex flex-col mb-6 md:w-6/12">
-          <h1 className="text-5xl font-bold mb-11 text-modern-primary">
-            Find your next literary adventure
-          </h1>
-          <SearchForm
-            handleSubmit={handleSubmit}
-            initialQuery={initialQuery}
-            setInitialQuery={setInitialQuery}
-          />
+    <section className="relative bg-white border-b border-slate-200">
+      <div className="max-w-4xl mx-auto px-6 py-20">
+        <div className="absolute top-8 right-8 w-6 h-6 opacity-10">
+          <div className="w-full h-1 bg-slate-400 absolute top-1/2 transform -translate-y-1/2"></div>
+          <div className="h-full w-1 bg-slate-400 absolute left-1/2 transform -translate-x-1/2 max-h-7"></div>
         </div>
-        <img className="xl:mr-10" src="/images/HeroImage.png" alt="Books" />
+
+        <div className="text-center space-y-6">
+          <h1 className="text-6xl font-extralight text-slate-900 tracking-tighter leading-none">
+            Welcome to
+            <span className="block font-light text-slate-700">BookClub CH</span>
+          </h1>
+
+          <div className="w-16 h-px bg-slate-300 mx-auto my-8"></div>
+
+          <p className="text-xl md:text-2xl font-light text-slate-600 max-w-2xl mx-auto leading-relaxed">
+            Join a community of book lovers and share your thoughts!
+          </p>
+
+          <div className="pt-8">
+            <button
+              onClick={scrollToClubs}
+              className="bg-slate-900 text-white px-12 py-4 text-sm font-light tracking-widest uppercase hover:bg-slate-800 transition-colors duration-300 rounded-none"
+            >
+              Explore Communities
+            </button>
+          </div>
+        </div>
+
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
       </div>
     </section>
   );

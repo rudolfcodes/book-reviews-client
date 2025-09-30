@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import { UserType } from "@/types/user";
 
@@ -9,7 +8,7 @@ const useDecodeToken = () => {
   const [user, setUser] = useState<UserType | null>(null);
 
   useEffect(() => {
-    const token = Cookies.get("token");
+    const token = localStorage.getItem("token");
     if (token) {
       const decodedUser = jwtDecode<UserType>(token);
       setUser(decodedUser);
@@ -17,7 +16,7 @@ const useDecodeToken = () => {
   }, []);
 
   const logout = () => {
-    Cookies.remove("token");
+    localStorage.removeItem("token");
     setUser(null);
   };
 

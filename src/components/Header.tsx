@@ -3,49 +3,37 @@
 import React from "react";
 import Link from "next/link";
 import useUser from "@/hooks/useUser";
-import BookIcon from "@/Icons/BookIcon";
-import WishListIcon from "@/Icons/WishListIcon";
 
 const Header = () => {
+  // Header should have: logo, current user avatar on the right, and links to sign up and login if no user is logged in
+  // If user is logged in, show a dropdown with profile settings and logout option
   const { user, logout } = useUser();
 
   return (
-    <header className="w-full h-20 bg-blue-cream">
-      <div className="container mx-auto h-full max-w-desktop flex justify-between items-center font-raleway">
-        <div className="text-2xl text-white">
-          <Link href="/">
-            <span>Book</span>
-            <span className="font-semibold">Review</span>
-          </Link>
-        </div>
-
+    <header className="flex w-full h-[100px] bg-blue-cream sticky top-0 z-50 justify-between items-center px-[40px]">
+      <div>
+        <Link href="/" className="text-3xl font-bold text-white ml-8">
+          Bookclub CH
+        </Link>
+      </div>
+      <div className="h-full max-w-desktop flex justify-between items-center font-raleway">
         {!user ? (
-          <div>
+          <div className="flex gap-4">
             <Link
-              className="w-44 text-2xl btn rounded-3xl bg-blue-cream border-none text-white hover:bg-white hover:text-modern-primary mr-8"
-              href="/auth/register"
-            >
-              sign up
-            </Link>
-            <Link
-              className="w-44 text-2xl btn rounded-3xl bg-modern-secondary border-none text-modern-primary hover:bg-modern-primary hover:text-white"
+              className="px-6 py-2 text-sm font-medium border border-gray-300 rounded-lg bg-white text-gray-700 hover:bg-gray-50 hover:scale-105 transition-all duration-200 transform"
               href="/auth/login"
             >
-              login
+              Log in
+            </Link>
+            <Link
+              className="px-6 py-2 text-sm font-medium rounded-lg bg-gray-900 text-white hover:bg-gray-700 hover:scale-105 transition-all duration-200 transform"
+              href="/auth/register"
+            >
+              Join community
             </Link>
           </div>
         ) : (
           <div className="flex text-xl text-white gap-9">
-            <div className="flex gap-3 items-center">
-              <BookIcon fillColor="#3A7CA5" />
-              <Link href="/my-books">my books</Link>
-            </div>
-
-            <div className="flex gap-3 items-center">
-              <WishListIcon fillColor="#3A7CA5" />
-              <Link href="/wishlist">wishlist</Link>
-            </div>
-
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="avatar placeholder">
                 <div className="bg-modern-accent w-11 rounded-full">
