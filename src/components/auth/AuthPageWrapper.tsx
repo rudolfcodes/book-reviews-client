@@ -28,11 +28,11 @@ export default function AuthPageWrapper({
       <div className="w-1/2 flex items-center justify-center bg-[#63ABC3]">
         <div className="text-center text-white p-8">
           <h2 className="text-3xl font-bold mb-10">{illustration.title}</h2>
-          <div className="w-64 h-64 mx-auto rounded-full bg-blue-200 flex items-center justify-center">
+          <div className="md:w-xl md:h-xl mx-auto rounded-full flex items-center justify-center">
             <img
               src={illustration.src}
               alt={illustration.alt}
-              className="w-48 h-48 object-contain"
+              className="w-full h-full object-contain"
             />
           </div>
           {illustration.subtitle && (
