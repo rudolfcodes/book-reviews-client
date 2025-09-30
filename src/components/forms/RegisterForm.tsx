@@ -14,32 +14,26 @@ import FormInput from "./FormInput";
 import BaseButton from "../buttons/BaseButton";
 import TextContainer from "../TextContainer";
 import FlexContainer from "../FlexContainer";
+import { IRegisterFormInput } from "@/types/forms";
 
-interface IRegisterFormInput {
-  username: string;
-  email: string;
-  password?: string;
-  confirmPassword?: string;
-}
+type RegisterFormSchemaType = Omit<IRegisterFormInput, "onSubmit">;
 
-const schema = yup.object().shape({
+const schema: yup.ObjectSchema<RegisterFormSchemaType> = yup.object({
   username: yup.string().required("Username is required"),
   email: yup
     .string()
     .email("Invalid email format")
     .required("Email is required"),
-  password: yup.string().min(8, "Password must be at least 8 characters long"),
-  confirmPassword: yup.string(),
+  password: yup
+    .string()
+    .required("Password is required")
+    .min(8, "Password must be at least 8 characters long"),
+  confirmPassword: yup.string().required("Confirm Password is required"),
 });
 
 const TIMEOUT = 3500;
 
-const RegisterForm = ({
-  username,
-  email,
-  password,
-  confirmPassword,
-}: IRegisterFormInput) => {
+const RegisterForm = () => {
   const {
     register,
     handleSubmit,
