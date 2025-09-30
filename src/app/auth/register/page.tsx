@@ -1,19 +1,20 @@
 "use client";
 
 import RegisterForm from "@/components/forms/RegisterForm";
-import AuthLayout from "../layout";
+import AuthPageWrapper from "@/components/auth/AuthPageWrapper";
 
 const RegisterPage = () => {
   const illustration = {
-    src: "../../public/register-illustration.png",
-    alt: "Join Us",
+    src: "/illustrations/register-illustration.png",
+    alt: "Join our community",
     title: "Discover Switzerland, One Page at a Time",
+    subtitle: "Join our community of book lovers across Switzerland",
   };
 
   return (
-    <AuthLayout illustration={illustration}>
+    <AuthPageWrapper illustration={illustration}>
       <RegisterForm />
-    </AuthLayout>
+    </AuthPageWrapper>
   );
 };
 
