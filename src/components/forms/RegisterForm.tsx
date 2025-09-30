@@ -84,31 +84,30 @@ const RegisterForm = ({
   };
 
   return (
-    <div className="min-h-screen mx-5 flex flex-col items-center justify-center bg-off-white w-full">
-      <h1 className="text-black mb-11 text-3xl">Join the club now</h1>
-      <div className="bg-white w-full md:w-[700px] shadow-custom-black pb-10">
+    <div className="min-h-screen mx-5 flex flex-col items-center justify-center w-full">
+      <div className="w-full md:w-[700px] text-center">
+        <h1 className="text-black mb-11 text-3xl">Join the club now</h1>
+        <span className="text-[#777777] font-medium text-[20px]">
+          Create your account
+        </span>
+
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="bg-white p-8 rounded mx-auto xs:w-full md:w-1/2"
         >
-          <h2 className="text-center text-3xl font-medium mb-6">
-            Create Account
-          </h2>
           {apiError && <p className="text-red-500 text-sm mb-4">{apiError}</p>}
-
-          <FormInput
-            label="Username"
-            type="text"
-            register={register("username")}
-            error={errors.username?.message}
-            required
-          />
           <FormInput
             label="Email"
             type="email"
             register={register("email")}
             error={errors.email?.message}
             required
+          />
+          <FormInput
+            label="Username"
+            type="text"
+            register={register("username")}
+            error={errors.username?.message}
           />
           <FormInput
             label="Password"
@@ -129,14 +128,7 @@ const RegisterForm = ({
             type="submit"
             className="bg-black text-white w-full h-8 min-h-0 mb-8 rounded-3xl"
           >
-            Sign up
-          </BaseButton>
-
-          <BaseButton
-            type="submit"
-            className="btn bg-black text-white w-full h-8 min-h-0 mb-8 rounded-3xl"
-          >
-            Sign in
+            Register
           </BaseButton>
 
           <TextContainer
