@@ -7,7 +7,7 @@ type Props = {
 
 const Logo = ({ imageSrc, alt }: Props) => {
   return (
-    <div>
+    <div className="mb-[100px] ml-[-80px]">
       <img src={imageSrc} alt={alt} />
     </div>
   );
