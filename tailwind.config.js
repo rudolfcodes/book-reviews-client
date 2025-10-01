@@ -16,19 +16,56 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        inter: ["Inter", "sans-serif"],
+        inter: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        robotoSlab: ["Roboto Slab", "serif"],
       },
       colors: {
+        subtitle: "#777777",
+        label: "#000000",
+        placeholder: "#B5B5B5",
         "off-white": "#F3F3F3",
         "blue-cream": "#63ABC3",
         "primary-grey": "#7C7C7C",
         "modern-primary": "#2D2D2A",
         "modern-secondary": "#FAF3E0",
         "modern-accent": "#E4572E",
+        error: "#D81C22",
       },
       boxShadow: {
         "custom-black": "0 0 50px 5px rgba(0, 0, 0, 0.05)",
+        "dark-input": "0 2px 4px 0 rgba(0, 0, 0, 0.25)",
       },
+    },
+    fontSize: {
+      "auth-title": [
+        "30px",
+        {
+          lineHeight: "normal",
+          fontWeight: "900",
+          letterSpacing: "0.04em",
+        },
+      ],
+      "auth-subtitle": [
+        "20px",
+        { lineHeight: "normal", fontWeight: "500", letterSpacing: "0.04em" },
+      ],
+      "auth-label": [
+        "18px",
+        { lineHeight: "normal", fontWeight: "500", letterSpacing: "0.04em" },
+      ],
+      "auth-placeholder": [
+        "16px",
+        { lineHeight: "normal", fontWeight: "400", letterSpacing: "0.04em" },
+      ],
+      "auth-illustration-text": [
+        "28px",
+        {
+          fontFamily: "RobotoSlab",
+          lineHeight: "normal",
+          fontWeight: "bold",
+          letterSpacing: "0em",
+        },
+      ],
     },
   },
   plugins: [require("daisyui"), require("@tailwindcss/typography")],
