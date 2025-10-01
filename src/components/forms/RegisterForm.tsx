@@ -79,48 +79,58 @@ const RegisterForm = () => {
 
   return (
     <div className="mx-5 flex flex-col items-center justify-center w-full">
-      <div className="w-full md:w-[700px] text-center">
-        <h1 className="text-black mb-11 text-3xl">Join the club now</h1>
-        <span className="text-[#777777] font-medium text-[20px]">
+      <div className="w-full md:w-[700px]">
+        <h1 className="text-black mb-4 text-3xl text-center text-auth-title">
+          Join the club now
+        </h1>
+        <span className="text-[#777777] font-medium text-[20px] text-center block text-auth-subtitle">
           Create your account
         </span>
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="bg-white p-8 rounded mx-auto xs:w-full md:w-1/2"
+          className="rounded px-8 mx-auto xs:w-full md:w-3/4 lg:w-2/3 mt-8"
         >
-          {apiError && <p className="text-red-500 text-sm mb-4">{apiError}</p>}
+          {apiError && <p className="text-error text-sm mb-4">{apiError}</p>}
           <FormInput
+            className="mb-6"
             label="Email"
             type="email"
             register={register("email")}
+            placeholder="Enter your email address"
             error={errors.email?.message}
             required
           />
           <FormInput
+            className="mb-6"
             label="Username"
             type="text"
             register={register("username")}
+            placeholder="Choose a username"
             error={errors.username?.message}
           />
           <FormInput
+            className="mb-6"
             label="Password"
             type="password"
             register={register("password")}
+            placeholder="********"
             error={errors.password?.message}
             required
           />
           <FormInput
+            className="mb-6"
             label="Confirm Password"
             type="password"
             register={register("confirmPassword")}
+            placeholder="********"
             error={errors.confirmPassword?.message}
             required
           />
 
           <BaseButton
             type="submit"
-            className="bg-black text-white w-full h-8 min-h-0 mb-8 rounded-3xl"
+            className="bg-blue-cream hover:bg-blue-cream hover:scale-105 text-white text-[20px] font-medium w-full min-h-0 mt-6 mb-8 rounded-md h-[60px]"
           >
             Register
           </BaseButton>
@@ -137,7 +147,7 @@ const RegisterForm = () => {
             />
             <Link
               href="/auth/login"
-              className="text-black ml-2 text-sm underline hover:underline"
+              className="text-blue-cream  ml-2 text-xl font-extrabold hover:underline"
             >
               Sign in
             </Link>
