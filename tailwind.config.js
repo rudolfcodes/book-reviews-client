@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import plugin from "@tailwindcss/typography";
 // All headings need to be Inter 30px Extra Bold
 module.exports = {
   content: [
@@ -35,6 +36,9 @@ module.exports = {
         "custom-black": "0 0 50px 5px rgba(0, 0, 0, 0.05)",
         "dark-input": "0 2px 4px 0 rgba(0, 0, 0, 0.25)",
       },
+      spacing: {
+        "auth-gap": "46px",
+      },
     },
     fontSize: {
       "auth-title": [
@@ -68,5 +72,25 @@ module.exports = {
       ],
     },
   },
-  plugins: [require("daisyui"), require("@tailwindcss/typography")],
+  plugins: [
+    require("daisyui"),
+    require("@tailwindcss/typography"),
+    plugin(function ({ addBase, theme }) {
+      addBase({
+        root: {
+          /* sizes */
+          "--fs-mobile-auth-title": "24px",
+          "--fs-mobile-auth-subtitle": "18px",
+          "--fs-mobile-auth-placeholder": "16px",
+        },
+        h1: {
+          fontFamily: theme("fontFamily.inter"),
+          fontSize: theme("fontSize.auth-title"),
+          lineHeight: theme("lineHeight.normal"),
+          fontWeight: theme("fontWeight.bold"),
+          letterSpacing: theme("letterSpacing.tight"),
+        },
+      });
+    }),
+  ],
 };
