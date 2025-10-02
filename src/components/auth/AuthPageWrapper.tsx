@@ -16,15 +16,22 @@ export default function AuthPageWrapper({
   children,
 }: AuthPageWrapperProps) {
   return (
-    <div className="min-h-screen flex w-full ">
-      <div className="w-1/2 flex items-center justify-center">
+    <div className="min-h-screen flex w-full">
+      <div className="absolute lg:hidden w-full h-full flex items-center justify-center">
+        <img
+          src="/images/mobile-register.png"
+          alt=""
+          className="absolute min-h-[220px] inset-0 object-cover object-center left-1/2 transform -translate-x-1/2 w-screen"
+        />
+      </div>
+      <div className="w-full lg:w-1/2 flex items-center justify-center">
         <div className="max-w-md w-full p-8">
           <Logo imageSrc="/images/logo.png" alt="Swiss Book Club Logo" />
           {children}
         </div>
       </div>
 
-      <div className="w-1/2 flex items-center justify-center bg-[#63ABC3]">
+      <div className="hidden lg:visible w-1/2 lg:flex items-center justify-center bg-[#63ABC3]">
         <div className="text-center text-white p-8">
           <h2 className="text-auth-illustration-text mb-10">
             {illustration.title}
