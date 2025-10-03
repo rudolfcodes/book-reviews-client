@@ -66,7 +66,7 @@ const RegisterForm = () => {
       }, TIMEOUT);
     } catch (error: any) {
       if (error?.response?.data) {
-        setApiError(error.response.data.error);
+        setApiError(error.response.data.message || "Registration failed");
       } else {
         setApiError("Sorry, an unexpected error ocurred.");
       }
