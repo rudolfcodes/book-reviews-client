@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-import plugin from "@tailwindcss/typography";
-// All headings need to be Inter 30px Extra Bold
+import plugin from "tailwindcss/plugin";
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -18,7 +17,7 @@ module.exports = {
     extend: {
       fontFamily: {
         inter: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
-        robotoSlab: ["Roboto Slab", "serif"],
+        robotoSlab: ["var(--font-roboto-slab)", "serif"],
       },
       colors: {
         subtitle: "#777777",
@@ -40,55 +39,46 @@ module.exports = {
         "auth-gap": "46px",
       },
     },
-    fontSize: {
-      "auth-title": [
-        "30px",
-        {
-          lineHeight: "normal",
-          fontWeight: "900",
-          letterSpacing: "0.04em",
-        },
-      ],
-      "auth-subtitle": [
-        "20px",
-        { lineHeight: "normal", fontWeight: "500", letterSpacing: "0.04em" },
-      ],
-      "auth-label": [
-        "18px",
-        { lineHeight: "normal", fontWeight: "500", letterSpacing: "0.04em" },
-      ],
-      "auth-placeholder": [
-        "16px",
-        { lineHeight: "normal", fontWeight: "400", letterSpacing: "0.04em" },
-      ],
-      "auth-illustration-text": [
-        "28px",
-        {
-          fontFamily: "RobotoSlab",
-          lineHeight: "normal",
-          fontWeight: "bold",
-          letterSpacing: "0em",
-        },
-      ],
-    },
   },
   plugins: [
     require("daisyui"),
     require("@tailwindcss/typography"),
     plugin(function ({ addBase, theme }) {
       addBase({
-        root: {
-          /* sizes */
-          "--fs-mobile-auth-title": "24px",
-          "--fs-mobile-auth-subtitle": "18px",
-          "--fs-mobile-auth-placeholder": "16px",
+        ":root": {
+          "--fs-auth-size": "18px",
+          "--fs-auth-title": "24px",
+          "--fs-auth-placeholder": "16px",
+          "--fw-extraBold": "900",
+          "--fw-medium": "500",
+          "--fw-regular": "400",
+          "--fs-auth-illustration-text": "28px",
+          "--f-spacing-4": "0.04em",
+        },
+        [`@media (min-width: ${theme("screens.lg")})`]: {
+          ":root": {
+            "--fs-auth-title": "30px",
+            "--fs-auth-size": "20px",
+          },
         },
         h1: {
           fontFamily: theme("fontFamily.inter"),
-          fontSize: theme("fontSize.auth-title"),
+          fontSize: "var(--fs-auth-title)",
           lineHeight: theme("lineHeight.normal"),
           fontWeight: theme("fontWeight.bold"),
           letterSpacing: theme("letterSpacing.tight"),
+        },
+        ".subtitle": {
+          fontFamily: theme("fontFamily.inter"),
+          fontSize: "var(--fs-auth-size)",
+          lineHeight: theme("lineHeight.normal"),
+          fontWeight: theme("fontWeight.medium"),
+          letterSpacing: theme("letterSpacing.tight"),
+        },
+        ".illustration-text": {
+          fontFamily: theme("fontFamily.robotoSlab"),
+          fontSize: "var(--fs-auth-illustration-text)",
+          fontWeight: "var(--fw-medium)",
         },
       });
     }),
