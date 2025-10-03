@@ -78,12 +78,10 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="mx-5 flex flex-col items-center justify-center w-full">
+    <div className="flex flex-col items-center justify-center w-full mt-[150px] lg:mt-0">
       <div className="w-full md:w-[700px]">
-        <h1 className="text-black mb-4 text-3xl text-center text-auth-title">
-          Join the club now
-        </h1>
-        <span className="text-[#777777] font-medium text-[20px] text-center block text-auth-subtitle">
+        <h1 className="text-black mb-4 text-center">Join the club now</h1>
+        <span className="text-[#777777] text-center block subtitle">
           Create your account
         </span>
 
