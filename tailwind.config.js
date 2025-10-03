@@ -80,6 +80,11 @@ module.exports = {
           fontSize: "var(--fs-auth-illustration-text)",
           fontWeight: "var(--fw-medium)",
         },
+        ".forgot-password": {
+          fontFamily: theme("fontFamily.inter"),
+          fontSize: "var(--fs-auth-size)",
+          fontWeight: "var(--fw-extraBold)",
+        },
       });
     }),
   ],
