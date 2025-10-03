@@ -6,7 +6,7 @@ interface FlexContainerProps {
 }
 
 const FlexContainer = ({ children, className }: FlexContainerProps) => {
-  return <div className={`flex ${className}`}>{children}</div>;
+  return <div className={`flex ${className || ""}`}>{children}</div>;
 };
 
 export default FlexContainer;

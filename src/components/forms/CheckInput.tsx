@@ -17,7 +17,7 @@ const CheckInput = ({
   className,
 }: InputCheckboxProps) => {
   return (
-    <FlexContainer className={`${className} gap-2 items-center`}>
+    <FlexContainer className={`${className || ""} gap-2 items-center`}>
       <label htmlFor={id}>{label}</label>
       <input
         id={id}
