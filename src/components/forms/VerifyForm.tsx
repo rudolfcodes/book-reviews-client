@@ -43,9 +43,9 @@ const VerifyForm = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full mt-[150px] lg:mt-0">
-      <div className="w-full md:w-[700px]">
-        <form onSubmit={handleSubmit} className="verify-form">
+    <div className="flex flex-col w-full py-8">
+      <div className="w-full md:w-[700px] max-w-md">
+        <form onSubmit={handleSubmit} className="flex flex-col items-center">
           <h1 className="text-black mb-4 text-center">
             Enter Verification Code
           </h1>
