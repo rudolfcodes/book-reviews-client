@@ -43,6 +43,9 @@ const LoginForm = () => {
         rememberMe: rememberMe,
       });
 
+      localStorage.setItem("userId", response.data.userId);
+      localStorage.setItem("rememberMe", rememberMe ? "true" : "false");
+
       if (response.data) {
         toast.success(
           "The verification email has been sent! Redirecting to verification...",
@@ -53,7 +56,7 @@ const LoginForm = () => {
         );
 
         setTimeout(() => {
-          router.push("/verify-otp");
+          router.push("/auth/verify-otp");
         }, TIMEOUT);
       }
     } catch (error: any) {
