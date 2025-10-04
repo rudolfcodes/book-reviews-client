@@ -3,10 +3,10 @@ import "./globals.css";
 import { Inter, Roboto_Slab } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
-const robotoSlab = Roboto_Slab({
+const roboto = Roboto_Slab({
   subsets: ["latin"],
   variable: "--font-roboto-slab",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata = {
@@ -29,7 +29,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={`${inter.className} ${robotoSlab.variable}`}>
+      <body className={`${inter.className} ${roboto.variable}`}>
         <div className="flex flex-1">
           <UserProvider>{children}</UserProvider>
         </div>
