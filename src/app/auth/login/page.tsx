@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Logo from "@/components/Logo";
 import LoginForm from "@/components/forms/LoginForm";
 import AuthPageWrapper from "@/components/auth/AuthPageWrapper";
 
