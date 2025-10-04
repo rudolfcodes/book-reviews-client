@@ -116,7 +116,7 @@ const LoginForm = () => {
 
             <Link
               href="/forgot-password"
-              className=" text-blue-cream text-right forgot-password"
+              className=" text-blue-cream text-right bold-700"
             >
               Forgot Password?
             </Link>
