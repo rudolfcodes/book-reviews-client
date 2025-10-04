@@ -87,7 +87,7 @@ const RegisterForm = () => {
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="rounded px-8 mx-auto xs:w-full md:w-3/4 lg:w-2/3 mt-8"
+          className="rounded px-8 mx-auto xs:w-full md:w-3/4 lg:w-2/3 my-8"
         >
           {apiError && (
             <p className="text-error text-base text-center mb-4">{apiError}</p>
@@ -140,7 +140,7 @@ const RegisterForm = () => {
             className="text-sm mb-6"
           />
 
-          <FlexContainer>
+          <FlexContainer className="gap-2 justify-center items-center">
             <TextContainer
               text="Already have an account?"
               className="text-sm"
