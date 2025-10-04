@@ -55,13 +55,13 @@ const LoginForm = () => {
       }
     } catch (error: any) {
       if (error?.response?.data) {
-        setApiError(error.response.data.message || "Login failed");
+        setApiError(error.response.data.error || "Login failed");
       } else {
         setApiError("Sorry, an unexpected error occurred.");
       }
       console.error(
         "Login failed: ",
-        error.response?.data?.message || error.message
+        error.response?.data?.error || error.message
       );
     }
   };
@@ -78,7 +78,9 @@ const LoginForm = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="rounded px-8 mx-auto xs:w-full md:w-3/4 lg:w-2/3 mt-8"
         >
-          {apiError && <p className="text-red-500 text-sm">{apiError}</p>}
+          {apiError && (
+            <p className="text-error text-center mb-4 text-base">{apiError}</p>
+          )}
           <FormInput
             className="mb-6"
             label="Email"
