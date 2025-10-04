@@ -24,6 +24,20 @@ const VerifyForm = () => {
   const [otp, setOtp] = React.useState(["", "", "", ""]);
   const router = useRouter();
 
+  const handleResendCode = async () => {
+    try {
+      const response = await axiosInstance.post("/api/users/resend-otp");
+      if (response.data.success) {
+        toast.success("Verification code resent!", {
+          position: "top-center",
+          autoClose: 2000,
+        });
+      }
+    } catch (error) {
+      console.error("Error resending OTP:", error);
+    }
+  };
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget as HTMLFormElement);
@@ -88,6 +102,7 @@ const VerifyForm = () => {
             <FlexContainer className="flex-col mt-5">
               <BaseButton
                 type="button"
+                onClick={handleResendCode}
                 className="bold-700 mb-4 text-xl bg-transparent text-blue-cream focus:outline-none focus:ring-0 border-0 outline-none ring-0 hover:bg-transparent hover:border-0"
               >
                 Resend
