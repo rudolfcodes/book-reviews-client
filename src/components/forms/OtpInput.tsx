@@ -9,7 +9,7 @@ interface OtpInputProps {
 const OtpInput = ({ onChange, value, className }: OtpInputProps) => {
   return (
     <input
-      type="number"
+      type="text"
       maxLength={1}
       value={value}
       onChange={(e) => onChange(e.target.value)}
