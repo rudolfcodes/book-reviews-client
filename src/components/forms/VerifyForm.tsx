@@ -1,8 +1,11 @@
+"use client";
+
 import axiosInstance from "@/utils/axios";
 import React from "react";
+import OtpInput from "./OtpInput";
 
-interface VerifyFormProps {}
-
+// if the verification code is correct, set the token and decoded user with jwtDecode.
+// Set user, refresh router, show success toast, and push to main page after timeout.
 const verifyOtp = async (data: { otp: string }) => {
   try {
     const response = await axiosInstance.post("/api/users/verify-otp", data);
@@ -13,7 +16,8 @@ const verifyOtp = async (data: { otp: string }) => {
   }
 };
 
-const VerifyForm = async ({}: VerifyFormProps) => {
+const VerifyForm = () => {
+  const [otp, setOtp] = React.useState(["", "", "", ""]);
   // upon submit, verify the OTP code
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -30,25 +34,44 @@ const VerifyForm = async ({}: VerifyFormProps) => {
       // Show error message to user
     }
   };
+
+  const handleOtpChange = (index: string, value: string) => {
+    if (value < "0" || value > "9") return;
+    const newOtp = [...otp];
+    newOtp[parseInt(index)] = value.toString();
+    setOtp(newOtp);
+  };
+
   return (
-    <form onSubmit={handleSubmit} className="verify-form">
-      <div className="flex flex-col">
-        <h1>Enter Verification Code</h1>
-        <span>Enter the 4-digit code we've sent to your email</span>
+    <div className="flex flex-col items-center justify-center w-full mt-[150px] lg:mt-0">
+      <div className="w-full md:w-[700px]">
+        <form onSubmit={handleSubmit} className="verify-form">
+          <h1 className="text-black mb-4 text-center">
+            Enter Verification Code
+          </h1>
+          <span className="text-[#777777] text-center block subtitle">
+            Enter the 4-digit code we've sent to your email
+          </span>
+          <div className="flex flex-col">
+            <div className="verification-inputs">
+              {["", "", "", ""].map((otp, index) => (
+                <OtpInput
+                  key={index}
+                  value={otp}
+                  onChange={(value) => handleOtpChange(index.toString(), value)}
+                  className="otp-input"
+                />
+              ))}
+            </div>
 
-        <div className="verification-inputs">
-          <input type="text" maxLength={1} />
-          <input type="text" maxLength={1} />
-          <input type="text" maxLength={1} />
-          <input type="text" maxLength={1} />
-        </div>
-
-        <div className="form-actions">
-          <button className="resend-btn">Resend</button>
-          <button className="confirm-btn">Confirm</button>
-        </div>
+            <div className="form-actions">
+              <button className="resend-btn">Resend</button>
+              <button className="confirm-btn">Confirm</button>
+            </div>
+          </div>
+        </form>
       </div>
-    </form>
+    </div>
   );
 };
 
