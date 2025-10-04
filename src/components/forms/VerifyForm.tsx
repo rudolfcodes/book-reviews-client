@@ -3,6 +3,8 @@
 import axiosInstance from "@/utils/axios";
 import React from "react";
 import OtpInput from "./OtpInput";
+import BaseButton from "../buttons/BaseButton";
+import FlexContainer from "../FlexContainer";
 
 // if the verification code is correct, set the token and decoded user with jwtDecode.
 // Set user, refresh router, show success toast, and push to main page after timeout.
@@ -74,10 +76,20 @@ const VerifyForm = () => {
               ))}
             </div>
 
-            <div className="form-actions">
-              <button className="resend-btn">Resend</button>
-              <button className="confirm-btn">Confirm</button>
-            </div>
+            <FlexContainer className="flex-col mt-5">
+              <BaseButton
+                type="button"
+                className="bold-700 mb-4 text-xl bg-transparent text-blue-cream focus:outline-none focus:ring-0 border-0 outline-none ring-0 hover:bg-transparent hover:border-0"
+              >
+                Resend
+              </BaseButton>
+              <BaseButton
+                type="submit"
+                className="bold-700 text-xl bg-blue-cream text-white hover:bg-blue-cream hover:scale-105"
+              >
+                Verify
+              </BaseButton>
+            </FlexContainer>
           </div>
         </form>
       </div>
