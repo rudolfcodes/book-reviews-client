@@ -1,32 +1,44 @@
 "use client";
 
 import axiosInstance from "@/utils/axios";
-import React from "react";
+import React, { useState, FormEvent } from "react";
 import OtpInput from "./OtpInput";
 import BaseButton from "../buttons/BaseButton";
 import FlexContainer from "../FlexContainer";
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 
+interface VerifyOTPRequest {
+  userId: string | null;
+  otp: string;
+  rememberMe: boolean;
+}
+
 // if the verification code is correct, set the token and decoded user with jwtDecode.
 // Set user, refresh router, show success toast, and push to main page after timeout.
-const verifyOtp = async (data: { otp: string }) => {
+const verifyOtp = async (data: VerifyOTPRequest) => {
   try {
     const response = await axiosInstance.post("/api/users/verify-otp", data);
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error verifying OTP:", error);
-    return { success: false, message: "Error verifying OTP" };
+    return {
+      success: false,
+      message: error.response?.data?.error || "Verification failed",
+    };
   }
 };
 
 const VerifyForm = () => {
-  const [otp, setOtp] = React.useState(["", "", "", ""]);
+  const [otp, setOtp] = useState(["", "", "", ""]);
+  const [apiError, setApiError] = useState("");
   const router = useRouter();
 
   const handleResendCode = async () => {
     try {
-      const response = await axiosInstance.post("/api/users/resend-otp");
+      const response = await axiosInstance.post("/api/users/resend-otp", {
+        userId: localStorage.getItem("userId"),
+      });
       if (response.data.success) {
         toast.success("Verification code resent!", {
           position: "top-center",
@@ -35,17 +47,29 @@ const VerifyForm = () => {
       }
     } catch (error) {
       console.error("Error resending OTP:", error);
+      setApiError("Failed to resend code. Please try again.");
+      toast.error("Failed to resend code. Please try again.", {
+        position: "top-center",
+        autoClose: 2000,
+      });
     }
   };
 
-  const handleSubmit = async (event: React.FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget as HTMLFormElement);
-    const otp = Array.from(formData.values()).join("");
-    console.log("Submitted OTP:", otp);
-    const result = await verifyOtp({ otp });
-    if (result.success) {
+    const result = await verifyOtp({
+      userId: localStorage.getItem("userId"),
+      otp: otp.join(""),
+      rememberMe: localStorage.getItem("rememberMe") === "true",
+    });
+    if (result.user && result.token) {
       console.log("OTP verified successfully");
+      localStorage.setItem("token", result.token);
+      localStorage.setItem("user", JSON.stringify(result.user));
+
+      // clear temporary data
+      localStorage.removeItem("userId");
+      localStorage.removeItem("rememberMe");
       toast.success("OTP verified successfully! Redirecting...", {
         position: "top-center",
         autoClose: 2000,
@@ -55,7 +79,14 @@ const VerifyForm = () => {
         router.push("/");
       }, 2000);
     } else {
-      console.error("OTP verification failed:", result.message);
+      console.log({ result });
+      console.error(
+        "OTP verification failed:",
+        result.message || "Invalid OTP"
+      );
+      setApiError(
+        result.message || "Invalid verification code. Please try again."
+      );
     }
   };
 
@@ -86,6 +117,13 @@ const VerifyForm = () => {
           <span className="text-[#777777] text-center block subtitle max-w-64">
             Enter the 4-digit code we've sent to your email
           </span>
+
+          {apiError && (
+            <p className="text-error text-center mt-3 mb-4 text-base">
+              {apiError}
+            </p>
+          )}
+
           <div className="flex flex-col mt-4">
             <div className="flex justify-evenly gap-4">
               {otp.map((singleOtpValue, index) => (
@@ -115,7 +153,6 @@ const VerifyForm = () => {
               </BaseButton>
             </FlexContainer>
           </div>
-
           <ToastContainer />
         </form>
       </div>
