@@ -53,6 +53,7 @@ module.exports = {
           "--fw-bold": "700",
           "--fw-medium": "500",
           "--fw-regular": "400",
+          "--fw-semiBold": "600",
           "--fs-auth-illustration-text": "28px",
           "--f-spacing-4": "0.04em",
         },
@@ -81,7 +82,7 @@ module.exports = {
           fontSize: "var(--fs-auth-illustration-text)",
           fontWeight: "var(--fw-medium)",
         },
-        ".forgot-password": {
+        ".bold-700": {
           fontFamily: theme("fontFamily.inter"),
           fontSize: "var(--fs-auth-size)",
           fontWeight: "var(--fw-bold)",
