@@ -5,6 +5,8 @@ import React from "react";
 import OtpInput from "./OtpInput";
 import BaseButton from "../buttons/BaseButton";
 import FlexContainer from "../FlexContainer";
+import { useRouter } from "next/navigation";
+import { toast, ToastContainer } from "react-toastify";
 
 // if the verification code is correct, set the token and decoded user with jwtDecode.
 // Set user, refresh router, show success toast, and push to main page after timeout.
@@ -20,7 +22,8 @@ const verifyOtp = async (data: { otp: string }) => {
 
 const VerifyForm = () => {
   const [otp, setOtp] = React.useState(["", "", "", ""]);
-  // upon submit, verify the OTP code
+  const router = useRouter();
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     // handle OTP verification logic here
@@ -30,7 +33,15 @@ const VerifyForm = () => {
     const result = await verifyOtp({ otp });
     if (result.success) {
       console.log("OTP verified successfully");
-      // Redirect to main page or show success message
+      // show success toast
+      toast.success("OTP verified successfully! Redirecting...", {
+        position: "top-center",
+        autoClose: 2000,
+      });
+
+      setTimeout(() => {
+        router.push("/");
+      }, 2000);
     } else {
       console.error("OTP verification failed:", result.message);
     }
@@ -55,7 +66,7 @@ const VerifyForm = () => {
 
   return (
     <div className="flex flex-col w-full py-8">
-      <div className="w-full md:w-[700px] max-w-md">
+      <div className="w-full xs:pt-[35px] sm:pt-[85px] lg:pt-0 md:w-[700px] max-w-md">
         <form onSubmit={handleSubmit} className="flex flex-col items-center">
           <h1 className="text-black mb-3 text-center">
             Enter Verification Code
@@ -91,6 +102,8 @@ const VerifyForm = () => {
               </BaseButton>
             </FlexContainer>
           </div>
+
+          <ToastContainer />
         </form>
       </div>
     </div>
