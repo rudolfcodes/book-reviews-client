@@ -26,14 +26,12 @@ const VerifyForm = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    // handle OTP verification logic here
     const formData = new FormData(event.currentTarget as HTMLFormElement);
     const otp = Array.from(formData.values()).join("");
     console.log("Submitted OTP:", otp);
     const result = await verifyOtp({ otp });
     if (result.success) {
       console.log("OTP verified successfully");
-      // show success toast
       toast.success("OTP verified successfully! Redirecting...", {
         position: "top-center",
         autoClose: 2000,
