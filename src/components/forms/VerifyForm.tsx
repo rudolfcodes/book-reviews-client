@@ -31,14 +31,23 @@ const VerifyForm = () => {
       // Redirect to main page or show success message
     } else {
       console.error("OTP verification failed:", result.message);
-      // Show error message to user
     }
   };
 
-  const handleOtpChange = (index: string, value: string) => {
-    if (value < "0" || value > "9") return;
+  const handlePaste = (pastedValue: string) => {
+    const sanitizedValue = pastedValue.replace(/\D/g, "").slice(0, 4);
+    const newOtp = sanitizedValue.split("");
+    while (newOtp.length < 4) {
+      newOtp.push("");
+    }
+    setOtp(newOtp);
+  };
+
+  const handleOtpChange = (index: number, value: string) => {
+    if (value !== "" && (value < "0" || value > "9" || value.length > 1))
+      return;
     const newOtp = [...otp];
-    newOtp[parseInt(index)] = value.toString();
+    newOtp[index] = value;
     setOtp(newOtp);
   };
 
@@ -46,19 +55,20 @@ const VerifyForm = () => {
     <div className="flex flex-col w-full py-8">
       <div className="w-full md:w-[700px] max-w-md">
         <form onSubmit={handleSubmit} className="flex flex-col items-center">
-          <h1 className="text-black mb-4 text-center">
+          <h1 className="text-black mb-3 text-center">
             Enter Verification Code
           </h1>
-          <span className="text-[#777777] text-center block subtitle">
+          <span className="text-[#777777] text-center block subtitle max-w-64">
             Enter the 4-digit code we've sent to your email
           </span>
-          <div className="flex flex-col">
-            <div className="verification-inputs">
-              {["", "", "", ""].map((otp, index) => (
+          <div className="flex flex-col mt-4">
+            <div className="flex justify-evenly gap-4">
+              {otp.map((singleOtpValue, index) => (
                 <OtpInput
                   key={index}
-                  value={otp}
-                  onChange={(value) => handleOtpChange(index.toString(), value)}
+                  value={singleOtpValue}
+                  onChange={(value) => handleOtpChange(index, value)}
+                  onPaste={handlePaste}
                   className="otp-input"
                 />
               ))}
