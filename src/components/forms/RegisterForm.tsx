@@ -89,7 +89,9 @@ const RegisterForm = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="rounded px-8 mx-auto xs:w-full md:w-3/4 lg:w-2/3 mt-8"
         >
-          {apiError && <p className="text-error text-sm mb-4">{apiError}</p>}
+          {apiError && (
+            <p className="text-error text-base text-center mb-4">{apiError}</p>
+          )}
           <FormInput
             className="mb-6"
             label="Email"
