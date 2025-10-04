@@ -44,10 +44,13 @@ const LoginForm = () => {
       });
 
       if (response.data) {
-        toast.success("Login successful! Redirecting to verification...", {
-          position: "top-center",
-          autoClose: TIMEOUT,
-        });
+        toast.success(
+          "The verification email has been sent! Redirecting to verification...",
+          {
+            position: "top-center",
+            autoClose: TIMEOUT,
+          }
+        );
 
         setTimeout(() => {
           router.push("/verify-otp");
