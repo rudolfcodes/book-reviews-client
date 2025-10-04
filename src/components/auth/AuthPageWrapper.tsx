@@ -30,7 +30,7 @@ export default function AuthPageWrapper({
         </div>
 
         <div className="flex-1 flex justify-center">
-          <div className="max-w-md w-full px-8">{children}</div>
+          <div className="max-w-md w-full">{children}</div>
         </div>
       </div>
 
