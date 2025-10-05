@@ -118,7 +118,7 @@ const LoginForm = () => {
             </FlexContainer>
 
             <Link
-              href="/forgot-password"
+              href="/auth/forgot-password"
               className=" text-blue-cream text-right bold-700"
             >
               Forgot Password?
