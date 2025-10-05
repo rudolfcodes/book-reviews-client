@@ -3,7 +3,7 @@
 import AuthPageWrapper from "@/components/auth/AuthPageWrapper";
 import EmailInputForm from "@/components/forms/reset-password/EmailInputForm";
 
-const ResetPasswordRequestPage = () => {
+const ForgotPasswordPage = () => {
   const illustration = {
     src: "/images/reset-password-request.png",
     alt: "Reset your password",
@@ -17,4 +17,4 @@ const ResetPasswordRequestPage = () => {
   );
 };
 
-export default ResetPasswordRequestPage;
+export default ForgotPasswordPage;
