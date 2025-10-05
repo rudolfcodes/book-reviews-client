@@ -34,7 +34,7 @@ const EmailInputForm = () => {
       const response = await axiosInstance.post("/api/users/forgot-password", {
         email: data.email,
       });
-      if (response.data.success) {
+      if (response.status === 200) {
         toast.success("Reset link sent! Please check your email.", {
           position: "top-center",
           autoClose: false,
