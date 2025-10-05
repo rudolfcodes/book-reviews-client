@@ -7,6 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import axiosInstance from "@/utils/axios";
+import Link from "next/link";
 
 type EmailInputFormProps = {
   email: string;
@@ -77,6 +78,14 @@ const EmailInputForm = () => {
           >
             Send Reset Link
           </BaseButton>
+
+          <Link
+            href="/auth/login"
+            className="text-sm text-center text-blue-cream"
+            onClick={() => router.push("/auth/login")}
+          >
+            Back to Login
+          </Link>
 
           <ToastContainer />
         </form>
