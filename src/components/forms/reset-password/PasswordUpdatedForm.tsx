@@ -1,3 +1,5 @@
+"use client";
+
 import BaseButton from "@/components/buttons/BaseButton";
 import React from "react";
 import { useRouter } from "next/navigation";
