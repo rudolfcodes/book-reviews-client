@@ -74,6 +74,8 @@ const ResetPasswordForm = () => {
         setTimeout(() => {
           router.push("/auth/forgot-password");
         }, 5000);
+      } finally {
+        setLoading(false);
       }
     };
 
