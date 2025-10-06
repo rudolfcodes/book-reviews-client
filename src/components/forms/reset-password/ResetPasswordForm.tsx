@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import FormInput from "../FormInput";
 import BaseButton from "@/components/buttons/BaseButton";
 import * as yup from "yup";
@@ -99,9 +100,9 @@ const ResetPasswordForm = () => {
       }
     } catch (error) {
       setApiError("Failed to reset password");
-      toast.error("Failed to reset password", {
+      toast.error("Failed to reset password. Please try again.", {
         position: "top-center",
-        autoClose: 2000,
+        autoClose: 3000,
       });
       console.error("Reset password error: ", error);
     }
