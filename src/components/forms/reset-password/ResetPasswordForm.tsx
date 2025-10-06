@@ -176,7 +176,10 @@ const ResetPasswordForm = () => {
             error={errors.newPassword?.message}
             required
           />
-          <BaseButton type="submit" className="w-full">
+          <BaseButton
+            type="submit"
+            className="bg-blue-cream hover:bg-blue-cream hover:scale-105 text-white text-[20px] font-medium w-full min-h-0 mt-6 mb-8 rounded-md h-[60px]"
+          >
             Reset Password
           </BaseButton>
 
