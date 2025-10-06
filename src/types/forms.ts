@@ -5,3 +5,8 @@ export interface IRegisterFormInput {
   confirmPassword?: string;
   onSubmit?: (data: IRegisterFormInput) => Promise<void>;
 }
+
+export interface ILoginFormInput {
+  email: string;
+  password: string;
+}

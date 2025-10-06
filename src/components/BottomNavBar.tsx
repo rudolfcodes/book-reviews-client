@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 const BottomNavBar = () => {
   const router = useRouter();
   const handlePageChange = (page: string) => {
-    console.log("Navigating to:", page);
     router.push(`/${page}`);
   };
 

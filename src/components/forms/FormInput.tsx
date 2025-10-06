@@ -7,6 +7,7 @@ interface FormInputProps {
   error?: string;
   required?: boolean;
   className?: string;
+  placeholder?: string;
 }
 
 const FormInput = ({
@@ -16,19 +17,21 @@ const FormInput = ({
   error,
   required,
   className,
+  placeholder,
 }: FormInputProps) => {
   return (
-    <div className={`${className} mb-6`}>
-      <label className="block text-gray-700">
+    <div className={className}>
+      <label className="block text-auth-label">
         {label} {required && <span className="text-red-500">*</span>}
         <input
-          className="input input-bordered w-full h-8 rounded-3xl border-gray-500"
+          className="input input-bordered w-full h-[60px] rounded-md border-2 border-blue-cream mt-3 shadow-dark-input"
           type={type}
           {...register}
           required={required}
+          placeholder={placeholder}
         />
       </label>
-      {error && <p className="text-red-500 text-sm">{error}</p>}
+      {error && <p className="text-error text-sm">{error}</p>}
     </div>
   );
 };

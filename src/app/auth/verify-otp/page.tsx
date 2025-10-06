@@ -1,28 +1,20 @@
 "use client";
 
+import AuthPageWrapper from "@/components/auth/AuthPageWrapper";
 import VerifyForm from "@/components/forms/VerifyForm";
-import Logo from "@/components/Logo";
 import React from "react";
 
-type Props = {};
-// if the verification code is correct, set the token and decoded user with jwtDecode.
-// Set user, refresh router, show success toast, and push to main page after timeout.
+const illustration = {
+  src: "/images/verify-otp.png",
+  alt: "Verify your account",
+  title: "Discover Switzerland, One Page at a Time",
+};
 
-const VerifyOtp = (props: Props) => {
+const VerifyOtp = () => {
   return (
-    <div className="auth-page min-h-screen mx-5 flex items-center justify-center w-full">
-      <Logo imageSrc="../../public/logo.png" alt="Logo" />
-      <div className="auth-left">
-        <VerifyForm />
-      </div>
-
-      <div className="auth-right">
-        <h2 className="text-white mb-11 text-3xl font-bold">
-          Discover Switzerland, One Page at a Time
-        </h2>
-        <img src="../../public/verify-otp.png" alt="Discover Switzerland" />
-      </div>
-    </div>
+    <AuthPageWrapper illustration={illustration}>
+      <VerifyForm />
+    </AuthPageWrapper>
   );
 };
 

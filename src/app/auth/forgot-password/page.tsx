@@ -1,20 +1,20 @@
 "use client";
 
-import RegisterForm from "@/components/forms/RegisterForm";
 import AuthPageWrapper from "@/components/auth/AuthPageWrapper";
+import EmailInputForm from "@/components/forms/reset-password/EmailInputForm";
 
-const RegisterPage = () => {
+const ForgotPasswordPage = () => {
   const illustration = {
-    src: "/images/register-illustration.png",
-    alt: "Join our community",
+    src: "/images/reset-password-request.png",
+    alt: "Reset your password",
     title: "Discover Switzerland, One Page at a Time",
   };
 
   return (
     <AuthPageWrapper illustration={illustration}>
-      <RegisterForm />
+      <EmailInputForm />
     </AuthPageWrapper>
   );
 };
 
-export default RegisterPage;
+export default ForgotPasswordPage;
