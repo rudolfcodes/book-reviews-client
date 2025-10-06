@@ -63,7 +63,6 @@ const VerifyForm = () => {
       rememberMe: localStorage.getItem("rememberMe") === "true",
     });
     if (result.user && result.token) {
-      console.log("OTP verified successfully");
       localStorage.setItem("token", result.token);
       localStorage.setItem("user", JSON.stringify(result.user));
 
@@ -79,7 +78,6 @@ const VerifyForm = () => {
         router.push("/");
       }, 2000);
     } else {
-      console.log({ result });
       console.error(
         "OTP verification failed:",
         result.message || "Invalid OTP"
