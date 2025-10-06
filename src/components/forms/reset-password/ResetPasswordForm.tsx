@@ -65,10 +65,7 @@ const ResetPasswordForm = () => {
         if (response.data.valid) {
           setIsValidToken(true);
         } else {
-          setApiError("Token verification failed");
-          setTimeout(() => {
-            router.push("/auth/forgot-password");
-          }, 5000);
+          throw new Error("Invalid token");
         }
       } catch (error) {
         setApiError("Token verification failed");
