@@ -93,7 +93,7 @@ const ResetPasswordForm = () => {
           position: "top-center",
           autoClose: 2000,
         });
-        router.push("/auth/login");
+        router.push("/auth/password-updated");
       }
     } catch (error) {
       setApiError("Failed to reset password");
