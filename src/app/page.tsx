@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import Head from "next/head";
 import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
@@ -6,6 +5,17 @@ import { DecodedToken } from "@/types/token";
 import Footer from "@/components/Footer";
 import ClubDiscoveryFeed from "@/components/ClubDiscoveryFeed";
 import Hero from "@/components/Hero";
+import Navbar from "@/components/Navbar";
+import Logo from "@/components/Logo";
+import NavMenu from "@/components/NavMenu";
+import UserProfile from "@/components/user/UserProfile";
+
+const navItems = [
+  { label: "Explore", href: "/" },
+  { label: "My Clubs", href: "/clubs" },
+  { label: "Messages", href: "/messages" },
+  { label: "Events", href: "/events" },
+];
 
 export default async function Home() {
   const cookieStore = cookies();
@@ -22,6 +32,7 @@ export default async function Home() {
       ) as DecodedToken;
       userId = decoded.userId;
       decodedToken = decoded;
+      console.log({ decoded });
     } catch (error) {
       console.log("something went wrong with verifying the token", error);
     }
@@ -31,7 +42,7 @@ export default async function Home() {
     <div className="flex flex-col min-h-screen w-full">
       <Head>
         <title>
-          Bookclub CH - Find your club and share your love for books
+          Swiss BookClub - Find your club and share your love for books
         </title>
         <meta
           name="description"
@@ -39,7 +50,15 @@ export default async function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
+      <Navbar>
+        <Logo
+          className="w-36"
+          imageSrc="/images/logo.png"
+          alt="Swiss Book Club Logo"
+        />
+        <NavMenu items={navItems} />
+        <UserProfile />
+      </Navbar>
       <Hero />
       <ClubDiscoveryFeed />
       <Footer />
