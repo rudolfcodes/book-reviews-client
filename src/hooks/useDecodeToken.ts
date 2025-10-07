@@ -6,6 +6,7 @@ import { UserType } from "@/types/user";
 
 const useDecodeToken = () => {
   const [user, setUser] = useState<UserType | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -13,6 +14,7 @@ const useDecodeToken = () => {
       const decodedUser = jwtDecode<UserType>(token);
       setUser(decodedUser);
     }
+    setLoading(false);
   }, []);
 
   const logout = () => {
@@ -20,7 +22,7 @@ const useDecodeToken = () => {
     setUser(null);
   };
 
-  return { user, setUser, logout };
+  return { user, setUser, loading, logout };
 };
 
 export default useDecodeToken;
