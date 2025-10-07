@@ -13,6 +13,7 @@ const profileItems = [
 
 const UserProfile = () => {
   const { user, loading } = useUser();
+  console.log({ user, loading });
 
   if (loading) {
     return <div>Loading...</div>;
@@ -22,19 +23,21 @@ const UserProfile = () => {
   }
 
   return (
-    <div className="p-6 max-w-desktop mx-auto">
+    <div className="dropdown dropdown-end">
       <div
         tabIndex={0}
         role="button"
-        className="text-4xl font-light text-slate-800 mb-6 tracking-tight"
+        className="btn btn-ghost btn-circle avatar"
       >
-        {user.username}'s Profile
+        <div className="w-10 rounded-full">
+          <img
+            alt={`${user.username}'s avatar`}
+            src="/images/avatars/default.png"
+          />
+        </div>
       </div>
 
-      <ul
-        tabIndex={0}
-        className="dropdown-content menu bg-white rounded-box w-full p-4 shadow"
-      >
+      <ul className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
         {profileItems.map((item) => (
           <li key={item.label}>
             <a href={item.href} className="text-slate-600 hover:text-slate-800">
