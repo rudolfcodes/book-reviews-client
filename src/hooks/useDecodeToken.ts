@@ -10,7 +10,6 @@ const useDecodeToken = () => {
 
   const loadUserFromToken = () => {
     const token = localStorage.getItem("token");
-    console.log("Token from localStorage:", token);
 
     if (token) {
       try {

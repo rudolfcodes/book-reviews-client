@@ -12,8 +12,7 @@ const profileItems = [
 ];
 
 const UserProfile = () => {
-  const { user, loading, refreshUser } = useUser();
-  console.log({ user, loading });
+  const { user, loading } = useUser();
 
   if (loading) {
     return <div>Loading...</div>;
