@@ -8,7 +8,7 @@ const useDecodeToken = () => {
   const [user, setUser] = useState<UserType | null>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  const loadUserFromToken = () => {
     const token = localStorage.getItem("token");
     console.log("Token from localStorage:", token);
 
@@ -19,12 +19,18 @@ const useDecodeToken = () => {
         setUser(decodedUser);
       } catch (error) {
         console.error("Error decoding token:", error);
-        localStorage.removeItem("token"); // Remove invalid token
+        localStorage.removeItem("token");
+        setUser(null);
       }
     } else {
       console.log("No token found in localStorage");
+      setUser(null);
     }
     setLoading(false);
+  };
+
+  useEffect(() => {
+    loadUserFromToken();
   }, []);
 
   const logout = () => {
@@ -32,7 +38,12 @@ const useDecodeToken = () => {
     setUser(null);
   };
 
-  return { user, setUser, loading, logout };
+  const refreshUser = () => {
+    setLoading(true);
+    loadUserFromToken();
+  };
+
+  return { user, setUser, loading, logout, refreshUser };
 };
 
 export default useDecodeToken;

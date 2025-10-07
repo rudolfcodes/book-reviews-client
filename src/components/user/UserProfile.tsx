@@ -12,7 +12,7 @@ const profileItems = [
 ];
 
 const UserProfile = () => {
-  const { user, loading } = useUser();
+  const { user, loading, refreshUser } = useUser();
   console.log({ user, loading });
 
   if (loading) {

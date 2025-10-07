@@ -8,6 +8,7 @@ interface UserContextType {
   setUser: (user: UserType | null) => void;
   loading: boolean;
   logout: () => void;
+  refreshUser: () => void;
 }
 
 export const UserContext = createContext<UserContextType | undefined>(
