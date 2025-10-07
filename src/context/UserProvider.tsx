@@ -5,10 +5,10 @@ import React, { ReactNode } from "react";
 import UserContext from "./UserContext";
 
 const UserProvider = ({ children }: { children: ReactNode }) => {
-  const { user, setUser, logout } = useDecodeToken();
+  const { user, setUser, loading, logout } = useDecodeToken();
 
   return (
-    <UserContext.Provider value={{ user, setUser, logout }}>
+    <UserContext.Provider value={{ user, setUser, loading, logout }}>
       {children}
     </UserContext.Provider>
   );
