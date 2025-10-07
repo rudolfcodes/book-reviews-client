@@ -26,7 +26,11 @@ export default function AuthPageWrapper({
       </div>
       <div className="w-full lg:w-1/2 flex flex-col justify-center z-10">
         <div className="lg:max-w-md w-full p-8 py-0">
-          <Logo imageSrc="/images/logo.png" alt="Swiss Book Club Logo" />
+          <Logo
+            className="mt-auth-gap lg:mb-[100px]"
+            imageSrc="/images/logo.png"
+            alt="Swiss Book Club Logo"
+          />
         </div>
 
         <div className="flex-1 flex justify-center">
