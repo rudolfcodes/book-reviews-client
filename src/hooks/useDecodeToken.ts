@@ -10,9 +10,19 @@ const useDecodeToken = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    console.log("Token from localStorage:", token);
+
     if (token) {
-      const decodedUser = jwtDecode<UserType>(token);
-      setUser(decodedUser);
+      try {
+        const decodedUser = jwtDecode<UserType>(token);
+        console.log("Decoded user:", decodedUser);
+        setUser(decodedUser);
+      } catch (error) {
+        console.error("Error decoding token:", error);
+        localStorage.removeItem("token"); // Remove invalid token
+      }
+    } else {
+      console.log("No token found in localStorage");
     }
     setLoading(false);
   }, []);
