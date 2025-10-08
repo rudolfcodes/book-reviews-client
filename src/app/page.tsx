@@ -8,7 +8,7 @@ import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import Logo from "@/components/Logo";
 import NavMenu from "@/components/NavMenu";
-import UserProfile from "@/components/user/UserProfile";
+import UserProfileDropdown from "@/components/user/UserProfile";
 
 const navItems = [
   { label: "Explore", href: "/" },
@@ -57,7 +57,7 @@ export default async function Home() {
           alt="Swiss Book Club Logo"
         />
         <NavMenu items={navItems} />
-        <UserProfile />
+        <UserProfileDropdown />
       </Navbar>
       <Hero />
       <ClubDiscoveryFeed />

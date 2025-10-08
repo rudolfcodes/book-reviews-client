@@ -11,7 +11,7 @@ const profileItems = [
   { label: "Logout", href: "/logout" },
 ];
 
-const UserProfile = () => {
+const UserProfileDropdown = () => {
   const { user, loading } = useUser();
 
   if (loading) {
@@ -49,4 +49,4 @@ const UserProfile = () => {
   );
 };
 
-export default UserProfile;
+export default UserProfileDropdown;
