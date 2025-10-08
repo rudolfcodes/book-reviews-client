@@ -1,18 +1,7 @@
 "use client";
 
 import useUser from "@/hooks/useUser";
-import axiosInstance from "@/utils/axios";
 import React from "react";
-
-export const fetchUserProfile = async ({ userId }: { userId: string }) => {
-  try {
-    const response = await axiosInstance.get(`/api/users/profile/${userId}`);
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching user profile:", error);
-    throw error;
-  }
-};
 
 const profileItems = [
   { label: "My Profile", href: "/profile" },

@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchUserProfile } from "@/components/user/UserProfile";
+import { fetchCurrentUser } from "@/services/userService";
 
-export const useGetUserProfile = ({ userId }: { userId: string }) => {
+export const useCurrentUser = () => {
   const userQuery = useQuery({
-    queryKey: ["userProfile", userId],
-    queryFn: () => fetchUserProfile({ userId }),
+    queryKey: ["currentUser"],
+    queryFn: fetchCurrentUser,
     staleTime: 5 * 60 * 1000,
     refetchOnWindowFocus: false,
   });
