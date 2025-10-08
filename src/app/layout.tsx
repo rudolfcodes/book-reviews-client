@@ -1,6 +1,7 @@
 import UserProvider from "@/context/UserProvider";
 import "./globals.css";
 import { Inter, Roboto_Slab } from "next/font/google";
+import Providers from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto_Slab({
@@ -31,7 +32,9 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} ${roboto.variable}`}>
         <div className="flex flex-1">
-          <UserProvider>{children}</UserProvider>
+          <Providers>
+            <UserProvider>{children}</UserProvider>
+          </Providers>
         </div>
       </body>
     </html>
