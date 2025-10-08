@@ -29,10 +29,13 @@ const UserProfileDropdown = () => {
         className="btn btn-ghost btn-circle avatar"
       >
         <div className="w-10 rounded-full">
-          <img
-            alt={`${user.username}'s avatar`}
-            src="/images/avatars/default.png"
-          />
+          {user.avatar ? (
+            <img alt={`${user.username}'s avatar`} src={user.avatar} />
+          ) : (
+            <div className="w-10 h-10 flex items-center justify-center bg-gray-300 rounded-full">
+              {user.username.charAt(0).toUpperCase()}
+            </div>
+          )}
         </div>
       </div>
 
