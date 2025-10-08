@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 interface NavmenuProps {
@@ -11,12 +13,21 @@ interface NavMenuItem {
 }
 
 const NavMenu = ({ items, className }: NavmenuProps) => {
+  const isActive = (href: string) => {
+    return window.location.pathname === href;
+  };
+
   return (
     <nav className={className}>
-      <ul className="flex space-x-12">
+      <ul className="flex menu-horizontal space-x-12 items-center">
         {items.map((item, index) => (
-          <li key={index}>
-            <a href={item.href} className="text-gray-700 hover:text-blue-500">
+          <li key={index} className={`py-[30px] ${isActive(item.href) ? "border-b-2 border-error" : ""}`}>
+            <a
+              href={item.href}
+              className={`text-black ${
+                isActive(item.href) ? "semiBold-600" : ""
+              }`}
+            >
               {item.label}
             </a>
           </li>

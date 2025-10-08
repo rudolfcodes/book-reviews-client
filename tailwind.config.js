@@ -49,6 +49,7 @@ module.exports = {
           "--fs-auth-size": "18px",
           "--fs-auth-title": "24px",
           "--fs-auth-placeholder": "16px",
+          "--fs-menu-item": "18px",
           "--fw-extraBold": "900",
           "--fw-bold": "700",
           "--fw-medium": "500",
@@ -86,6 +87,11 @@ module.exports = {
           fontFamily: theme("fontFamily.inter"),
           fontSize: "var(--fs-auth-size)",
           fontWeight: "var(--fw-bold)",
+        },
+        ".semiBold-600": {
+          fontFamily: theme("fontFamily.inter"),
+          fontSize: "var(--fs-menu-item)",
+          fontWeight: "var(--fw-semiBold)",
         },
       });
     }),
