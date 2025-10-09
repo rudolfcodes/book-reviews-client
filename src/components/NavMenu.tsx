@@ -21,7 +21,12 @@ const NavMenu = ({ items, className }: NavmenuProps) => {
     <nav className={className}>
       <ul className="flex menu-horizontal space-x-12 items-center">
         {items.map((item, index) => (
-          <li key={index} className={`py-[30px] ${isActive(item.href) ? "border-b-2 border-error" : ""}`}>
+          <li
+            key={index}
+            className={`py-[27px] ${
+              isActive(item.href) ? "border-b-2 border-error" : ""
+            }`}
+          >
             <a
               href={item.href}
               className={`text-black ${
