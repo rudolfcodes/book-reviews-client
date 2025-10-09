@@ -9,6 +9,7 @@ import Navbar from "@/components/Navbar";
 import Logo from "@/components/Logo";
 import NavMenu from "@/components/NavMenu";
 import UserProfileDropdown from "@/components/user/UserProfile";
+import InnerWrapper from "@/components/InnerWrapper";
 
 const navItems = [
   { label: "Explore", href: "/" },
@@ -51,13 +52,15 @@ export default async function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar>
-        <Logo
-          className="w-36"
-          imageSrc="/images/logo.png"
-          alt="Swiss Book Club Logo"
-        />
-        <NavMenu items={navItems} />
-        <UserProfileDropdown />
+        <InnerWrapper>
+          <Logo
+            className="w-36"
+            imageSrc="/images/logo.png"
+            alt="Swiss Book Club Logo"
+          />
+          <NavMenu items={navItems} />
+          <UserProfileDropdown />
+        </InnerWrapper>
       </Navbar>
       <Hero />
       <ClubDiscoveryFeed />
