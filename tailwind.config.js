@@ -18,6 +18,7 @@ module.exports = {
       fontFamily: {
         inter: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
         robotoSlab: ["var(--font-roboto-slab)", "serif"],
+        openSans: ["var(--font-open-sans)", "sans-serif"],
       },
       colors: {
         subtitle: "#777777",
@@ -51,6 +52,7 @@ module.exports = {
           "--fs-auth-title": "24px",
           "--fs-auth-placeholder": "16px",
           "--fs-menu-item": "18px",
+          "--fs-big-title": "48px",
           "--fw-extraBold": "900",
           "--fw-bold": "700",
           "--fw-medium": "500",
@@ -71,6 +73,12 @@ module.exports = {
           lineHeight: theme("lineHeight.normal"),
           fontWeight: theme("fontWeight.bold"),
           letterSpacing: theme("letterSpacing.tight"),
+        },
+        "openSans-title": {
+          fontFamily: theme("fontFamily.openSans"),
+          fontSize: "var(--fs-big-title)",
+          fontWeight: "var(--fw-semiBold)",
+          lineHeight: "53px",
         },
         ".subtitle": {
           fontFamily: theme("fontFamily.inter"),
