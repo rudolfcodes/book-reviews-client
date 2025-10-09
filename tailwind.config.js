@@ -29,6 +29,7 @@ module.exports = {
         "modern-primary": "#2D2D2A",
         "modern-secondary": "#FAF3E0",
         "modern-accent": "#E4572E",
+        hero: "#84B5C5",
         error: "#D81C22",
       },
       boxShadow: {
