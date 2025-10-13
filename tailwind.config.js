@@ -20,6 +20,21 @@ module.exports = {
         robotoSlab: ["var(--font-roboto-slab)", "serif"],
         openSans: ["var(--font-open-sans)", "sans-serif"],
       },
+      fontSize: {
+        "auth-title": ["24px", { lineHeight: "normal" }],
+        "auth-size": ["18px", { lineHeight: "normal" }],
+        "big-title": ["48px", { lineHeight: "53px" }],
+        "menu-item": ["18px", { lineHeight: "normal" }],
+      },
+      fontWeight: {
+        semiBold: "600",
+        bold: "700",
+        extraBold: "900",
+      },
+      letterSpacing: {
+        tight: "-0.02em",
+        wider: "0.04em",
+      },
       colors: {
         subtitle: "#777777",
         label: "#000000",
@@ -42,67 +57,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require("daisyui"),
-    require("@tailwindcss/typography"),
-    plugin(function ({ addBase, theme }) {
-      addBase({
-        ":root": {
-          "--fs-auth-size": "18px",
-          "--fs-auth-title": "24px",
-          "--fs-auth-placeholder": "16px",
-          "--fs-menu-item": "18px",
-          "--fs-big-title": "48px",
-          "--fw-extraBold": "900",
-          "--fw-bold": "700",
-          "--fw-medium": "500",
-          "--fw-regular": "400",
-          "--fw-semiBold": "600",
-          "--fs-auth-illustration-text": "28px",
-          "--f-spacing-4": "0.04em",
-        },
-        [`@media (min-width: ${theme("screens.lg")})`]: {
-          ":root": {
-            "--fs-auth-title": "30px",
-            "--fs-auth-size": "20px",
-          },
-        },
-        h1: {
-          fontFamily: theme("fontFamily.inter"),
-          fontSize: "var(--fs-auth-title)",
-          lineHeight: theme("lineHeight.normal"),
-          fontWeight: theme("fontWeight.bold"),
-          letterSpacing: theme("letterSpacing.tight"),
-        },
-        "openSans-title": {
-          fontFamily: theme("fontFamily.openSans"),
-          fontSize: "var(--fs-big-title)",
-          fontWeight: "var(--fw-semiBold)",
-          lineHeight: "53px",
-        },
-        ".subtitle": {
-          fontFamily: theme("fontFamily.inter"),
-          fontSize: "var(--fs-auth-size)",
-          lineHeight: theme("lineHeight.normal"),
-          fontWeight: theme("fontWeight.medium"),
-          letterSpacing: theme("letterSpacing.tight"),
-        },
-        ".illustration-text": {
-          fontFamily: theme("fontFamily.robotoSlab"),
-          fontSize: "var(--fs-auth-illustration-text)",
-          fontWeight: "var(--fw-medium)",
-        },
-        ".bold-700": {
-          fontFamily: theme("fontFamily.inter"),
-          fontSize: "var(--fs-auth-size)",
-          fontWeight: "var(--fw-bold)",
-        },
-        ".semiBold-600": {
-          fontFamily: theme("fontFamily.inter"),
-          fontSize: "var(--fs-menu-item)",
-          fontWeight: "var(--fw-semiBold)",
-        },
-      });
-    }),
-  ],
+  plugins: [require("daisyui"), require("@tailwindcss/typography")],
 };
