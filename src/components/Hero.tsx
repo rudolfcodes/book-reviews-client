@@ -3,6 +3,7 @@
 import React from "react";
 import FlexContainer from "./FlexContainer";
 import SearchClubs from "./SearchClubs";
+import InnerWrapper from "./InnerWrapper";
 
 const Hero = () => {
   const scrollToClubs = () => {
@@ -16,9 +17,11 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative bg-hero bg-opacity-10">
+    <section className="relative bg-hero bg-opacity-10 py-12">
       <FlexContainer>
-        <SearchClubs />
+        <InnerWrapper>
+          <SearchClubs />
+        </InnerWrapper>
       </FlexContainer>
     </section>
   );
