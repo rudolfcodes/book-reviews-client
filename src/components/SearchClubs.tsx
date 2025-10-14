@@ -8,6 +8,8 @@ import Input from "./Input";
 import { useRouter } from "next/navigation";
 import axiosInstance from "@/utils/axios";
 import { useQuery } from "@tanstack/react-query";
+import BaseButton from "./buttons/BaseButton";
+import LiveClubSearchResults from "./LiveClubSearchResults";
 
 const useClubSearch = (query: string) => {
   return useQuery({
@@ -44,6 +46,12 @@ const SearchClubs = () => {
     setSearchTerm(e.target.value);
   };
 
+  const submitSearchClubs = () => {
+    if (searchTerm.trim().length >= 3) {
+      router.push(`/clubs?search=${encodeURIComponent(searchTerm.trim())}`);
+    }
+  };
+
   return (
     <FlexContainer className="flex-col md:max-w-[455px]">
       <TitleContainer
@@ -55,20 +63,39 @@ const SearchClubs = () => {
         className="font-openSans text-base"
         text="Browse clubs by city, language, and genre. RSVP in two clicks."
       />
-      {/* Input field for searching clubs */}
       <FlexContainer className="mt-6 w-full relative">
         {/* Icon */}
         <span className="absolute left-2 top-1/2 transform -translate-y-1/2"></span>
         <Input
           type="text"
+          className="relative"
           value={searchTerm}
           onChange={handleInputChange}
-          className="relative"
+          placeholder="City or postal code..."
         />
-        <button className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-error text-white px-8 py-3.5 rounded-md lg:w-[150px]">
+
+        <BaseButton
+          type="submit"
+          onClick={submitSearchClubs}
+          disabled={searchTerm.trim().length < 3}
+          className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-error text-white px-8 py-3.5 rounded-md lg:w-[150px]"
+        >
           Search
-        </button>
+        </BaseButton>
+
+        {/* Live Search Results */}
+        {/* There needs to be a current search term and the fetched clubs */}
+        {debouncedSearch.trim().length >= 3 && fetchedClubs.length > 0 && (
+          <LiveClubSearchResults clubs={fetchedClubs} isLoading={isLoading} />
+        )}
       </FlexContainer>
+      {/* Hint text for search input */}
+      <TextContainer
+        className="mt-2 text-sm text-gray-500"
+        text="Turn on location to see nearby clubs"
+      />
+
+      {/* Radius, Language & Genre Filters using the SelectDropdown component */}
     </FlexContainer>
   );
 };
