@@ -4,24 +4,27 @@ import { CityResult } from "@/types/city";
 interface LiveCitySearchResultsProps {
   cities: CityResult[];
   isLoading: boolean;
+  handleCitySelect: (city: CityResult) => void;
 }
 
 const LiveCitySearchResults = ({
   cities,
-  isLoading,
+  handleCitySelect,
 }: LiveCitySearchResultsProps) => {
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   if (cities.length === 0) {
     return <div>No cities found.</div>;
   }
 
   return (
-    <ul>
+    <ul className="absolute top-[54px] w-full z-10">
       {cities.map((city, idx) => (
-        <li key={`${city.name}-${idx}`}>{city.name}</li>
+        <li
+          key={`${city.name}-${idx}`}
+          className="w-full border border-border-grey text-input-color bg-white  pl-12 py-3.5 hover:bg-error hover:text-white cursor-pointer"
+          onClick={() => handleCitySelect(city)}
+        >
+          {city.name}
+        </li>
       ))}
     </ul>
   );
