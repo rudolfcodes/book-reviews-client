@@ -1,32 +1,30 @@
-import { ClubEntity } from "@/types";
 import React from "react";
+import { CityResult } from "@/types/city";
 
-type ClubResult = Pick<ClubEntity, "_id" | "name">;
-
-interface LiveClubSearchResultsProps {
-  clubs: ClubResult[];
+interface LiveCitySearchResultsProps {
+  cities: CityResult[];
   isLoading: boolean;
 }
 
-const LiveClubSearchResults = ({
-  clubs,
+const LiveCitySearchResults = ({
+  cities,
   isLoading,
-}: LiveClubSearchResultsProps) => {
+}: LiveCitySearchResultsProps) => {
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
-  if (clubs.length === 0) {
-    return <div>No clubs found.</div>;
+  if (cities.length === 0) {
+    return <div>No cities found.</div>;
   }
 
   return (
     <ul>
-      {clubs.map((club) => (
-        <li key={club._id}>{club.name}</li>
+      {cities.map((city, idx) => (
+        <li key={`${city.name}-${idx}`}>{city.name}</li>
       ))}
     </ul>
   );
 };
 
-export default LiveClubSearchResults;
+export default LiveCitySearchResults;

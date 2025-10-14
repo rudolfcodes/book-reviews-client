@@ -9,14 +9,14 @@ import { useRouter } from "next/navigation";
 import axiosInstance from "@/utils/axios";
 import { useQuery } from "@tanstack/react-query";
 import BaseButton from "./buttons/BaseButton";
-import LiveClubSearchResults from "./LiveClubSearchResults";
+import LiveCitySearchResults from "./LiveClubSearchResults";
 
-const useClubSearch = (query: string) => {
+const useCitySearch = (query: string) => {
   return useQuery({
-    queryKey: ["clubs", query],
+    queryKey: ["cities", query],
     queryFn: () =>
       axiosInstance
-        .get("/api/clubs", { params: { search: query } })
+        .get("/api/cities", { params: { search: query } })
         .then((res) => res.data),
     enabled: query.trim().length >= 3,
     staleTime: 30 * 1000,
@@ -36,10 +36,10 @@ const SearchClubs = () => {
   }, [searchTerm]);
 
   const {
-    data: fetchedClubs = [],
+    data: cities = [],
     isLoading,
     error,
-  } = useClubSearch(debouncedSearch);
+  } = useCitySearch(debouncedSearch);
 
   // Only navigate to search results upon clicking the search submit button
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,6 +48,7 @@ const SearchClubs = () => {
 
   const submitSearchClubs = () => {
     if (searchTerm.trim().length >= 3) {
+      // navigate to the search results that lists the clubs in that city
       router.push(`/clubs?search=${encodeURIComponent(searchTerm.trim())}`);
     }
   };
@@ -84,9 +85,9 @@ const SearchClubs = () => {
         </BaseButton>
 
         {/* Live Search Results */}
-        {/* There needs to be a current search term and the fetched clubs */}
-        {debouncedSearch.trim().length >= 3 && fetchedClubs.length > 0 && (
-          <LiveClubSearchResults clubs={fetchedClubs} isLoading={isLoading} />
+        {/* There needs to be a current search term and the fetched cities */}
+        {debouncedSearch.trim().length >= 3 && cities.length > 0 && (
+          <LiveCitySearchResults cities={cities} isLoading={isLoading} />
         )}
       </FlexContainer>
       {/* Hint text for search input */}
