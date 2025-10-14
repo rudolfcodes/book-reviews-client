@@ -20,7 +20,7 @@ const Input = ({
       type={type}
       value={value}
       onChange={onChange}
-      className={`border rounded-md border-border-grey text-input-color px-8 py-3.5 w-full ${className}`}
+      className={`border rounded-md border-border-grey text-input-color px-8 w-full h-[54px] ${className}`}
       placeholder={placeholder}
     />
   );
