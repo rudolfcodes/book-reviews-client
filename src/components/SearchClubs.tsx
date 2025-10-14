@@ -11,21 +11,10 @@ import { useQuery } from "@tanstack/react-query";
 import BaseButton from "./buttons/BaseButton";
 import LiveCitySearchResults from "./LiveClubSearchResults";
 
-const useCitySearch = (query: string) => {
-  return useQuery({
-    queryKey: ["cities", query],
-    queryFn: () =>
-      axiosInstance
-        .get("/api/cities", { params: { search: query } })
-        .then((res) => res.data),
-    enabled: query.trim().length >= 3,
-    staleTime: 30 * 1000,
-  });
-};
-
 const SearchClubs = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState(searchTerm);
+  const [openCitySuggestions, setOpenCitySuggestions] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -39,11 +28,28 @@ const SearchClubs = () => {
     data: cities = [],
     isLoading,
     error,
-  } = useCitySearch(debouncedSearch);
+  } = useQuery({
+    queryKey: ["cities", debouncedSearch],
+    queryFn: () =>
+      axiosInstance
+        .get(`/api/cities?search=${debouncedSearch}`)
+        .then((res) => res.data),
+    enabled: debouncedSearch.trim().length >= 3,
+    staleTime: 30 * 1000,
+  });
 
   // Only navigate to search results upon clicking the search submit button
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
+    setDebouncedSearch(e.target.value);
+    setOpenCitySuggestions(true);
+  };
+
+  const handleCitySelect = (city: { name: string }) => {
+    setSearchTerm(city.name);
+    setDebouncedSearch(city.name);
+    setOpenCitySuggestions(false);
+    //router.push(`/clubs?search=${encodeURIComponent(city.name)}`);
   };
 
   const submitSearchClubs = () => {
@@ -79,18 +85,21 @@ const SearchClubs = () => {
           type="submit"
           onClick={submitSearchClubs}
           disabled={searchTerm.trim().length < 3}
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-error text-white px-8 py-3.5 rounded-md lg:w-[150px]"
+          className="absolute right-0 bg-error text-white px-8 py-3.5 rounded-md lg:w-[150px] h-full"
         >
           Search
         </BaseButton>
 
-        {/* Live Search Results */}
-        {/* There needs to be a current search term and the fetched cities */}
-        {debouncedSearch.trim().length >= 3 && cities.length > 0 && (
-          <LiveCitySearchResults cities={cities} isLoading={isLoading} />
-        )}
+        {debouncedSearch.trim().length >= 3 &&
+          cities?.data?.length > 0 &&
+          openCitySuggestions && (
+            <LiveCitySearchResults
+              cities={cities?.data}
+              isLoading={isLoading}
+              handleCitySelect={handleCitySelect}
+            />
+          )}
       </FlexContainer>
-      {/* Hint text for search input */}
       <TextContainer
         className="mt-2 text-sm text-gray-500"
         text="Turn on location to see nearby clubs"
