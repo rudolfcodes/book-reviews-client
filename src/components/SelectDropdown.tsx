@@ -87,6 +87,7 @@ const SelectDropdown = ({
           id={id}
           className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded shadow-lg"
           hasImage={hasImage}
+          selectedId={selectedItem ? selectedItem.id : undefined}
         />
       )}
     </div>
