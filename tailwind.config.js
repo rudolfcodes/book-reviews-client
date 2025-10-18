@@ -47,6 +47,7 @@ module.exports = {
         "modern-accent": "#E4572E",
         "border-grey": "#E5E7EB",
         "input-color": "#4B5563",
+        stats: "#7D7676",
         hero: "#84B5C5",
         error: "#D81C22",
       },
