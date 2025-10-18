@@ -6,12 +6,25 @@ interface DropdownMenuProps {
   handleChange: (item: DropdownItem) => void;
   ariaLabel?: string;
   ariaOrientation?: "vertical" | "horizontal";
-  position?: "top-left" | "bottom-right" | "bottom-left" | "top-right";
+  position?:
+    | "top-left"
+    | "bottom-right"
+    | "bottom-left"
+    | "top-right"
+    | "top-full-left-0";
   id?: string;
   className?: string;
   hasImage?: boolean;
   selectedId?: string;
 }
+
+const positionClasses: { [key: string]: string } = {
+  "top-left": "top-0 left-0",
+  "bottom-right": "bottom-0 right-0",
+  "bottom-left": "bottom-0 left-0",
+  "top-right": "top-0 right-0",
+  "top-full-left-0": "top-full left-0",
+};
 
 const DropdownMenu = ({
   data,
@@ -28,8 +41,10 @@ const DropdownMenu = ({
     <div
       aria-label={ariaLabel}
       aria-orientation={ariaOrientation}
-      role="menu"
-      className={className}
+      id={id}
+      className={`absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded shadow-lg ${
+        positionClasses[position || "bottom-left"]
+      } ${className}`}
     >
       <ul
         role="menu"
