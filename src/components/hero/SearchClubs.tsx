@@ -1,16 +1,16 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import FlexContainer from "./FlexContainer";
-import TitleContainer from "./TitleContainer";
-import TextContainer from "./TextContainer";
-import Input from "./Input";
+import FlexContainer from "../FlexContainer";
+import TitleContainer from "../TitleContainer";
+import TextContainer from "../TextContainer";
+import Input from "../Input";
 import { useRouter } from "next/navigation";
 import axiosInstance from "@/utils/axios";
 import { useQuery } from "@tanstack/react-query";
-import BaseButton from "./buttons/BaseButton";
+import BaseButton from "../buttons/BaseButton";
 import LiveCitySearchResults from "./LiveClubSearchResults";
-import SelectDropdown from "./SelectDropdown";
+import SelectDropdown from "../SelectDropdown";
 import { clubFilterData, useClubFilters } from "@/hooks/useClubFilters";
 import StatsBar from "./StatsBar";
 import stats from "@/data/statsData";
@@ -66,7 +66,7 @@ const SearchClubs = () => {
   };
 
   return (
-    <FlexContainer className="flex-col md:max-w-[455px]">
+    <FlexContainer className="flex-col lg:max-w-[455px]">
       <TitleContainer
         title="Find a club near you, or start your own."
         className="mb-8 font-openSans"
