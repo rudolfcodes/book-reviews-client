@@ -10,7 +10,9 @@ interface InnerWrapperProps {
 const InnerWrapper = ({ children, className }: InnerWrapperProps) => {
   return (
     <div
-      className={`flex w-full justify-between items-center mx-auto max-w-7xl px-4 ${className}`}
+      className={`flex justify-between w-full items-center mx-auto lg:max-w-7xl lg:px-4 ${
+        className || ""
+      }`}
     >
       {children}
     </div>
