@@ -22,9 +22,9 @@ const Illustration = ({
   };
 
   const sizeClasses = {
-    small: "w-12 h-12",
-    medium: "w-16 h-16",
-    large: "w-1/2 lg:w-[520px] lg:h-[520px]",
+    small: "w-16 h-16",
+    medium: "w-48 h-48 lg:w-64 lg:h-64",
+    large: "w-72 h-72 lg:w-96 lg:h-96 xl:w-[520px] xl:h-[520px]",
   };
 
   return (
