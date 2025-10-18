@@ -125,7 +125,7 @@ const SearchClubs = () => {
           />
         ))}
       </FlexContainer>
-      <FlexContainer className="mt-10 w-full">
+      <FlexContainer className="mt-2 w-full">
         <StatsBar stats={stats} />
       </FlexContainer>
     </FlexContainer>
