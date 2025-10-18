@@ -19,8 +19,7 @@ const SearchClubs = () => {
   const [openCitySuggestions, setOpenCitySuggestions] = useState(false);
   const router = useRouter();
 
-  const { filters, openDropdown, handleFilterSelect, closeAllDropdowns } =
-    useClubFilters();
+  const { handleFilterSelect } = useClubFilters();
 
   useEffect(() => {
     const timer = setTimeout(() => {
