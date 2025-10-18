@@ -12,6 +12,8 @@ import BaseButton from "./buttons/BaseButton";
 import LiveCitySearchResults from "./LiveClubSearchResults";
 import SelectDropdown from "./SelectDropdown";
 import { clubFilterData, useClubFilters } from "@/hooks/useClubFilters";
+import StatsBar from "./StatsBar";
+import stats from "@/data/statsData";
 
 const SearchClubs = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -122,6 +124,9 @@ const SearchClubs = () => {
             position="top-full-left-0"
           />
         ))}
+      </FlexContainer>
+      <FlexContainer className="mt-10 w-full">
+        <StatsBar stats={stats} />
       </FlexContainer>
     </FlexContainer>
   );
