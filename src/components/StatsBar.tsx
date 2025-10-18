@@ -13,10 +13,12 @@ interface StatBarProps {
 
 const StatsBar = ({ stats, className }: StatBarProps) => {
   return (
-    <FlexContainer className={`items-center ${className}`}>
+    <FlexContainer
+      className={`items-center gap-2.5 text-sm text-stats ${className}`}
+    >
       {stats.map((stat) => (
         <div key={stat.icon} className="flex gap-2.5 items-center">
-          <span className="mr-2">{stat.icon}</span>
+          <img src={stat.icon} alt="" className="w-3.5 h-3.5" />
           <span>{stat.value}</span>
         </div>
       ))}
