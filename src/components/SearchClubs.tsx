@@ -36,11 +36,11 @@ const SearchClubs = () => {
     selectedItem: DropdownItem
   ) => {
     if (dropdownId === "radius-filter") {
-      setSelectedRadius(selectedItem.id);
+      setSelectedRadius(selectedItem.name);
     } else if (dropdownId === "language-filter") {
-      setSelectedLanguage(selectedItem.id);
+      setSelectedLanguage(selectedItem.name);
     } else if (dropdownId === "genre-filter") {
-      setSelectedGenre(selectedItem.id);
+      setSelectedGenre(selectedItem.name);
     }
     setSelectedDropdownById(dropdownId);
     setOpenCitySuggestions(false);
@@ -127,10 +127,10 @@ const SearchClubs = () => {
         text="Turn on location to see nearby clubs"
       />
 
-      {/* Radius, Language & Genre Filters using the SelectDropdown component */}
       <FlexContainer className="mt-6 w-full gap-4 md:flex-row flex-col">
         <SelectDropdown
           id="radius-filter"
+          title={selectedRadius || "Radius"}
           data={[
             { id: "1", name: "5 km" },
             { id: "2", name: "10 km" },
@@ -139,10 +139,11 @@ const SearchClubs = () => {
           onSelect={(selectedItem) =>
             handleDropdownSelect("radius-filter", selectedItem)
           }
-          position="bottom-left"
+          position="top-full-left-0"
         />
         <SelectDropdown
           id="language-filter"
+          title={selectedLanguage || "Language"}
           data={[
             { id: "1", name: "English" },
             { id: "2", name: "Spanish" },
@@ -151,10 +152,11 @@ const SearchClubs = () => {
           onSelect={(selectedItem) =>
             handleDropdownSelect("language-filter", selectedItem)
           }
-          position="bottom-left"
+          position="top-full-left-0"
         />
         <SelectDropdown
           id="genre-filter"
+          title={selectedGenre || "Genre"}
           data={[
             { id: "1", name: "Music" },
             { id: "2", name: "Sports" },
@@ -163,7 +165,7 @@ const SearchClubs = () => {
           onSelect={(selectedItem) =>
             handleDropdownSelect("genre-filter", selectedItem)
           }
-          position="bottom-left"
+          position="top-full-left-0"
         />
       </FlexContainer>
     </FlexContainer>
