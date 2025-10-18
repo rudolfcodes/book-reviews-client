@@ -16,9 +16,13 @@ interface DropdownProps {
   id: string;
   title?: string;
   data: DropdownItem[];
-  position: "top-left" | "bottom-right" | "bottom-left" | "top-right";
+  position:
+    | "top-left"
+    | "bottom-right"
+    | "bottom-left"
+    | "top-right"
+    | "top-full-left-0";
   hasImage?: boolean;
-  style?: string;
   selectedId?: string;
   onSelect: (selectedItem: DropdownItem) => void;
 }
@@ -27,9 +31,8 @@ const SelectDropdown = ({
   id,
   title = "Select",
   data,
-  position = "bottom-left",
+  position = "top-left",
   hasImage,
-  style,
   selectedId,
   onSelect,
 }: DropdownProps) => {
@@ -63,7 +66,7 @@ const SelectDropdown = ({
     <div ref={dropdownRef} className="relative">
       <BaseButton
         id={id}
-        className="flex justify-between items-center gap-5 rounded w-full py-2 px-4 bg-blue-500 text-white"
+        className="flex justify-between items-center gap-5 rounded w-full py-2 px-4 bg-white font-openSans text-base font-semibold text-input-color border-border-grey"
         type="button"
         ariaLabel={title}
         ariaHasPopup={isOpen}
