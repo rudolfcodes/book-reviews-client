@@ -10,19 +10,17 @@ import axiosInstance from "@/utils/axios";
 import { useQuery } from "@tanstack/react-query";
 import BaseButton from "./buttons/BaseButton";
 import LiveCitySearchResults from "./LiveClubSearchResults";
-import SelectDropdown, { DropdownItem } from "./SelectDropdown";
+import SelectDropdown from "./SelectDropdown";
+import { clubFilterData, useClubFilters } from "@/hooks/useClubFilters";
 
 const SearchClubs = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState(searchTerm);
   const [openCitySuggestions, setOpenCitySuggestions] = useState(false);
-  const [selectedRadius, setSelectedRadius] = useState<string | null>(null);
-  const [selectedDropdownById, setSelectedDropdownById] = useState<
-    string | null
-  >(null);
-  const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
-  const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
   const router = useRouter();
+
+  const { filters, openDropdown, handleFilterSelect, closeAllDropdowns } =
+    useClubFilters();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -30,21 +28,6 @@ const SearchClubs = () => {
     }, 300);
     return () => clearTimeout(timer);
   }, [searchTerm]);
-
-  const handleDropdownSelect = (
-    dropdownId: string,
-    selectedItem: DropdownItem
-  ) => {
-    if (dropdownId === "radius-filter") {
-      setSelectedRadius(selectedItem.name);
-    } else if (dropdownId === "language-filter") {
-      setSelectedLanguage(selectedItem.name);
-    } else if (dropdownId === "genre-filter") {
-      setSelectedGenre(selectedItem.name);
-    }
-    setSelectedDropdownById(dropdownId);
-    setOpenCitySuggestions(false);
-  };
 
   const {
     data: cities = [],
@@ -128,45 +111,18 @@ const SearchClubs = () => {
       />
 
       <FlexContainer className="mt-6 w-full gap-4 md:flex-row flex-col">
-        <SelectDropdown
-          id="radius-filter"
-          title={selectedRadius || "Radius"}
-          data={[
-            { id: "1", name: "5 km" },
-            { id: "2", name: "10 km" },
-            { id: "3", name: "15 km" },
-          ]}
-          onSelect={(selectedItem) =>
-            handleDropdownSelect("radius-filter", selectedItem)
-          }
-          position="top-full-left-0"
-        />
-        <SelectDropdown
-          id="language-filter"
-          title={selectedLanguage || "Language"}
-          data={[
-            { id: "1", name: "English" },
-            { id: "2", name: "Spanish" },
-            { id: "3", name: "French" },
-          ]}
-          onSelect={(selectedItem) =>
-            handleDropdownSelect("language-filter", selectedItem)
-          }
-          position="top-full-left-0"
-        />
-        <SelectDropdown
-          id="genre-filter"
-          title={selectedGenre || "Genre"}
-          data={[
-            { id: "1", name: "Music" },
-            { id: "2", name: "Sports" },
-            { id: "3", name: "Art" },
-          ]}
-          onSelect={(selectedItem) =>
-            handleDropdownSelect("genre-filter", selectedItem)
-          }
-          position="top-full-left-0"
-        />
+        {clubFilterData.map((filter) => (
+          <SelectDropdown
+            key={filter.id}
+            id={filter.id}
+            title={filter.name}
+            data={filter.options}
+            onSelect={(selectedItem) =>
+              handleFilterSelect(filter.id, selectedItem.name)
+            }
+            position="top-full-left-0"
+          />
+        ))}
       </FlexContainer>
     </FlexContainer>
   );
