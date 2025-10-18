@@ -7,7 +7,7 @@ interface ClubEntity {
   name: string;
   description: string;
   location: ClubLocation;
-  clubImage?: string; // Optional image for the club
+  clubImage?: string;
   members: ClubMember[];
   memberCount: number;
   creator: string;
