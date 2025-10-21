@@ -50,6 +50,7 @@ module.exports = {
         "border-grey": "#E5E7EB",
         "input-color": "#4B5563",
         "badge-green": "#33D71D",
+        "badge-default": "#ECECEC",
         "badge-text": "#12792E",
         stats: "#7D7676",
         hero: "#84B5C5",
