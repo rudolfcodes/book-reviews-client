@@ -1,6 +1,5 @@
 "use client";
 
-import { ClubEntity } from "@/types";
 import React from "react";
 import BaseCard from "./cards/BaseCard";
 import { useFetchPopularClubs } from "@/hooks/useFetchPopularClubs";
