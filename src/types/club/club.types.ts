@@ -9,7 +9,7 @@ interface ClubEntity {
   location: ClubLocation;
   members: ClubMember[];
   language: string;
-  clubImage?: string;
+  imageUrl?: string;
   meetingFrequency?: string;
   meetingTime?: string;
   creator: string;
@@ -22,7 +22,7 @@ type ClubSimplified = Pick<
   | "_id"
   | "name"
   | "location"
-  | "clubImage"
+  | "imageUrl"
   | "description"
   | "language"
   | "members"
