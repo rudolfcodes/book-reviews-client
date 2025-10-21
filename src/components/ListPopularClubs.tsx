@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
-import BaseCard from "./cards/BaseCard";
 import { useFetchPopularClubs } from "@/hooks/useFetchPopularClubs";
+import ClubCard from "../components/cards/ClubCard";
+import InnerWrapper from "./InnerWrapper";
 
 const ListPopularClubs = () => {
   const { popularClubs, isLoading, isError, refetch } = useFetchPopularClubs();
@@ -26,30 +27,13 @@ const ListPopularClubs = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      {popularClubs.map((club) => (
-        <BaseCard key={club._id}>
-          <img
-            src={club.clubImage}
-            alt={club.name}
-            className="w-full h-32 object-cover rounded-tl-xl rounded-tr-xl mb-4"
-          />
-          <h3 className="text-lg font-semibold">{club.name}</h3>
-
-          {/* Badges */}
-          <p className="text-sm text-gray-600">
-            {club.location.city}, {club.location.canton}
-          </p>
-          <p className="text-sm text-gray-600">{club.memberCount} members</p>
-
-          {/* Description */}
-
-          {/* Join button */}
-
-          {/* Link to club details */}
-        </BaseCard>
-      ))}
-    </div>
+    <InnerWrapper>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {popularClubs.map((club) => (
+          <ClubCard key={club._id} {...club} />
+        ))}
+      </div>
+    </InnerWrapper>
   );
 };
 
