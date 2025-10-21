@@ -7,7 +7,6 @@ import InnerWrapper from "./InnerWrapper";
 
 const ListPopularClubs = () => {
   const { popularClubs, isLoading, isError, refetch } = useFetchPopularClubs();
-  console.log("Popular Clubs:", popularClubs);
 
   if (isLoading) {
     return <div>Loading popular clubs...</div>;
@@ -27,8 +26,10 @@ const ListPopularClubs = () => {
   }
 
   return (
-    <InnerWrapper>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <InnerWrapper className="bg-white flex-col my-32">
+      <h1 className="text-2xl font-bold mb-4">Popular near you</h1>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
         {popularClubs.map((club) => (
           <ClubCard key={club._id} {...club} />
         ))}
