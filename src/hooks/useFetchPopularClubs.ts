@@ -1,14 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchPopularClubs } from "@/services/clubService";
-import { ClubEntity } from "@/types/club/club.types";
-
-type PopularClub = Pick<
-  ClubEntity,
-  "_id" | "name" | "memberCount" | "location" | "clubImage"
->;
+import { ClubSimplified } from "@/types";
 
 type FetchPopularClubsResponse = {
-  data: PopularClub[];
+  data: ClubSimplified[];
 };
 
 export const useFetchPopularClubs = () => {
