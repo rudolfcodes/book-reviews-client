@@ -26,8 +26,10 @@ const ListPopularClubs = () => {
   }
 
   return (
-    <InnerWrapper className="bg-white flex-col my-32">
-      <h1 className="text-2xl font-bold mb-4">Popular near you</h1>
+    <InnerWrapper className="bg-white flex-col my-32 gap-20">
+      <h1 className="font-openSans text-section-title font-semiBold mb-4">
+        Popular near you
+      </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
         {popularClubs.map((club) => (
