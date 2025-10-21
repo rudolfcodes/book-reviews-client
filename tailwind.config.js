@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-import plugin from "tailwindcss/plugin";
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -25,8 +24,10 @@ module.exports = {
         "auth-size": ["18px", { lineHeight: "normal" }],
         "big-title": ["48px", { lineHeight: "53px" }],
         "menu-item": ["18px", { lineHeight: "normal" }],
+        "card-title": ["20px", { lineHeight: "25px" }],
       },
       fontWeight: {
+        medium: "500",
         semiBold: "600",
         bold: "700",
         extraBold: "900",
