@@ -25,7 +25,7 @@ const Badge = ({
       className={`text-xs font-medium px-5 py-2 rounded-2xl ${className} ${mapVariantToClasses[variant]}`}
     >
       {children}
-      {icon && <span className="mr-1">{icon}</span>}
+      {icon && <span>{icon}</span>}
     </div>
   );
 };
