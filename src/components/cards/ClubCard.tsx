@@ -54,7 +54,7 @@ const ClubCard = ({
           </p>
           <BaseButton
             type="button"
-            className="mt-6 w-full bg-error text-white h-10 rounded-none font-medium hover:scale-105 hover:bg-error transition-colors duration-200 border-none"
+            className="mt-6 w-full bg-error text-white h-10 rounded-xl font-medium hover:scale-105 hover:bg-error transition-all duration-200 border-none"
           >
             Join
           </BaseButton>
