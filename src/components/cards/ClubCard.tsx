@@ -6,6 +6,7 @@ import BaseButton from "../buttons/BaseButton";
 import Link from "next/link";
 import Badge from "../Badge";
 import ClockIcon from "../icons/Clock";
+import { formatDateTime } from "@/utils/dates";
 
 const ClubCard = ({
   _id,
@@ -18,8 +19,12 @@ const ClubCard = ({
   meetingFrequency,
   meetingTime,
 }: ClubSimplified) => {
+  const formattedMeetingTime = meetingTime
+    ? formatDateTime(meetingTime)
+    : "TBA";
+
   const badges = [
-    meetingTime,
+    formattedMeetingTime,
     location.city,
     `${members.length} members`,
     language,
