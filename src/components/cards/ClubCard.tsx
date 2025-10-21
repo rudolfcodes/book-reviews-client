@@ -5,6 +5,7 @@ import FlexContainer from "../FlexContainer";
 import BaseButton from "../buttons/BaseButton";
 import Link from "next/link";
 import Badge from "../Badge";
+import ClockIcon from "../icons/Clock";
 
 const ClubCard = ({
   _id,
@@ -40,7 +41,12 @@ const ClubCard = ({
 
         <FlexContainer className="text-gray-600 text-xs gap-4 flex-wrap">
           {badges.map((badge, index) => (
-            <Badge key={`${_id}`} variant={index === 0 ? "success" : "default"}>
+            <Badge
+              key={`${_id}`}
+              variant={index === 0 ? "success" : "default"}
+              icon={index === 0 ? <ClockIcon /> : null}
+              className="flex gap-2"
+            >
               <span>{badge}</span>
             </Badge>
           ))}
