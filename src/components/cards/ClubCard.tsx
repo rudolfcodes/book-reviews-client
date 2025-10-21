@@ -37,7 +37,6 @@ const ClubCard = ({
         <FlexContainer className="flex-col gap-2 px-7 py-8 ">
           <h3 className="text-card-title font-medium mb-2">{name}</h3>
 
-          {/* Badges */}
           <FlexContainer className="text-gray-600 text-xs gap-4 flex-wrap">
             {badges.map((badge, index) => (
               <Badge
@@ -48,7 +47,7 @@ const ClubCard = ({
               </Badge>
             ))}
           </FlexContainer>
-          {/* Description */}
+
           <p className="text-gray-500 text-sm mt-4 line-clamp-3">
             {description}
           </p>
