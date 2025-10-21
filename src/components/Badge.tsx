@@ -22,7 +22,7 @@ const Badge = ({
 }: BadgeProps) => {
   return isValidElement(children) && !children.props.children ? null : (
     <div
-      className={`text-xs font-medium px-2.5 py-0.5 rounded ${className} ${mapVariantToClasses[variant]}`}
+      className={`text-xs font-medium px-5 py-2 rounded-2xl ${className} ${mapVariantToClasses[variant]}`}
     >
       {children}
       {icon && <span className="mr-1">{icon}</span>}
