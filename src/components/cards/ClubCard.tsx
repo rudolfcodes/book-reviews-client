@@ -34,7 +34,7 @@ const ClubCard = ({
           className="w-full h-32 object-cover rounded-tl-xl rounded-tr-xl lg:h-40"
         />
 
-        <FlexContainer className="px-7 py-8 flex-col">
+        <FlexContainer className="flex-col gap-2 px-7 py-8 ">
           <h3 className="text-card-title font-medium mb-2">{name}</h3>
 
           {/* Badges */}
@@ -58,7 +58,9 @@ const ClubCard = ({
           >
             Join
           </BaseButton>
-          <Link href={`/clubs/${_id}`}>Details</Link>
+          <Link className="flex justify-center" href={`/clubs/${_id}`}>
+            Details
+          </Link>
         </FlexContainer>
       </BaseCard>
     </div>
