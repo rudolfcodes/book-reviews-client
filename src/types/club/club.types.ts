@@ -7,13 +7,28 @@ interface ClubEntity {
   name: string;
   description: string;
   location: ClubLocation;
-  clubImage?: string;
   members: ClubMember[];
-  memberCount: number;
+  language: string;
+  clubImage?: string;
+  meetingFrequency?: string;
+  meetingTime?: string;
   creator: string;
   createdAt: Date;
   updatedAt: Date;
 }
+
+type ClubSimplified = Pick<
+  ClubEntity,
+  | "_id"
+  | "name"
+  | "location"
+  | "clubImage"
+  | "description"
+  | "language"
+  | "members"
+  | "meetingFrequency"
+  | "meetingTime"
+>;
 
 // Club creation / update DTO / what frontend sends
 interface CreateClubDTO {
@@ -85,6 +100,7 @@ type ClubsStoreState = {
 
 export type {
   ClubEntity,
+  ClubSimplified,
   CreateClubDTO,
   UpdateClubDTO,
   ClubCardProps,
