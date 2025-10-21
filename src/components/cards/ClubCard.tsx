@@ -35,7 +35,9 @@ const ClubCard = ({
         />
 
         <FlexContainer className="flex-col gap-2 px-7 py-8 ">
-          <h3 className="text-card-title font-medium mb-2">{name}</h3>
+          <h3 className="text-card-title font-medium mb-2 text-ellipsis overflow-hidden whitespace-nowrap">
+            {name}
+          </h3>
 
           <FlexContainer className="text-gray-600 text-xs gap-4 flex-wrap">
             {badges.map((badge, index) => (
