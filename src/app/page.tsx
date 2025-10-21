@@ -4,12 +4,13 @@ import jwt from "jsonwebtoken";
 import { DecodedToken } from "@/types/token";
 import Footer from "@/components/Footer";
 import ClubDiscoveryFeed from "@/components/ClubDiscoveryFeed";
-import Hero from "@/components/Hero";
+import Hero from "@/components/hero/Hero";
 import Navbar from "@/components/Navbar";
 import Logo from "@/components/Logo";
 import NavMenu from "@/components/NavMenu";
 import UserProfileDropdown from "@/components/user/UserProfile";
 import InnerWrapper from "@/components/InnerWrapper";
+import ListPopularClubs from "@/components/ListPopularClubs";
 
 const navItems = [
   { label: "Explore", href: "/" },
@@ -63,6 +64,8 @@ export default async function Home() {
         </InnerWrapper>
       </Navbar>
       <Hero />
+
+      <ListPopularClubs />
       <ClubDiscoveryFeed />
       <Footer />
     </div>
