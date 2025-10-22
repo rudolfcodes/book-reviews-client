@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useFetchPopularClubs } from "@/hooks/clubs/useFetchClubs";
-import ClubCard from "../components/cards/ClubCard";
+import ClubCard from "./cards/ClubCard";
 import InnerWrapper from "./InnerWrapper";
 
 const ListPopularClubs = () => {
