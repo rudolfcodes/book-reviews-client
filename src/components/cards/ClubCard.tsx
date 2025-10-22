@@ -7,6 +7,8 @@ import Link from "next/link";
 import Badge from "../Badge";
 import ClockIcon from "../icons/Clock";
 import { formatDateTime } from "@/utils/dates";
+import useJoinClub from "@/hooks/useJoinClub";
+import useClubsStore from "@/stores/clubsStore";
 
 const ClubCard = ({
   _id,
@@ -19,22 +21,34 @@ const ClubCard = ({
   meetingFrequency,
   meetingTime,
 }: ClubSimplified) => {
+  const { mutate: joinClub } = useJoinClub();
+  const { isJoiningClub, setJoiningClub } = useClubsStore();
   const formattedMeetingTime = meetingTime
     ? formatDateTime(meetingTime)
     : "TBA";
 
   const badges = [
     formattedMeetingTime,
-    location.city,
-    `${members.length} members`,
-    language,
-    meetingFrequency,
+    location?.city || "Location TBA",
+    `${members?.length || 0} members`,
+    language || "Language TBA",
+    meetingFrequency || "Frequency TBA",
   ];
+
+  const handleJoin = () => {
+    setJoiningClub(true);
+    joinClub(_id, {
+      onSettled: () => {
+        setJoiningClub(false);
+      },
+    });
+    setJoiningClub(false);
+  };
 
   return (
     <BaseCard key={_id} className="min-h-[563px] justify-between">
       <img
-        src={imageUrl || "/images/default-club.jpg"}
+        src={imageUrl || "/images/club-placeholder.jpg"}
         alt={name}
         className="w-full h-32 object-cover rounded-tl-xl rounded-tr-xl lg:h-40"
       />
@@ -47,7 +61,7 @@ const ClubCard = ({
         <FlexContainer className="text-gray-600 text-xs gap-4 flex-wrap">
           {badges.map((badge, index) => (
             <Badge
-              key={`${_id}`}
+              key={`${_id}-badge-${index}`}
               variant={index === 0 ? "success" : "default"}
               icon={index === 0 ? <ClockIcon /> : null}
               className="flex gap-2"
@@ -65,8 +79,10 @@ const ClubCard = ({
           <BaseButton
             type="button"
             className="w-full bg-error text-white h-10 rounded-xl font-medium hover:scale-105 hover:bg-error transition-all duration-200 border-none mb-4"
+            onClick={handleJoin}
+            disabled={isJoiningClub}
           >
-            Join
+            {isJoiningClub ? "Joining..." : "Join"}
           </BaseButton>
           <Link
             className="flex justify-center font-openSans text-primary-grey text-xs underline"
