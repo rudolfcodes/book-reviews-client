@@ -3,7 +3,6 @@ import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
 import { DecodedToken } from "@/types/token";
 import Footer from "@/components/Footer";
-import ClubDiscoveryFeed from "@/components/ClubDiscoveryFeed";
 import Hero from "@/components/hero/Hero";
 import Navbar from "@/components/Navbar";
 import Logo from "@/components/Logo";
@@ -66,7 +65,6 @@ export default async function Home() {
       <Hero />
 
       <ListPopularClubs />
-      <ClubDiscoveryFeed />
       <Footer />
     </div>
   );
