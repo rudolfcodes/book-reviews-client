@@ -8,7 +8,7 @@ const profileItems = [
   { label: "Notifications", href: "/notifications" },
   { label: "Clubs", href: "/clubs" },
   { label: "Settings", href: "/settings" },
-  { label: "Logout", href: "/logout" },
+  { label: "Logout", href: "/auth/login" },
 ];
 
 const UserProfileDropdown = () => {
