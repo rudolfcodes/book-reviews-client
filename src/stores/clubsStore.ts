@@ -1,5 +1,4 @@
 import { ClubsStoreState } from "@/types/club/club.types";
-import axiosInstance from "@/utils/axios";
 import { create } from "zustand";
 
 const useClubsStore = create<ClubsStoreState>((set, get) => ({
