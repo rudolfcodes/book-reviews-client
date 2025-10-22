@@ -20,8 +20,6 @@ const useFetchPopularClubs = () => {
     refetchOnWindowFocus: false,
   });
 
-  console.log({ clubsQuery });
-
   return {
     popularClubs: clubsQuery.data?.data?.docs || [],
     isLoading: clubsQuery.isLoading,
