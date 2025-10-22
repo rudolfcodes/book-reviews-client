@@ -34,15 +34,12 @@ const joinClub = async (clubId: string) => {
     if (!token) {
       throw new Error("User is not authenticated");
     }
-    const response = await axiosInstance.post(
-      `api/bookclubs/${clubId}/join`,
-      null,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await axiosInstance.post(`api/bookclubs/${clubId}/join`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     return response.data;
   } catch (error) {
