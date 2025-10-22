@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { usePathname } from "next/navigation";
 
 interface NavmenuProps {
   items: NavMenuItem[];
@@ -13,8 +14,10 @@ interface NavMenuItem {
 }
 
 const NavMenu = ({ items, className }: NavmenuProps) => {
+  const pathname = usePathname();
+
   const isActive = (href: string) => {
-    return window.location.pathname === href;
+    return pathname === href;
   };
 
   return (
