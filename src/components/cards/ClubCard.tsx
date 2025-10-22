@@ -9,6 +9,7 @@ import ClockIcon from "../icons/Clock";
 import { formatDateTime } from "@/utils/dates";
 import useJoinClub from "@/hooks/useJoinClub";
 import useClubsStore from "@/stores/clubsStore";
+import { useCurrentUser } from "@/hooks/useCurrentUser";
 
 const ClubCard = ({
   _id,
@@ -21,8 +22,11 @@ const ClubCard = ({
   meetingFrequency,
   meetingTime,
 }: ClubSimplified) => {
-  const { mutate: joinClub } = useJoinClub();
-  const { isJoiningClub, setJoiningClub } = useClubsStore();
+  const { user } = useCurrentUser();
+  const isAlreadyMember = members.some((member) => member.userId === user?.id);
+  const { mutate: joinClub, isPending } = useJoinClub();
+  const { isJoiningClub } = useClubsStore();
+  const joinButtonDisabled = isJoiningClub || isPending || isAlreadyMember;
   const formattedMeetingTime = meetingTime
     ? formatDateTime(meetingTime)
     : "TBA";
@@ -34,16 +38,6 @@ const ClubCard = ({
     language || "Language TBA",
     meetingFrequency || "Frequency TBA",
   ];
-
-  const handleJoin = () => {
-    setJoiningClub(true);
-    joinClub(_id, {
-      onSettled: () => {
-        setJoiningClub(false);
-      },
-    });
-    setJoiningClub(false);
-  };
 
   return (
     <BaseCard key={_id} className="min-h-[563px] justify-between">
@@ -79,10 +73,10 @@ const ClubCard = ({
           <BaseButton
             type="button"
             className="w-full bg-error text-white h-10 rounded-xl font-medium hover:scale-105 hover:bg-error transition-all duration-200 border-none mb-4"
-            onClick={handleJoin}
-            disabled={isJoiningClub}
+            onClick={() => joinClub(_id)}
+            disabled={joinButtonDisabled}
           >
-            {isJoiningClub ? "Joining..." : "Join"}
+            {isAlreadyMember ? "Joined" : isPending ? "Joining..." : "Join"}
           </BaseButton>
           <Link
             className="flex justify-center font-openSans text-primary-grey text-xs underline"
