@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useFetchPopularClubs } from "@/hooks/useFetchPopularClubs";
+import { useFetchPopularClubs } from "@/hooks/clubs/useFetchClubs";
 import ClubCard from "../components/cards/ClubCard";
 import InnerWrapper from "./InnerWrapper";
 
