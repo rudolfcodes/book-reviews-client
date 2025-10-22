@@ -41,7 +41,7 @@ export default function AuthPageWrapper({
       <div className="hidden lg:visible w-1/2 lg:flex items-center justify-center bg-[#63ABC3]">
         <div className="text-center text-white p-8">
           <h2 className="illustration-text mb-10">{illustration.title}</h2>
-          <div className="md:w-xl md:h-xl mx-auto rounded-full flex items-center justify-center">
+          <div className="md:w-[579px] md:h-[579px] mx-auto rounded-full flex items-center justify-center">
             <img
               src={illustration.src}
               alt={illustration.alt}
