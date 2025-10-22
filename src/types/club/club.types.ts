@@ -86,7 +86,6 @@ type ClubsStoreState = {
   clubs: ClubEntity[];
   allClubs: ClubEntity[];
   loading: boolean;
-  fetchClubs: (params?: ClubFilterParams) => Promise<void>;
   filterClubs: () => void;
   setClubs: (clubs: ClubEntity[]) => void;
   addClub: (club: ClubEntity) => void;
