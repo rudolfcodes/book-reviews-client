@@ -53,7 +53,10 @@ interface ClubCardProps {
 }
 
 type ClubFilterParams = {
+  limit?: number;
+  language?: string;
   name?: string;
+  popular?: boolean;
   location?: {
     city?: string;
     canton?: SwissCantonEnum;
@@ -65,6 +68,7 @@ type ClubFilterParams = {
   };
   currentPage?: number;
   pageSize?: number;
+  sortBy?: string;
 };
 
 type ClubSearchResponseDTO = {
@@ -80,7 +84,7 @@ type ClubSearchResponseDTO = {
 
 type ClubsStoreState = {
   clubs: ClubEntity[];
-  allClubs: ClubEntity[]; // All clubs fetched from API, used for filtering
+  allClubs: ClubEntity[];
   loading: boolean;
   fetchClubs: (params?: ClubFilterParams) => Promise<void>;
   filterClubs: () => void;
@@ -89,6 +93,8 @@ type ClubsStoreState = {
   removeClub: (clubId: string) => void;
   updateClub: (updatedClub: ClubEntity) => void;
   setSearchQuery: (query: string) => void;
+  isJoiningClub: boolean;
+  setJoiningClub: (isJoining: boolean) => void;
   hasMore: boolean;
   searchQuery?: string;
   selectedLocation?: ClubLocation;
