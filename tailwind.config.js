@@ -13,18 +13,6 @@ module.exports = {
       lg: "1024px",
       xl: "1440px",
     },
-    spacing: {
-      // Internal components
-      xs: "0.5rem",
-      sm: "1rem",
-      md: "1.5rem",
-      lg: "2rem",
-      xl: "3rem",
-
-      // Section spacing
-      "section-sm": "3rem",
-      "section-lg": "7.75rem",
-    },
     extend: {
       fontFamily: {
         inter: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
@@ -73,7 +61,16 @@ module.exports = {
         "dark-input": "0 2px 4px 0 rgba(0, 0, 0, 0.25)",
       },
       spacing: {
-        "auth-gap": "46px",
+        // Internal components
+        xs: "0.5rem",
+        sm: "1rem",
+        md: "1.5rem",
+        lg: "2rem",
+        xl: "3rem",
+
+        // Section spacing
+        "section-sm": "3rem",
+        "section-lg": "7.75rem",
       },
     },
   },
