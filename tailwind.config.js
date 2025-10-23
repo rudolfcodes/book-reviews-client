@@ -52,6 +52,7 @@ module.exports = {
         "badge-green": "#33D71D",
         "badge-default": "#ECECEC",
         "badge-text": "#12792E",
+        "badge-circular": "#D71D22",
         stats: "#7D7676",
         hero: "#84B5C5",
         error: "#D81C22",
