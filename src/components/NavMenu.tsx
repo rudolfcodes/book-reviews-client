@@ -2,6 +2,8 @@
 
 import React from "react";
 import { usePathname } from "next/navigation";
+import { useCurrentUser } from "@/hooks/useCurrentUser";
+import Badge from "./Badge";
 
 interface NavmenuProps {
   items: NavMenuItem[];
@@ -15,6 +17,8 @@ interface NavMenuItem {
 
 const NavMenu = ({ items, className }: NavmenuProps) => {
   const pathname = usePathname();
+  const { user } = useCurrentUser();
+  const clubCount = user?.clubsJoined.length || 0;
 
   const isActive = (href: string) => {
     return pathname === href;
@@ -26,7 +30,7 @@ const NavMenu = ({ items, className }: NavmenuProps) => {
         {items.map((item, index) => (
           <li
             key={index}
-            className={`py-[27px] ${
+            className={`relative py-[27px] ${
               isActive(item.href) ? "border-b-2 border-error" : ""
             }`}
           >
@@ -38,6 +42,11 @@ const NavMenu = ({ items, className }: NavmenuProps) => {
             >
               {item.label}
             </a>
+            {item.label === "My Clubs" && clubCount > 0 && (
+              <Badge className="absolute top-3 -right-4 bg-error !px-2 !py-1 text-white">
+                {clubCount}
+              </Badge>
+            )}
           </li>
         ))}
       </ul>
