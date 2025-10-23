@@ -9,10 +9,8 @@ const useJoinClub = () => {
     mutationFn: (clubId: string) => joinClub(clubId),
     onSuccess: () => {
       // Invalidate and refetch
-      console.log("Invalidating queries...");
       queryClient.invalidateQueries({ queryKey: ["clubs"] });
       queryClient.invalidateQueries({ queryKey: ["user"] });
-      console.log("Queries invalidated");
     },
   });
 };
