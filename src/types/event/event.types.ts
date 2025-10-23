@@ -18,4 +18,22 @@ type Attendee = {
   rsvpAt: Date;
 };
 
-export type { EventEntity, Attendee };
+type EventFilterParams = {
+  limit?: number;
+  language?: string;
+  title?: string;
+  dateRange?: {
+    from?: Date;
+    to?: Date;
+  };
+  location?: {
+    city?: string;
+    canton?: string;
+    venueType?: string;
+  };
+  currentPage?: number;
+  pageSize?: number;
+  sortBy?: string;
+};
+
+export type { EventEntity, Attendee, EventFilterParams };
