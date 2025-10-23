@@ -4,7 +4,7 @@ interface BadgeProps {
   children: React.ReactNode;
   icon?: React.ReactNode;
   className?: string;
-  variant?: "default" | "success" | "warning" | "error";
+  variant?: "default" | "success" | "warning" | "error" | "circular";
 }
 
 const mapVariantToClasses = {
@@ -12,6 +12,7 @@ const mapVariantToClasses = {
   success: "bg-badge-green bg-opacity-20 text-badge-text",
   warning: "bg-yellow-300 opacity-20 text-yellow-900",
   error: "bg-error opacity-20 text-red-900",
+  circular: "bg-badge-default rounded-full",
 };
 
 const Badge = ({
