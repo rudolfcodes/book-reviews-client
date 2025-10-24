@@ -4,8 +4,19 @@ import FlexContainer from "./FlexContainer";
 import Badge from "./Badge";
 import Link from "next/link";
 import EventCard from "./cards/EventCard";
+import { useFetchEvents } from "@/hooks/events/useFetchEvents";
 
 const ListEvents = () => {
+  const { events, isLoading, isError, refetch } = useFetchEvents();
+
+  if (isLoading) {
+    return <div>Loading events...</div>;
+  }
+
+  if (isError) {
+    return <div>Error fetching events. Please try again later.</div>;
+  }
+
   return (
     <InnerWrapper className="bg-hero bg-opacity-15 flex-col my-32 gap-20">
       <h1 className="font-openSans text-section-title font-semiBold mb-4">
@@ -26,10 +37,9 @@ const ListEvents = () => {
         </Link>
       </FlexContainer>
 
-      {/* 3 column grid and on tablet 2 column and for mobile 1 column */}
       <div className="grid grid-cols-3 tablet:grid-cols-2 mobile:grid-cols-1">
-        {[1, 2, 3].map((card) => (
-          <EventCard key={card} />
+        {events.map((event) => (
+          <EventCard key={event._id} {...event} />
         ))}
       </div>
     </InnerWrapper>
