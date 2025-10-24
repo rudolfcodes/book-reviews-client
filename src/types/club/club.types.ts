@@ -30,6 +30,16 @@ type ClubSimplified = Pick<
   | "meetingTime"
 >;
 
+type ClubsApiResponse = {
+  data: {
+    docs: ClubSimplified[];
+    totalDocs?: number;
+    limit?: number;
+    page?: number;
+    hasNextPage?: boolean;
+  };
+};
+
 // Club creation / update DTO / what frontend sends
 interface CreateClubDTO {
   name: string;
@@ -111,4 +121,5 @@ export type {
   ClubFilterParams,
   ClubSearchResponseDTO,
   ClubsStoreState,
+  ClubsApiResponse,
 };

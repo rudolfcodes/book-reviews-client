@@ -1,16 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchClubs } from "@/services/clubService";
-import { ClubSimplified } from "@/types";
-
-type ClubsApiResponse = {
-  data: {
-    docs: ClubSimplified[];
-    totalDocs?: number;
-    limit?: number;
-    page?: number;
-    hasNextPage?: boolean;
-  };
-};
+import { ClubsApiResponse, ClubSimplified } from "@/types";
 
 const useFetchPopularClubs = () => {
   const clubsQuery = useQuery<ClubsApiResponse>({
