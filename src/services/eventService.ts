@@ -36,3 +36,5 @@ const fetchEvents = async (params: EventFilterParams = {}) => {
     console.error("Error fetching events:", error);
   }
 };
+
+export { fetchEvents };
