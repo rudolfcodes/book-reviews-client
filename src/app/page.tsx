@@ -10,6 +10,7 @@ import NavMenu from "@/components/NavMenu";
 import UserProfileDropdown from "@/components/user/UserProfile";
 import InnerWrapper from "@/components/InnerWrapper";
 import ListPopularClubs from "@/components/ListPopularClubs";
+import ListEvents from "@/components/ListEvents";
 
 const navItems = [
   { label: "Explore", href: "/" },
@@ -65,6 +66,7 @@ export default async function Home() {
       <Hero />
 
       <ListPopularClubs />
+      <ListEvents />
       <Footer />
     </div>
   );
