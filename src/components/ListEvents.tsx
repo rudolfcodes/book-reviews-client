@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import InnerWrapper from "./InnerWrapper";
 import FlexContainer from "./FlexContainer";
