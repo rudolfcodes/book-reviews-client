@@ -1,5 +1,5 @@
 // We need functions to fetch events, create events and manage event attendees
-import { EventEntity, EventFilterParams } from "@/types/event/event.types";
+import { EventFilterParams } from "@/types/event/event.types";
 import axiosInstance from "@/utils/axios";
 
 const fetchEvents = async (params: EventFilterParams = {}) => {
@@ -31,7 +31,7 @@ const fetchEvents = async (params: EventFilterParams = {}) => {
     }).toString();
 
     const response = await axiosInstance.get(`api/events?${queryString}`);
-    return response.data as EventEntity[];
+    return response.data;
   } catch (error) {
     console.error("Error fetching events:", error);
   }
