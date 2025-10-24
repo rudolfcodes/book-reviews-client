@@ -36,4 +36,14 @@ type EventFilterParams = {
   sortBy?: string;
 };
 
-export type { EventEntity, Attendee, EventFilterParams };
+type EventApiResponse = {
+  data: {
+    docs: EventEntity[];
+    totalDocs?: number;
+    limit?: number;
+    page?: number;
+    hasNextPage?: boolean;
+  };
+};
+
+export type { EventEntity, Attendee, EventFilterParams, EventApiResponse };
