@@ -21,7 +21,7 @@ const Badge = ({
   icon,
   variant = "default",
 }: BadgeProps) => {
-  return isValidElement(children) && !children.props.children ? null : (
+  return !children ? null : (
     <div
       className={`text-xs font-medium px-5 py-2 rounded-2xl ${
         className || ""
