@@ -9,6 +9,7 @@ import { useCurrentUser } from "@/hooks/useCurrentUser";
 import ListAttendees from "../events/ListAttendees";
 import BaseButton from "../buttons/BaseButton";
 import Link from "next/link";
+import useRsvpEvent from "@/hooks/events/useRsvpEvent";
 
 const EventCard = ({
   _id,
@@ -22,14 +23,15 @@ const EventCard = ({
   language,
 }: EventEntity) => {
   const { user } = useCurrentUser();
+  const { mutate: rsvpEvent, isPending } = useRsvpEvent();
+  const rsvpButtonDisabled =
+    isPending || attendees.some((attendee) => attendee.userId === user?.id);
   const badgeItems = [
     date.toString(),
     location?.city || "Location TBA",
     language || "Language TBA",
     location?.venueType ? `Venue: ${location.venueType}` : "Venue TBA",
   ].filter(Boolean);
-
-  const rsvpEvent = (eventId: string) => {};
 
   return (
     <BaseCard
@@ -59,10 +61,10 @@ const EventCard = ({
           <BaseButton
             type="button"
             className="w-full bg-error text-white h-10 rounded-xl font-medium hover:scale-105 hover:bg-error transition-all duration-200 border-none mb-4"
-            onClick={() => rsvpEvent(_id)}
-            disabled={attendees.some(
-              (attendee) => attendee.userId === user?.id
-            )}
+            onClick={() =>
+              rsvpEvent({ clubId, eventId: _id, rsvpStatus: "attending" })
+            }
+            disabled={rsvpButtonDisabled}
           >
             {attendees.some((attendee) => attendee.userId === user?.id)
               ? "RSVPed"
