@@ -24,8 +24,10 @@ const EventCard = ({
 }: EventEntity) => {
   const { user } = useCurrentUser();
   const { mutate: rsvpEvent, isPending } = useRsvpEvent();
-  const rsvpButtonDisabled =
-    isPending || attendees.some((attendee) => attendee.userId === user?.id);
+  const isAttending = attendees.some(
+    (attendee) => attendee.userId === user?.id
+  );
+  const rsvpButtonDisabled = isPending || isAttending;
   const badgeItems = [
     date.toString(),
     location?.city || "Location TBA",
@@ -66,9 +68,7 @@ const EventCard = ({
             }
             disabled={rsvpButtonDisabled}
           >
-            {attendees.some((attendee) => attendee.userId === user?.id)
-              ? "RSVPed"
-              : "RSVP for the Event"}
+            {isAttending ? "RSVPed" : "RSVP for the Event"}
           </BaseButton>
           <Link
             className="flex justify-center font-openSans text-primary-grey text-xs underline"
