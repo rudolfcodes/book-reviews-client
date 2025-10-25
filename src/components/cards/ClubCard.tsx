@@ -8,6 +8,7 @@ import useJoinClub from "@/hooks/useJoinClub";
 import useClubsStore from "@/stores/clubsStore";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import BadgeList from "../BadgeList";
+import TextContainer from "../TextContainer";
 
 const ClubCard = ({
   _id,
@@ -49,9 +50,10 @@ const ClubCard = ({
 
         {badges.length > 0 && <BadgeList badges={badges} />}
 
-        <p className="text-input-color text-base mt-4 line-clamp-5 min-h-[100px] flex-grow">
-          {description}
-        </p>
+        <TextContainer
+          text={description}
+          className="text-input-color text-base mt-4 line-clamp-5 min-h-[100px] flex-grow"
+        />
 
         <div className="mt-auto pt-6">
           <BaseButton

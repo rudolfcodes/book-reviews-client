@@ -3,6 +3,7 @@ import BaseCard from "./BaseCard";
 import Badge from "../Badge";
 import CalendarIcon from "../icons/CalendarIcon";
 import BadgeList from "../BadgeList";
+import TextContainer from "../TextContainer";
 
 const EventCard = ({
   _id,
@@ -31,9 +32,11 @@ const EventCard = ({
           {title}
         </h3>
         {badgeItems.length > 0 && <BadgeList badges={badgeItems} />}
-        <p className="text-base text-input-color flex-1 pt-6 line-clamp-5 min-h-[100px]">
-          {description}
-        </p>
+
+        <TextContainer
+          text={description}
+          className="text-input-color text-base mt-4 line-clamp-5 min-h-[100px] flex-grow"
+        />
       </div>
     </BaseCard>
   );
