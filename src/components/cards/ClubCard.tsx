@@ -10,6 +10,7 @@ import { formatDateTime } from "@/utils/dates";
 import useJoinClub from "@/hooks/useJoinClub";
 import useClubsStore from "@/stores/clubsStore";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
+import BadgeList from "../BadgeList";
 
 const ClubCard = ({
   _id,
@@ -27,12 +28,9 @@ const ClubCard = ({
   const { mutate: joinClub, isPending } = useJoinClub();
   const { isJoiningClub } = useClubsStore();
   const joinButtonDisabled = isJoiningClub || isPending || isAlreadyMember;
-  const formattedMeetingTime = meetingTime
-    ? formatDateTime(meetingTime)
-    : "TBA";
 
   const badges = [
-    formattedMeetingTime,
+    meetingTime || "Time TBA",
     location?.city || "Location TBA",
     `${members?.length || 0} members`,
     language || "Language TBA",
@@ -52,18 +50,7 @@ const ClubCard = ({
           {name}
         </h3>
 
-        <FlexContainer className="text-gray-600 text-xs gap-4 flex-wrap">
-          {badges.map((badge, index) => (
-            <Badge
-              key={`${_id}-badge-${index}`}
-              variant={index === 0 ? "success" : "default"}
-              icon={index === 0 ? <ClockIcon /> : null}
-              className="flex gap-2"
-            >
-              <span>{badge}</span>
-            </Badge>
-          ))}
-        </FlexContainer>
+        {badges.length > 0 && <BadgeList badges={badges} />}
 
         <p className="text-gray-500 text-sm mt-4 line-clamp-5 min-h-[100px] flex-grow">
           {description}
