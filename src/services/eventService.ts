@@ -38,7 +38,6 @@ const fetchEvents = async (params: EventFilterParams = {}) => {
 
 const rsvpEvent = async (
   clubId: string,
-  userId: string,
   eventId: string,
   rsvpStatus: string
 ) => {
@@ -46,7 +45,6 @@ const rsvpEvent = async (
     const response = await axiosInstance.put(
       `api/bookclubs/${clubId}/events/${eventId}/rsvp`,
       {
-        userId,
         rsvpStatus,
       }
     );
