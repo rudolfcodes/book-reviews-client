@@ -31,7 +31,9 @@ const EventCard = ({
           {title}
         </h3>
         {badgeItems.length > 0 && <BadgeList badges={badgeItems} />}
-        <p className="text-sm text-gray-600 flex-1">{description}</p>
+        <p className="text-base text-input-color flex-1 pt-6 line-clamp-5 min-h-[100px]">
+          {description}
+        </p>
       </div>
     </BaseCard>
   );

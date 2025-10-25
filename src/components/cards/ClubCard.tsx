@@ -52,7 +52,7 @@ const ClubCard = ({
 
         {badges.length > 0 && <BadgeList badges={badges} />}
 
-        <p className="text-gray-500 text-sm mt-4 line-clamp-5 min-h-[100px] flex-grow">
+        <p className="text-input-color text-base mt-4 line-clamp-5 min-h-[100px] flex-grow">
           {description}
         </p>
 
