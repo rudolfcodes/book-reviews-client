@@ -13,7 +13,7 @@ const ListAttendees = ({ attendees, maxAttendees }: ListAttendeesProps) => {
 
   return (
     <FlexContainer className="gap-3.5 mt-14 items-center">
-      <FlexContainer className="flex">
+      <FlexContainer className="flex ml-2">
         {attendees.map((attendee, index) => (
           <div
             key={`${index}-attendee-${attendee.userId}`}
