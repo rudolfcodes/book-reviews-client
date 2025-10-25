@@ -6,7 +6,6 @@ import BadgeList from "../BadgeList";
 
 const EventCard = ({
   _id,
-  clubId,
   title,
   date,
   description,
