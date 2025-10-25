@@ -5,6 +5,7 @@ import { ClubMember } from "./member.types";
 interface ClubEntity {
   _id: string;
   name: string;
+  slug: string;
   description: string;
   location: ClubLocation;
   members: ClubMember[];

@@ -4,6 +4,7 @@ interface EventEntity {
   _id: string;
   clubId: string;
   title: string;
+  slug: string;
   date: Date;
   description: string;
   location: ClubLocation;
