@@ -15,7 +15,6 @@ const fetchEvents = async (params: EventFilterParams = {}) => {
       sortBy,
     } = params;
 
-    // construct query string
     const queryString = new URLSearchParams({
       ...(limit ? { limit: limit.toString() } : {}),
       ...(language ? { language } : {}),
@@ -37,4 +36,16 @@ const fetchEvents = async (params: EventFilterParams = {}) => {
   }
 };
 
-export { fetchEvents };
+const rsvpEvent = async (eventId: string, rsvpStatus: string) => {
+  try {
+    // Authentication is handled globally in axiosInstance interceptors
+    const response = await axiosInstance.post(`api/events/${eventId}/rsvp`, {
+      status: rsvpStatus,
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error RSVPing to event:", error);
+  }
+};
+
+export { fetchEvents, rsvpEvent };
