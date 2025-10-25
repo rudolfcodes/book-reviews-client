@@ -4,6 +4,9 @@ import Badge from "../Badge";
 import CalendarIcon from "../icons/CalendarIcon";
 import BadgeList from "../BadgeList";
 import TextContainer from "../TextContainer";
+import FlexContainer from "../FlexContainer";
+import { useCurrentUser } from "@/hooks/useCurrentUser";
+import ListAttendees from "../events/ListAttendees";
 
 const EventCard = ({
   _id,
@@ -12,8 +15,10 @@ const EventCard = ({
   description,
   location,
   attendees,
+  maxAttendees,
   language,
 }: EventEntity) => {
+  const { user } = useCurrentUser();
   const badgeItems = [
     date.toString(),
     location?.city || "Location TBA",
@@ -37,6 +42,10 @@ const EventCard = ({
           text={description}
           className="text-input-color text-base mt-4 line-clamp-5 min-h-[100px] flex-grow"
         />
+
+        {attendees.length > 0 && (
+          <ListAttendees attendees={attendees} maxAttendees={maxAttendees} />
+        )}
       </div>
     </BaseCard>
   );
