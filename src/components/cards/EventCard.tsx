@@ -12,6 +12,7 @@ import Link from "next/link";
 
 const EventCard = ({
   _id,
+  clubId,
   title,
   date,
   description,
@@ -69,7 +70,7 @@ const EventCard = ({
           </BaseButton>
           <Link
             className="flex justify-center font-openSans text-primary-grey text-xs underline"
-            href={`/events/${_id}`}
+            href={`bookclubs/${clubId}/events/${_id}`}
             passHref
           >
             Details
