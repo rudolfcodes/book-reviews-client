@@ -36,12 +36,20 @@ const fetchEvents = async (params: EventFilterParams = {}) => {
   }
 };
 
-const rsvpEvent = async (eventId: string, rsvpStatus: string) => {
+const rsvpEvent = async (
+  clubId: string,
+  userId: string,
+  eventId: string,
+  rsvpStatus: string
+) => {
   try {
-    // Authentication is handled globally in axiosInstance interceptors
-    const response = await axiosInstance.post(`api/events/${eventId}/rsvp`, {
-      status: rsvpStatus,
-    });
+    const response = await axiosInstance.put(
+      `api/bookclubs/${clubId}/events/${eventId}/rsvp`,
+      {
+        userId,
+        status: rsvpStatus,
+      }
+    );
     return response.data;
   } catch (error) {
     console.error("Error RSVPing to event:", error);
