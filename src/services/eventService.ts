@@ -47,7 +47,7 @@ const rsvpEvent = async (
       `api/bookclubs/${clubId}/events/${eventId}/rsvp`,
       {
         userId,
-        status: rsvpStatus,
+        rsvpStatus,
       }
     );
     return response.data;
