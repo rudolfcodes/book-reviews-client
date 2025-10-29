@@ -31,7 +31,11 @@ module.exports = {
         ],
         "banner-title": [
           "32px",
-          { lineHeight: "42px", fontFamily: "openSans", fontWeight: "600" },
+          {
+            lineHeight: "42px",
+            fontFamily: "var(--font-open-sans)",
+            fontWeight: "600",
+          },
         ],
       },
       fontWeight: {
