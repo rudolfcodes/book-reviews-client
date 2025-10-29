@@ -25,7 +25,14 @@ module.exports = {
         "big-title": ["48px", { lineHeight: "53px" }],
         "menu-item": ["18px", { lineHeight: "normal" }],
         "card-title": ["20px", { lineHeight: "25px" }],
-        "section-title": ["40px", { lineHeight: "20px" }],
+        "section-title": [
+          "40px",
+          { lineHeight: "20px", fontFamily: "openSans", fontWeight: "600" },
+        ],
+        "banner-title": [
+          "32px",
+          { lineHeight: "42px", fontFamily: "openSans", fontWeight: "600" },
+        ],
       },
       fontWeight: {
         medium: "500",
