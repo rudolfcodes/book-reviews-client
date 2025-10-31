@@ -38,6 +38,10 @@ module.exports = {
           },
         ],
         subtitle: ["24px", { lineHeight: "35px", fontFamily: "openSans" }],
+        "section-title-xl": [
+          "60px",
+          { lineHeight: "70px", fontFamily: "openSans", fontWeight: "600" },
+        ],
       },
       fontWeight: {
         medium: "500",
