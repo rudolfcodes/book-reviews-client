@@ -37,6 +37,7 @@ module.exports = {
             fontWeight: "600",
           },
         ],
+        subtitle: ["24px", { lineHeight: "35px", fontFamily: "openSans" }],
       },
       fontWeight: {
         medium: "500",
