@@ -18,12 +18,12 @@ const Footer = () => {
       <FlexContainer className="flex-col md:flex-row gap-28 items-center md:items-start">
         <FlexContainer className="column flex-col justify-center items-center gap-4 max-w-64 text-center md:text-left md:justify-start md:items-start">
           <NextImage
-            width={300}
+            width={216}
             height={65}
             quality={100}
             src="/images/swiss_book_club_logo_white 1.png"
             alt="SWISS Bookclub"
-            className="h-auto object-cover w-full"
+            className="h-auto object-cover max-w-[216px]"
           />
           <TextContainer text="Find and host book clubs across Switzerland." />
           <FlexContainer className="gap-3.5 items-center">
