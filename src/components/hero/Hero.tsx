@@ -20,7 +20,7 @@ const Hero = () => {
   return (
     <section className="relative bg-hero bg-opacity-10 py-12">
       <FlexContainer>
-        <InnerWrapper className="justify-center px-6 lg:justify-between">
+        <InnerWrapper className="justify-center px-6 lg:justify-between lg:!px-7">
           <FlexContainer>
             <SearchClubs />
           </FlexContainer>
