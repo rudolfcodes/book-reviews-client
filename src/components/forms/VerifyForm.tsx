@@ -7,6 +7,7 @@ import BaseButton from "../buttons/BaseButton";
 import FlexContainer from "../FlexContainer";
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
+import useUser from "@/hooks/useUser";
 
 interface VerifyOTPRequest {
   userId: string | null;
@@ -32,6 +33,7 @@ const verifyOtp = async (data: VerifyOTPRequest) => {
 const VerifyForm = () => {
   const [otp, setOtp] = useState(["", "", "", ""]);
   const [apiError, setApiError] = useState("");
+  const { refreshUser } = useUser();
   const router = useRouter();
 
   const handleResendCode = async () => {
@@ -74,6 +76,7 @@ const VerifyForm = () => {
         autoClose: 2000,
       });
 
+      refreshUser();
       setTimeout(() => {
         router.push("/");
       }, 2000);

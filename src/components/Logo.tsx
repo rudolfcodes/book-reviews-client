@@ -3,12 +3,13 @@ import React from "react";
 type Props = {
   imageSrc: string;
   alt: string;
+  className?: string;
 };
 
-const Logo = ({ imageSrc, alt }: Props) => {
+const Logo = ({ imageSrc, alt, className }: Props) => {
   return (
-    <div className="flex justify-center lg:justify-normal mt-auth-gap lg:mb-[100px]">
-      <img src={imageSrc} alt={alt} />
+    <div className={`flex justify-center lg:justify-normal ${className}`}>
+      <img className="h-auto" src={imageSrc} alt={alt} />
     </div>
   );
 };

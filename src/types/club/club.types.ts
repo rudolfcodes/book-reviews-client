@@ -5,15 +5,41 @@ import { ClubMember } from "./member.types";
 interface ClubEntity {
   _id: string;
   name: string;
+  slug: string;
   description: string;
   location: ClubLocation;
-  clubImage?: string; // Optional image for the club
   members: ClubMember[];
-  memberCount: number;
+  language: string;
+  imageUrl?: string;
+  meetingFrequency?: string;
+  meetingTime?: string;
   creator: string;
   createdAt: Date;
   updatedAt: Date;
 }
+
+type ClubSimplified = Pick<
+  ClubEntity,
+  | "_id"
+  | "name"
+  | "location"
+  | "imageUrl"
+  | "description"
+  | "language"
+  | "members"
+  | "meetingFrequency"
+  | "meetingTime"
+>;
+
+type ClubsApiResponse = {
+  data: {
+    docs: ClubSimplified[];
+    totalDocs?: number;
+    limit?: number;
+    page?: number;
+    hasNextPage?: boolean;
+  };
+};
 
 // Club creation / update DTO / what frontend sends
 interface CreateClubDTO {
@@ -38,6 +64,8 @@ interface ClubCardProps {
 }
 
 type ClubFilterParams = {
+  limit?: number;
+  language?: string;
   name?: string;
   location?: {
     city?: string;
@@ -50,6 +78,7 @@ type ClubFilterParams = {
   };
   currentPage?: number;
   pageSize?: number;
+  sortBy?: string;
 };
 
 type ClubSearchResponseDTO = {
@@ -65,15 +94,16 @@ type ClubSearchResponseDTO = {
 
 type ClubsStoreState = {
   clubs: ClubEntity[];
-  allClubs: ClubEntity[]; // All clubs fetched from API, used for filtering
+  allClubs: ClubEntity[];
   loading: boolean;
-  fetchClubs: (params?: ClubFilterParams) => Promise<void>;
   filterClubs: () => void;
   setClubs: (clubs: ClubEntity[]) => void;
   addClub: (club: ClubEntity) => void;
   removeClub: (clubId: string) => void;
   updateClub: (updatedClub: ClubEntity) => void;
   setSearchQuery: (query: string) => void;
+  isJoiningClub: boolean;
+  setJoiningClub: (isJoining: boolean) => void;
   hasMore: boolean;
   searchQuery?: string;
   selectedLocation?: ClubLocation;
@@ -85,10 +115,12 @@ type ClubsStoreState = {
 
 export type {
   ClubEntity,
+  ClubSimplified,
   CreateClubDTO,
   UpdateClubDTO,
   ClubCardProps,
   ClubFilterParams,
   ClubSearchResponseDTO,
   ClubsStoreState,
+  ClubsApiResponse,
 };

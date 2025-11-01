@@ -1,11 +1,28 @@
-import Header from "@/components/Header";
 import Head from "next/head";
 import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
 import { DecodedToken } from "@/types/token";
 import Footer from "@/components/Footer";
-import ClubDiscoveryFeed from "@/components/ClubDiscoveryFeed";
-import Hero from "@/components/Hero";
+import Hero from "@/components/hero/Hero";
+import Navbar from "@/components/Navbar";
+import Logo from "@/components/Logo";
+import NavMenu from "@/components/NavMenu";
+import UserProfileDropdown from "@/components/user/UserProfile";
+import InnerWrapper from "@/components/InnerWrapper";
+import ListPopularClubs from "@/components/ListPopularClubs";
+import ListEvents from "@/components/ListEvents";
+import CTABanner from "@/components/CTABanner";
+import discoveryCTA from "@/data/discoveryCTA";
+import ChatTeaser from "@/components/ChatTeaser";
+import HowItWorks from "@/components/HowItWorks";
+import Link from "next/link";
+
+const navItems = [
+  { label: "Explore", href: "/" },
+  { label: "My Clubs", href: "/clubs" },
+  { label: "Messages", href: "/messages" },
+  { label: "Events", href: "/events" },
+];
 
 export default async function Home() {
   const cookieStore = cookies();
@@ -22,6 +39,7 @@ export default async function Home() {
       ) as DecodedToken;
       userId = decoded.userId;
       decodedToken = decoded;
+      console.log({ decoded });
     } catch (error) {
       console.log("something went wrong with verifying the token", error);
     }
@@ -31,7 +49,7 @@ export default async function Home() {
     <div className="flex flex-col min-h-screen w-full">
       <Head>
         <title>
-          Bookclub CH - Find your club and share your love for books
+          Swiss BookClub - Find your club and share your love for books
         </title>
         <meta
           name="description"
@@ -39,9 +57,36 @@ export default async function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
+      <Navbar>
+        <InnerWrapper>
+          <Link href="/">
+            <Logo
+              className="w-36"
+              imageSrc="/images/logo.png"
+              alt="Swiss Book Club Logo"
+            />
+          </Link>
+          <NavMenu items={navItems} className="hidden lg:block" />
+          <div className="hidden lg:block">
+            <UserProfileDropdown />
+          </div>
+          {/* Hamburger menu for mobile */}
+          <div className="lg:hidden">
+            <button className="p-2">
+              <span className="block w-6 h-0.5 bg-black mb-1"></span>
+              <span className="block w-6 h-0.5 bg-black mb-1"></span>
+              <span className="block w-6 h-0.5 bg-black"></span>
+            </button>
+          </div>
+        </InnerWrapper>
+      </Navbar>
       <Hero />
-      <ClubDiscoveryFeed />
+
+      <ListPopularClubs />
+      <ListEvents />
+      <CTABanner {...discoveryCTA} icon={<discoveryCTA.icon />} />
+      <ChatTeaser />
+      <HowItWorks />
       <Footer />
     </div>
   );

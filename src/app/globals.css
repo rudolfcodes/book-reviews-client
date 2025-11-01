@@ -18,7 +18,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  @apply bg-off-white;
+  @apply bg-white;
 }
 
 /* Global styles including custom styles for dropdown items */

@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-import plugin from "tailwindcss/plugin";
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -18,6 +17,42 @@ module.exports = {
       fontFamily: {
         inter: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
         robotoSlab: ["var(--font-roboto-slab)", "serif"],
+        openSans: ["var(--font-open-sans)", "sans-serif"],
+      },
+      fontSize: {
+        "auth-title": ["24px", { lineHeight: "normal" }],
+        "auth-size": ["18px", { lineHeight: "normal" }],
+        "big-title": ["48px", { lineHeight: "53px" }],
+        "menu-item": ["18px", { lineHeight: "normal" }],
+        "card-title": ["20px", { lineHeight: "25px" }],
+        "section-title": [
+          "40px",
+          { lineHeight: "20px", fontFamily: "openSans", fontWeight: "600" },
+        ],
+        "banner-title": [
+          "32px",
+          {
+            lineHeight: "42px",
+            fontFamily: "var(--font-open-sans)",
+            fontWeight: "600",
+          },
+        ],
+        subtitle: ["24px", { lineHeight: "35px", fontFamily: "openSans" }],
+        "section-title-xl": [
+          "60px",
+          { lineHeight: "70px", fontFamily: "openSans", fontWeight: "600" },
+        ],
+      },
+      fontWeight: {
+        light: "400",
+        medium: "500",
+        semiBold: "600",
+        bold: "700",
+        extraBold: "900",
+      },
+      letterSpacing: {
+        tight: "-0.02em",
+        wider: "0.04em",
       },
       colors: {
         subtitle: "#777777",
@@ -26,9 +61,19 @@ module.exports = {
         "off-white": "#F3F3F3",
         "blue-cream": "#63ABC3",
         "primary-grey": "#7C7C7C",
+        "secondary-grey": "#D7D7D7",
         "modern-primary": "#2D2D2A",
         "modern-secondary": "#FAF3E0",
         "modern-accent": "#E4572E",
+        "border-grey": "#E5E7EB",
+        "tertiary-grey": "#4B5563",
+        "input-color": "#4B5563",
+        "badge-green": "#33D71D",
+        "badge-default": "#ECECEC",
+        "badge-text": "#12792E",
+        "badge-circular": "#D71D22",
+        stats: "#7D7676",
+        hero: "#84B5C5",
         error: "#D81C22",
       },
       boxShadow: {
@@ -36,58 +81,18 @@ module.exports = {
         "dark-input": "0 2px 4px 0 rgba(0, 0, 0, 0.25)",
       },
       spacing: {
-        "auth-gap": "46px",
+        // Internal components
+        xs: "0.5rem",
+        sm: "1rem",
+        md: "1.5rem",
+        lg: "2rem",
+        xl: "3rem",
+
+        // Section spacing
+        "section-sm": "3rem",
+        "section-lg": "7.75rem",
       },
     },
   },
-  plugins: [
-    require("daisyui"),
-    require("@tailwindcss/typography"),
-    plugin(function ({ addBase, theme }) {
-      addBase({
-        ":root": {
-          "--fs-auth-size": "18px",
-          "--fs-auth-title": "24px",
-          "--fs-auth-placeholder": "16px",
-          "--fw-extraBold": "900",
-          "--fw-bold": "700",
-          "--fw-medium": "500",
-          "--fw-regular": "400",
-          "--fw-semiBold": "600",
-          "--fs-auth-illustration-text": "28px",
-          "--f-spacing-4": "0.04em",
-        },
-        [`@media (min-width: ${theme("screens.lg")})`]: {
-          ":root": {
-            "--fs-auth-title": "30px",
-            "--fs-auth-size": "20px",
-          },
-        },
-        h1: {
-          fontFamily: theme("fontFamily.inter"),
-          fontSize: "var(--fs-auth-title)",
-          lineHeight: theme("lineHeight.normal"),
-          fontWeight: theme("fontWeight.bold"),
-          letterSpacing: theme("letterSpacing.tight"),
-        },
-        ".subtitle": {
-          fontFamily: theme("fontFamily.inter"),
-          fontSize: "var(--fs-auth-size)",
-          lineHeight: theme("lineHeight.normal"),
-          fontWeight: theme("fontWeight.medium"),
-          letterSpacing: theme("letterSpacing.tight"),
-        },
-        ".illustration-text": {
-          fontFamily: theme("fontFamily.robotoSlab"),
-          fontSize: "var(--fs-auth-illustration-text)",
-          fontWeight: "var(--fw-medium)",
-        },
-        ".bold-700": {
-          fontFamily: theme("fontFamily.inter"),
-          fontSize: "var(--fs-auth-size)",
-          fontWeight: "var(--fw-bold)",
-        },
-      });
-    }),
-  ],
+  plugins: [require("daisyui"), require("@tailwindcss/typography")],
 };

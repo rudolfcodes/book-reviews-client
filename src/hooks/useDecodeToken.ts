@@ -6,13 +6,30 @@ import { UserType } from "@/types/user";
 
 const useDecodeToken = () => {
   const [user, setUser] = useState<UserType | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  const loadUserFromToken = () => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      try {
+        const decodedUser = jwtDecode<UserType>(token);
+        console.log("Decoded user:", decodedUser);
+        setUser(decodedUser);
+      } catch (error) {
+        console.error("Error decoding token:", error);
+        localStorage.removeItem("token");
+        setUser(null);
+      }
+    } else {
+      console.log("No token found in localStorage");
+      setUser(null);
+    }
+    setLoading(false);
+  };
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      const decodedUser = jwtDecode<UserType>(token);
-      setUser(decodedUser);
-    }
+    loadUserFromToken();
   }, []);
 
   const logout = () => {
@@ -20,7 +37,12 @@ const useDecodeToken = () => {
     setUser(null);
   };
 
-  return { user, setUser, logout };
+  const refreshUser = () => {
+    setLoading(true);
+    loadUserFromToken();
+  };
+
+  return { user, setUser, loading, logout, refreshUser };
 };
 
 export default useDecodeToken;
