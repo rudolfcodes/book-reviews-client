@@ -31,7 +31,7 @@ const ListPopularClubs = () => {
         Popular near you
       </h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-7">
         {popularClubs.map((club) => (
           <ClubCard key={club._id} {...club} />
         ))}
