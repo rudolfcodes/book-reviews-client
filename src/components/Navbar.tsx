@@ -6,7 +6,7 @@ interface NavbarProps {
 
 const Navbar = ({ children }: NavbarProps) => {
   return (
-    <header className="flex justify-between items-center p-4 bg-white h-20 z-10">
+    <header className="flex justify-between items-center sticky top-0 p-4 bg-white h-20 z-10">
       {children}
     </header>
   );
