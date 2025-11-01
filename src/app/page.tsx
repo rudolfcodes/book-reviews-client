@@ -15,6 +15,7 @@ import CTABanner from "@/components/CTABanner";
 import discoveryCTA from "@/data/discoveryCTA";
 import ChatTeaser from "@/components/ChatTeaser";
 import HowItWorks from "@/components/HowItWorks";
+import Link from "next/link";
 
 const navItems = [
   { label: "Explore", href: "/" },
@@ -58,11 +59,13 @@ export default async function Home() {
       </Head>
       <Navbar>
         <InnerWrapper>
-          <Logo
-            className="w-36"
-            imageSrc="/images/logo.png"
-            alt="Swiss Book Club Logo"
-          />
+          <Link href="/">
+            <Logo
+              className="w-36"
+              imageSrc="/images/logo.png"
+              alt="Swiss Book Club Logo"
+            />
+          </Link>
           <NavMenu items={navItems} className="hidden lg:block" />
           <div className="hidden lg:block">
             <UserProfileDropdown />
