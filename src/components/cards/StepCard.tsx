@@ -14,11 +14,11 @@ const StepCard = ({
   actionLink,
 }: StepType) => {
   return (
-    <BaseCard className="relative p-7 font-inter flex">
-      <div className="absolute top-0 left-0 p-2 bg-primary-grey border-secondary-grey border-b border-r rounded-full">
+    <BaseCard className="relative p-7 font-inter flex lg:max-w-[244px] h-[222px]">
+      <div className="absolute -top-3 -left-3 p-2 py-0 bg-[#CCCCCC] border-secondary-grey border-b border-r rounded-full z-10">
         <span className="text-white font-bold">{stepNumber}</span>
       </div>
-      <div className="bg-red-500 h-1 w-3/4 rounded-t-xl" />
+      <div className="bg-error absolute top-0 left-0 h-[1px] w-[97%]" />
 
       <FlexContainer className="flex-col gap-2 mb-3">
         {icon}
@@ -30,7 +30,10 @@ const StepCard = ({
         text={description}
       />
 
-      <Link href={actionLink} className="text-tertiary-grey mt-auto">
+      <Link
+        href={actionLink}
+        className="text-tertiary-grey mt-auto text-xs text-right"
+      >
         {actionText} →
       </Link>
     </BaseCard>
