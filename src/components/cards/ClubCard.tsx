@@ -36,7 +36,7 @@ const ClubCard = ({
   ];
 
   return (
-    <BaseCard key={_id} className="min-h-[563px] justify-between">
+    <BaseCard key={_id} className="min-h-[563px] max-w-[360px] justify-between">
       <img
         src={imageUrl || "/images/club-placeholder.jpg"}
         alt={name}
