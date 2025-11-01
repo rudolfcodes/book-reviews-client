@@ -63,8 +63,18 @@ export default async function Home() {
             imageSrc="/images/logo.png"
             alt="Swiss Book Club Logo"
           />
-          <NavMenu items={navItems} />
-          <UserProfileDropdown />
+          <NavMenu items={navItems} className="hidden lg:block" />
+          <div className="hidden lg:block">
+            <UserProfileDropdown />
+          </div>
+          {/* Hamburger menu for mobile */}
+          <div className="lg:hidden">
+            <button className="p-2">
+              <span className="block w-6 h-0.5 bg-black mb-1"></span>
+              <span className="block w-6 h-0.5 bg-black mb-1"></span>
+              <span className="block w-6 h-0.5 bg-black"></span>
+            </button>
+          </div>
         </InnerWrapper>
       </Navbar>
       <Hero />
