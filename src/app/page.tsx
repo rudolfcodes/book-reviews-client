@@ -14,6 +14,7 @@ import ListEvents from "@/components/ListEvents";
 import CTABanner from "@/components/CTABanner";
 import discoveryCTA from "@/data/discoveryCTA";
 import ChatTeaser from "@/components/ChatTeaser";
+import HowItWorks from "@/components/HowItWorks";
 
 const navItems = [
   { label: "Explore", href: "/" },
@@ -72,6 +73,7 @@ export default async function Home() {
       <ListEvents />
       <CTABanner {...discoveryCTA} icon={<discoveryCTA.icon />} />
       <ChatTeaser />
+      <HowItWorks />
       <Footer />
     </div>
   );
