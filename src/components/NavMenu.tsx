@@ -43,7 +43,7 @@ const NavMenu = ({ items, className }: NavmenuProps) => {
               {item.label}
             </a>
             {item.label === "My Clubs" && clubCount > 0 && (
-              <Badge className="absolute top-3 -right-4 bg-error !px-2 !py-1 text-white">
+              <Badge className="absolute top-4 -right-4 bg-error !px-2 !py-0.5 text-white">
                 {clubCount}
               </Badge>
             )}
