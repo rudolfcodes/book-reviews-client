@@ -7,6 +7,8 @@ interface ImageProps {
   width: number;
   height: number;
   quality?: number;
+  onLoad?: () => void;
+  onError?: (event: React.SyntheticEvent<HTMLImageElement, Event>) => void;
   className?: string;
 }
 
