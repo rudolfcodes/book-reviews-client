@@ -18,6 +18,8 @@ const NextImage = ({
   width,
   height,
   quality,
+  onLoad,
+  onError,
   className,
 }: ImageProps) => {
   return (
@@ -28,6 +30,8 @@ const NextImage = ({
       height={height}
       quality={quality}
       className={className}
+      onLoad={onLoad}
+      onError={onError}
     />
   );
 };
