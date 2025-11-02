@@ -1,6 +1,7 @@
 import { ClubCardProps } from "@/types";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import NextImage from "./Image";
 
 const ClubCard = ({
   _id,
@@ -29,8 +30,10 @@ const ClubCard = ({
       onClick={handleCardClick}
     >
       <div className="relative">
-        <img
-          src={image}
+        <NextImage
+          width={360}
+          height={170}
+          src={image || "/images/default-club.jpg"}
           alt={`${name} club image`}
           className={`w-full h-40 object-cover ${
             isImageLoaded ? "loaded" : "loading"
