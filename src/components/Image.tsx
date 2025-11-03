@@ -6,6 +6,7 @@ interface ImageProps {
   alt: string;
   width: number;
   height: number;
+  loading?: "lazy" | "eager" | undefined;
   quality?: number;
   onLoad?: () => void;
   onError?: (event: React.SyntheticEvent<HTMLImageElement, Event>) => void;
@@ -18,6 +19,7 @@ const NextImage = ({
   width,
   height,
   quality,
+  loading,
   onLoad,
   onError,
   className,
@@ -29,6 +31,7 @@ const NextImage = ({
       width={width}
       height={height}
       quality={quality}
+      loading={loading}
       className={className}
       onLoad={onLoad}
       onError={onError}
