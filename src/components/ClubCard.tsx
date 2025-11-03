@@ -66,10 +66,12 @@ const ClubCard = ({
         {memberAvatars.length > 0 && (
           <div className="flex -space-x-2 mt-3">
             {memberAvatars.slice(0, 3).map((avatar, index) => (
-              <img
+              <NextImage
                 key={index}
                 src={avatar}
                 alt={`Member ${index + 1}`}
+                width={24}
+                height={24}
                 className="w-6 h-6 rounded-full border-2 border-white"
               />
             ))}
