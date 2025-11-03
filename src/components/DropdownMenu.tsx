@@ -1,5 +1,6 @@
 import React from "react";
 import { DropdownItem } from "./SelectDropdown";
+import NextImage from "./Image";
 
 interface DropdownMenuProps {
   data: Array<DropdownItem>;
@@ -61,10 +62,12 @@ const DropdownMenu = ({
             onClick={() => handleChange(item)}
           >
             {hasImage && (
-              <img
-                src={item.imageUrl}
+              <NextImage
+                src={item.imageUrl || "/images/default-avatar.png"}
                 alt="image"
                 loading="lazy"
+                width={32}
+                height={32}
                 className="w-8 h-8 rounded-full bg-gray-400 object-cover me-2"
               />
             )}
