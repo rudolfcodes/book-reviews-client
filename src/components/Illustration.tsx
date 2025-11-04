@@ -1,4 +1,5 @@
 import React from "react";
+import NextImage from "./Image";
 
 interface IllustrationProps {
   src: string;
@@ -28,7 +29,9 @@ const Illustration = ({
   };
 
   return (
-    <img
+    <NextImage
+      width={520}
+      height={520}
       src={src}
       alt={alt}
       className={`${shapeClasses[shape]} ${sizeClasses[size]} object-cover ${
