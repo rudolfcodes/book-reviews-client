@@ -1,6 +1,7 @@
 import Logo from "@/components/Logo";
 import React from "react";
 import "../../app/globals.css";
+import NextImage from "../Image";
 
 interface AuthPageWrapperProps {
   illustration: {
@@ -18,9 +19,11 @@ export default function AuthPageWrapper({
   return (
     <div className="min-h-screen flex w-full">
       <div className="absolute lg:hidden w-full h-full flex items-center justify-center z-1">
-        <img
+        <NextImage
+          width={520}
+          height={520}
           src="/images/mobile-register.png"
-          alt=""
+          alt="register"
           className="absolute min-h-[220px] inset-0 object-cover object-center left-1/2 transform -translate-x-1/2 w-screen md:-translate-y-[20%]"
         />
       </div>
@@ -42,10 +45,11 @@ export default function AuthPageWrapper({
         <div className="text-center text-white p-8">
           <h2 className="illustration-text mb-10">{illustration.title}</h2>
           <div className="md:w-[579px] md:h-[579px] mx-auto rounded-full flex items-center justify-center">
-            <img
+            <NextImage
               src={illustration.src}
               alt={illustration.alt}
-              className="w-full h-full object-contain"
+              width={520}
+              height={520}
             />
           </div>
         </div>
