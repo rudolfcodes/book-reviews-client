@@ -1,5 +1,6 @@
 import React from "react";
 import FlexContainer from "../FlexContainer";
+import NextImage from "../Image";
 
 interface StatItem {
   icon: string;
@@ -18,7 +19,13 @@ const StatsBar = ({ stats, className }: StatBarProps) => {
     >
       {stats.map((stat) => (
         <div key={stat.icon} className="flex gap-2.5 items-center">
-          <img src={stat.icon} alt="" className="w-3.5 h-3.5" />
+          <NextImage
+            src={stat.icon}
+            alt="statistic icon"
+            width={14}
+            height={14}
+            className="w-3.5 h-3.5"
+          />
           <span>{stat.value}</span>
         </div>
       ))}
