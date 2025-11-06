@@ -2,6 +2,7 @@ import { ClubCardProps } from "@/types";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import NextImage from "./Image";
+import TextContainer from "./TextContainer";
 
 const ClubCard = ({
   _id,
@@ -50,17 +51,22 @@ const ClubCard = ({
         <h3 className="font-semibold text-lg text-gray-900 mb-2 truncate">
           {name}
         </h3>
-        <p className="text-sm text-gray-600 mb-1">Members: {memberCount}</p>
+        <TextContainer
+          text={`Members: ${memberCount}`}
+          className="text-sm text-gray-600 mb-1"
+        />
         {location && (
-          <p className="text-sm text-gray-500 truncate">
-            📍 {location.city}, {location.canton}
-          </p>
+          <TextContainer
+            text={`📍 ${location.city}, ${location.canton}`}
+            className="text-sm text-gray-500 truncate"
+          />
         )}
 
         {distanceFromUser !== null && (
-          <p className="text-xs text-gray-400 mt-2">
-            {distanceFromUser} km away
-          </p>
+          <TextContainer
+            text={`${distanceFromUser} km away`}
+            className="text-xs text-gray-400 mt-2"
+          />
         )}
 
         {memberAvatars.length > 0 && (
