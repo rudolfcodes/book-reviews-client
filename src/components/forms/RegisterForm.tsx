@@ -15,6 +15,7 @@ import BaseButton from "../buttons/BaseButton";
 import TextContainer from "../TextContainer";
 import FlexContainer from "../FlexContainer";
 import { IRegisterFormInput } from "@/types/forms";
+import TitleContainer from "../TitleContainer";
 
 type RegisterFormSchemaType = Omit<IRegisterFormInput, "onSubmit">;
 
@@ -80,7 +81,10 @@ const RegisterForm = () => {
   return (
     <div className="flex flex-col items-center justify-center w-full mt-[150px] lg:mt-0">
       <div className="w-full md:w-[700px]">
-        <h1 className="text-black mb-4 text-center">Join the club now</h1>
+        <TitleContainer
+          className="text-black mb-4 text-center"
+          title="Join the club now"
+        />
         <span className="text-[#777777] text-center block subtitle">
           Create your account
         </span>

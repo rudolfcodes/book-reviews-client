@@ -4,6 +4,7 @@ import React from "react";
 import { useFetchPopularClubs } from "@/hooks/clubs/useFetchClubs";
 import ClubCard from "./cards/ClubCard";
 import InnerWrapper from "./InnerWrapper";
+import TitleContainer from "./TitleContainer";
 
 const ListPopularClubs = () => {
   const { popularClubs, isLoading, isError, refetch } = useFetchPopularClubs();
@@ -27,9 +28,10 @@ const ListPopularClubs = () => {
 
   return (
     <InnerWrapper className="bg-white flex-col my-32 gap-20">
-      <h1 className="font-openSans text-section-title font-semiBold mb-4">
-        Popular near you
-      </h1>
+      <TitleContainer
+        className="font-openSans text-section-title font-semiBold mb-4"
+        title="Popular near you"
+      />
 
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-7">
         {popularClubs.map((club) => (

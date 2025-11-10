@@ -7,6 +7,7 @@ import Badge from "./Badge";
 import Link from "next/link";
 import EventCard from "./cards/EventCard";
 import { useFetchEvents } from "@/hooks/events/useFetchEvents";
+import TitleContainer from "./TitleContainer";
 
 const ListEvents = () => {
   const { events, isLoading, isError, refetch } = useFetchEvents();
@@ -22,9 +23,10 @@ const ListEvents = () => {
   return (
     <section className="bg-hero flex py-section-lg gap-20 bg-opacity-15">
       <InnerWrapper className="flex flex-col">
-        <h1 className="font-openSans text-section-title font-semiBold mb-12">
-          Happening this week near you
-        </h1>
+        <TitleContainer
+          title="Happening this week near you"
+          className="font-openSans text-section-title font-semiBold mb-12"
+        />
 
         {/* Event filter badges: Today, This week, Online, In-person */}
         <FlexContainer className="justify-between items-center mb-24 lg:w-[45%]">

@@ -9,6 +9,7 @@ import FormInput from "../FormInput";
 import BaseButton from "@/components/buttons/BaseButton";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import TitleContainer from "@/components/TitleContainer";
 
 const schema = yup.object().shape({
   oldPassword: yup.string().required("Old password is required"),
@@ -112,9 +113,10 @@ const ResetPasswordForm = () => {
   if (!isValidToken) {
     return (
       <div className="flex flex-col items-center justify-center w-full mt-[150px] lg:mt-0">
-        <h1 className="text-black mb-4 text-center">
-          Invalid or Expired Token
-        </h1>
+        <TitleContainer
+          className="text-black mb-4 text-center"
+          title="Invalid or Expired Token"
+        />
         <p className="text-[#777777] text-center block subtitle">
           The reset link is invalid or has expired. Please request a new one.
         </p>
@@ -131,7 +133,10 @@ const ResetPasswordForm = () => {
   return (
     <div className="flex flex-col items-center justify-center w-full mt-[150px] lg:mt-0">
       <div className="w-full md:w-[700px]">
-        <h1 className="text-black mb-4 text-center">Reset Password</h1>
+        <TitleContainer
+          className="text-black mb-4 text-center"
+          title="Reset Password"
+        />
         <span className="text-[#777777] text-center block subtitle">
           {isValidToken
             ? "Enter your new password below"

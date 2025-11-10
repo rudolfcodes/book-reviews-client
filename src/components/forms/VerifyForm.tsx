@@ -8,6 +8,7 @@ import FlexContainer from "../FlexContainer";
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import useUser from "@/hooks/useUser";
+import TitleContainer from "../TitleContainer";
 
 interface VerifyOTPRequest {
   userId: string | null;
@@ -112,9 +113,10 @@ const VerifyForm = () => {
     <div className="flex flex-col w-full py-8">
       <div className="w-full xs:pt-[35px] sm:pt-[85px] lg:pt-0 md:w-[700px] max-w-md">
         <form onSubmit={handleSubmit} className="flex flex-col items-center">
-          <h1 className="text-black mb-3 text-center">
-            Enter Verification Code
-          </h1>
+          <TitleContainer
+            className="text-black mb-3 text-center"
+            title="Enter Verification Code"
+          />
           <span className="text-[#777777] text-center block subtitle max-w-64">
             Enter the 4-digit code we've sent to your email
           </span>
