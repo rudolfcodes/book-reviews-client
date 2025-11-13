@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 
 interface OutsideClickHandlerProps {
   ref: React.RefObject<HTMLElement>;
@@ -6,18 +6,21 @@ interface OutsideClickHandlerProps {
 }
 
 const useOutsideClick = ({ ref, handler }: OutsideClickHandlerProps) => {
-  useEffect(() => {
-    const handleClick = (event: MouseEvent) => {
+  const handleClick = useCallback(
+    (event: MouseEvent) => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
         handler();
       }
-    };
+    },
+    [ref, handler]
+  );
 
+  useEffect(() => {
     document.addEventListener("mousedown", handleClick);
     return () => {
       document.removeEventListener("mousedown", handleClick);
     };
-  }, [ref, handler]);
+  }, [handleClick]);
 };
 
 export default useOutsideClick;
