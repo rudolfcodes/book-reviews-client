@@ -39,7 +39,6 @@ export default async function Home() {
       ) as DecodedToken;
       userId = decoded.userId;
       decodedToken = decoded;
-      console.log({ decoded });
     } catch (error) {
       console.log("something went wrong with verifying the token", error);
     }
