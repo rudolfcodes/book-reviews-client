@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import BaseButton from "./buttons/BaseButton";
 import ChevronDownIcon from "./icons/ChevronDown";
 import ChevronUpIcon from "./icons/ChevronUp";
@@ -47,11 +47,14 @@ const SelectDropdown = ({
     handler: () => setIsOpen(false),
   });
 
-  const handleChange = (item: DropdownItem) => {
-    setSelectedItem(item);
-    onSelect(item);
-    setIsOpen(false);
-  };
+  const handleChange = useCallback(
+    (item: DropdownItem) => {
+      setSelectedItem(item);
+      onSelect(item);
+      setIsOpen(false);
+    },
+    [onSelect]
+  );
 
   useEffect(() => {
     if (selectedId && data.length > 0) {
