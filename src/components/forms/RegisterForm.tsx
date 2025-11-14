@@ -16,6 +16,7 @@ import TextContainer from "../TextContainer";
 import FlexContainer from "../FlexContainer";
 import { IRegisterFormInput } from "@/types/forms";
 import TitleContainer from "../TitleContainer";
+import { AxiosError } from "axios";
 
 type RegisterFormSchemaType = Omit<IRegisterFormInput, "onSubmit">;
 
@@ -65,16 +66,16 @@ const RegisterForm = () => {
       setTimeout(() => {
         router.push("/auth/login");
       }, TIMEOUT);
-    } catch (error: any) {
-      if (error?.response?.data) {
+    } catch (error: unknown) {
+      if (error instanceof AxiosError && error.response) {
         setApiError(error.response.data.message || "Registration failed");
+        console.error(
+          "Registration failed: ",
+          error.response?.data?.message || error.message
+        );
       } else {
         setApiError("Sorry, an unexpected error ocurred.");
       }
-      console.error(
-        "Registration failed: ",
-        error.response?.data?.message || error.message
-      );
     }
   };
 

@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import useUser from "@/hooks/useUser";
 import TitleContainer from "../TitleContainer";
+import { AxiosError } from "axios";
 
 interface VerifyOTPRequest {
   userId: string | null;
@@ -22,12 +23,14 @@ const verifyOtp = async (data: VerifyOTPRequest) => {
   try {
     const response = await axiosInstance.post("/api/users/verify-otp", data);
     return response.data;
-  } catch (error: any) {
-    console.error("Error verifying OTP:", error);
-    return {
-      success: false,
-      message: error.response?.data?.error || "Verification failed",
-    };
+  } catch (error: unknown) {
+    if (error instanceof AxiosError && error.response) {
+      console.error("Error verifying OTP:", error.response.data);
+      return {
+        success: false,
+        message: error.response?.data?.error || "Verification failed",
+      };
+    }
   }
 };
 

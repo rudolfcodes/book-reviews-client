@@ -16,6 +16,7 @@ import FlexContainer from "../FlexContainer";
 import TextContainer from "../TextContainer";
 import CheckInput from "./CheckInput";
 import TitleContainer from "../TitleContainer";
+import { AxiosError } from "axios";
 
 const schema: yup.ObjectSchema<any> = yup.object({
   email: yup.string().email("Invalid email").required("Email is required"),
@@ -60,16 +61,16 @@ const LoginForm = () => {
           router.push("/auth/verify-otp");
         }, TIMEOUT);
       }
-    } catch (error: any) {
-      if (error?.response?.data) {
-        setApiError(error.response.data.error || "Login failed");
+    } catch (error: unknown) {
+      if (error instanceof AxiosError && error.response) {
+        setApiError(error?.response.data.error || "Login failed");
+        console.error(
+          "Login failed: ",
+          error.response?.data?.error || error.message
+        );
       } else {
         setApiError("Sorry, an unexpected error occurred.");
       }
-      console.error(
-        "Login failed: ",
-        error.response?.data?.error || error.message
-      );
     }
   };
 
