@@ -1,9 +1,10 @@
 import React from "react";
+import { UseFormRegisterReturn } from "react-hook-form";
 
 interface FormInputProps {
   label: string;
   type: string;
-  register: any; // This will use the register function from react-hook-form
+  register: UseFormRegisterReturn;
   error?: string;
   required?: boolean;
   className?: string;
