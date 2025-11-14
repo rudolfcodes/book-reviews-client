@@ -1,4 +1,5 @@
 import React from "react";
+import NextImage from "./Image";
 
 type Props = {
   imageSrc: string;
@@ -9,7 +10,13 @@ type Props = {
 const Logo = ({ imageSrc, alt, className }: Props) => {
   return (
     <div className={`flex justify-center lg:justify-normal ${className}`}>
-      <img className="h-auto" src={imageSrc} alt={alt} />
+      <NextImage
+        width={150}
+        height={50}
+        src={imageSrc}
+        alt={alt}
+        className="h-auto"
+      />
     </div>
   );
 };

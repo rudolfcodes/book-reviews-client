@@ -9,6 +9,7 @@ import useClubsStore from "@/stores/clubsStore";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import BadgeList from "../BadgeList";
 import TextContainer from "../TextContainer";
+import NextImage from "../Image";
 
 const ClubCard = ({
   _id,
@@ -37,12 +38,13 @@ const ClubCard = ({
 
   return (
     <BaseCard key={_id} className="min-h-[563px] max-w-[360px] justify-between">
-      <img
+      <NextImage
         src={imageUrl || "/images/club-placeholder.jpg"}
         alt={name}
+        width={360}
+        height={160}
         className="w-full h-32 object-cover rounded-tl-xl rounded-tr-xl lg:h-40"
       />
-
       <FlexContainer className="flex-col gap-2 px-7 py-8 flex-1">
         <h3 className="text-card-title font-medium mb-2 text-ellipsis overflow-hidden whitespace-nowrap">
           {name}

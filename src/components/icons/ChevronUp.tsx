@@ -1,5 +1,6 @@
+import { IconProps } from "@/types/icon/icon.types";
 import * as React from "react";
-const ChevronUpIcon = (props: any) => (
+const ChevronUpIcon = (props: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={10}

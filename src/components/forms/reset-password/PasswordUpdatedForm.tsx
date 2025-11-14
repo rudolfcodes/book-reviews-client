@@ -4,6 +4,7 @@ import BaseButton from "@/components/buttons/BaseButton";
 import React from "react";
 import { useRouter } from "next/navigation";
 import FlexContainer from "@/components/FlexContainer";
+import TitleContainer from "@/components/TitleContainer";
 
 const PasswordUpdatedForm = () => {
   const router = useRouter();
@@ -11,7 +12,10 @@ const PasswordUpdatedForm = () => {
   return (
     <div className="flex flex-col items-center justify-center w-full mt-[150px] lg:mt-0">
       <div className="w-full md:w-[700px]">
-        <h1 className="text-black mb-4 text-center">Password Updated!</h1>
+        <TitleContainer
+          className="text-black mb-4 text-center"
+          title="Password Updated!"
+        />
         <span className="text-[#777777] text-center block subtitle">
           Congratulations! Your password has been successfully reset.
         </span>

@@ -2,6 +2,7 @@ import { Attendee } from "@/types/event/event.types";
 import React from "react";
 import FlexContainer from "../FlexContainer";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
+import NextImage from "../Image";
 
 interface ListAttendeesProps {
   attendees: Attendee[];
@@ -19,9 +20,11 @@ const ListAttendees = ({ attendees, maxAttendees }: ListAttendeesProps) => {
             key={`${index}-attendee-${attendee.userId}`}
             className="w-9 h-9 rounded-full overflow-hidden -ml-2"
           >
-            <img
+            <NextImage
               src={user?.avatar || "/images/avatar-placeholder.jpg"}
               alt={user?.username}
+              width={36}
+              height={36}
               className="w-full h-full object-cover"
             />
           </div>

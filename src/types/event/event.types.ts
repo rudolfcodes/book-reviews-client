@@ -11,7 +11,6 @@ interface EventEntity {
   attendees: Attendee[];
   maxAttendees?: number;
   language: "en" | "de" | "fr" | "it";
-  // TODO book: string; // To be replaced with a Book type when available
 }
 
 type Attendee = {

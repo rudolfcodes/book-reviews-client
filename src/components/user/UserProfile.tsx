@@ -2,6 +2,7 @@
 
 import useUser from "@/hooks/useUser";
 import React from "react";
+import NextImage from "../Image";
 
 const profileItems = [
   { label: "My Profile", href: "/profile" },
@@ -30,7 +31,12 @@ const UserProfileDropdown = () => {
       >
         <div className="w-10 rounded-full">
           {user.avatar ? (
-            <img alt={`${user.username}'s avatar`} src={user.avatar} />
+            <NextImage
+              alt={`${user.username}'s avatar`}
+              src={user.avatar}
+              width={40}
+              height={40}
+            />
           ) : (
             <div className="w-10 h-10 flex items-center justify-center bg-gray-300 rounded-full">
               {user.username.charAt(0).toUpperCase()}

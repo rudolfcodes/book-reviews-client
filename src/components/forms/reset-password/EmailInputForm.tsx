@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import axiosInstance from "@/utils/axios";
 import Link from "next/link";
+import TitleContainer from "@/components/TitleContainer";
 
 type EmailInputFormProps = {
   email: string;
@@ -49,7 +50,10 @@ const EmailInputForm = () => {
   return (
     <div className="flex flex-col items-center justify-center w-full mt-[150px] lg:mt-0">
       <div className="w-full md:w-[700px]">
-        <h1 className="text-black mb-4 text-center">Reset Password</h1>
+        <TitleContainer
+          className="text-black mb-4 text-center"
+          title="Reset Password"
+        />
         <span className="text-[#777777] text-center block subtitle">
           Enter your email to receive a password reset link
         </span>

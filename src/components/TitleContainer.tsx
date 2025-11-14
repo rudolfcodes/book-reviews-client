@@ -16,13 +16,15 @@ const TitleContainer = ({
   coloredText,
 }: TitleContainerProps) => {
   return (
-    <div className={className}>
-      <h1 className="text-modern-primary text-5xl font-semibold">
-        {coloredText
-          ? highlightText(title, coloredText?.text, coloredText?.color)
-          : title}
-      </h1>
-    </div>
+    <h1
+      className={`text-modern-primary text-5xl font-semibold ${
+        className || ""
+      }`}
+    >
+      {coloredText
+        ? highlightText(title, coloredText?.text, coloredText?.color)
+        : title}
+    </h1>
   );
 };
 

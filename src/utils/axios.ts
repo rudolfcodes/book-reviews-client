@@ -2,7 +2,7 @@ import axios from "axios";
 
 // This axios instance acts as a centralized gateway for all HTTP requests
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000/",
+  baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/",
   headers: {
     "Content-Type": "application/json",
   },

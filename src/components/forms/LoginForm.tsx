@@ -15,6 +15,8 @@ import BaseButton from "../buttons/BaseButton";
 import FlexContainer from "../FlexContainer";
 import TextContainer from "../TextContainer";
 import CheckInput from "./CheckInput";
+import TitleContainer from "../TitleContainer";
+import { AxiosError } from "axios";
 
 const schema: yup.ObjectSchema<any> = yup.object({
   email: yup.string().email("Invalid email").required("Email is required"),
@@ -59,23 +61,26 @@ const LoginForm = () => {
           router.push("/auth/verify-otp");
         }, TIMEOUT);
       }
-    } catch (error: any) {
-      if (error?.response?.data) {
-        setApiError(error.response.data.error || "Login failed");
+    } catch (error: unknown) {
+      if (error instanceof AxiosError && error.response) {
+        setApiError(error?.response.data.error || "Login failed");
+        console.error(
+          "Login failed: ",
+          error.response?.data?.error || error.message
+        );
       } else {
         setApiError("Sorry, an unexpected error occurred.");
       }
-      console.error(
-        "Login failed: ",
-        error.response?.data?.error || error.message
-      );
     }
   };
 
   return (
     <div className="flex flex-col items-center justify-center w-full mt-[150px] lg:mt-0">
       <div className="w-full md:w-[700px]">
-        <h1 className="text-black mb-4 text-center">Welcome Back</h1>
+        <TitleContainer
+          className="text-black mb-4 text-center"
+          title="Welcome Back"
+        />
         <span className="text-[#777777] text-center block subtitle">
           Enter your login details below
         </span>

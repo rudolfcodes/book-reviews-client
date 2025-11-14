@@ -14,7 +14,6 @@ const useDecodeToken = () => {
     if (token) {
       try {
         const decodedUser = jwtDecode<UserType>(token);
-        console.log("Decoded user:", decodedUser);
         setUser(decodedUser);
       } catch (error) {
         console.error("Error decoding token:", error);
@@ -22,7 +21,6 @@ const useDecodeToken = () => {
         setUser(null);
       }
     } else {
-      console.log("No token found in localStorage");
       setUser(null);
     }
     setLoading(false);
