@@ -25,7 +25,7 @@ const FormInput = ({
       <label className="block text-auth-label">
         {label} {required && <span className="text-red-500">*</span>}
         <input
-          className="input input-bordered w-full h-[60px] rounded-md border-2 border-blue-cream mt-3 shadow-dark-input"
+          className="input input-bordered w-full h-[60px] rounded-md border-2 border-blue-cream mt-3 shadow-soft-card"
           type={type}
           {...register}
           required={required}
