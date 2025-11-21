@@ -62,6 +62,7 @@ module.exports = {
         "blue-cream": "#63ABC3",
         "primary-grey": "#7C7C7C",
         "secondary-grey": "#D7D7D7",
+        "tertiary-grey": "#F6F6F6",
         "modern-primary": "#2D2D2A",
         "modern-secondary": "#FAF3E0",
         "modern-accent": "#E4572E",
