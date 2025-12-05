@@ -14,6 +14,11 @@ const openSans = Open_Sans({
   variable: "--font-open-sans",
   weight: ["400", "600", "700"],
 });
+const plusJakarta = Open_Sans({
+  subsets: ["latin"],
+  variable: "--font-plus-jakarta",
+  weight: ["400", "600", "700"],
+});
 
 export const metadata = {
   title: "Swiss Book Club - Discover and Join Book Clubs",
@@ -32,7 +37,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" />
       </head>
       <body
-        className={`${inter.className} ${roboto.variable} ${openSans.variable}`}
+        className={`${inter.className} ${roboto.variable} ${openSans.variable} ${plusJakarta.variable}`}
       >
         <div className="flex flex-1">
           <Providers>
