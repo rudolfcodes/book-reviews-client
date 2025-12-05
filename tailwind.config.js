@@ -18,6 +18,7 @@ module.exports = {
         inter: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
         robotoSlab: ["var(--font-roboto-slab)", "serif"],
         openSans: ["var(--font-open-sans)", "sans-serif"],
+        plusJakarta: ["var(--font-plus-jakarta)", "sans-serif"],
       },
       fontSize: {
         "auth-title": ["24px", { lineHeight: "normal" }],
