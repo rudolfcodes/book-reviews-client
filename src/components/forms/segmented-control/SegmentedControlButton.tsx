@@ -17,7 +17,7 @@ const SegmentedControlButton = ({
     <button
       className={`flex-1 bg-white py-2 px-4 text-center cursor-pointer rounded-xl ${
         isActive
-          ? "bg-modern-primary text-white font-medium"
+          ? "!bg-modern-primary text-white font-medium"
           : "bg-white text-modern-primary font-normal hover:bg-gray-100"
       }`}
       onClick={() => onClick(value)}
