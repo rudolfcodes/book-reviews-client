@@ -1,20 +1,23 @@
 import React from "react";
 import FlexContainer from "../FlexContainer";
+import { UseFormRegisterReturn } from "react-hook-form";
 
 type TextAreaProps = {
   label: string;
-  placeholder?: string;
-  value: string;
-  onChange: (value: string) => void;
+  error: string | undefined;
+  register: UseFormRegisterReturn;
   rows?: number;
+  placeholder?: string;
   className?: string;
+  required?: boolean;
 };
 
 const TextArea = ({
   label,
   placeholder,
-  value,
-  onChange,
+  register,
+  error,
+  required,
   rows,
   className,
 }: TextAreaProps) => {
@@ -26,11 +29,12 @@ const TextArea = ({
           className={`w-full p-4 border border-border-grey rounded-md shadow-soft-card focus:outline-none focus:ring-2 focus:ring-blue-cream ${
             className || ""
           }`}
-          placeholder={placeholder}
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
           rows={rows}
+          required={required}
+          placeholder={placeholder}
+          {...register}
         />
+        {error && <p className="text-error text-sm">{error}</p>}
       </label>
     </FlexContainer>
   );
