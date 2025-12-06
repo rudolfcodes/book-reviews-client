@@ -68,7 +68,6 @@ module.exports = {
         "modern-secondary": "#FAF3E0",
         "modern-accent": "#E4572E",
         "border-grey": "#E5E7EB",
-        "tertiary-grey": "#4B5563",
         "input-color": "#4B5563",
         "badge-green": "#33D71D",
         "badge-default": "#ECECEC",
