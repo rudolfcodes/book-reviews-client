@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
 interface SegmentedControlButtonProps {
   label: string;
@@ -7,24 +7,23 @@ interface SegmentedControlButtonProps {
   onClick: (value: string) => void;
 }
 
-const SegmentedControlButton = ({
-  label,
-  value,
-  isActive,
-  onClick,
-}: SegmentedControlButtonProps) => {
+const SegmentedControlButton = forwardRef<
+  HTMLButtonElement,
+  SegmentedControlButtonProps
+>(({ label, value, isActive, onClick }, ref) => {
   return (
     <button
-      className={`flex-1 bg-white py-2 px-4 text-center cursor-pointer rounded-xl ${
-        isActive
-          ? "!bg-modern-primary text-white font-medium"
-          : "bg-white text-modern-primary font-normal hover:bg-gray-100"
+      ref={ref}
+      className={`relative z-10 bg-transparent py-2 px-6 text-center cursor-pointer rounded-xl transition-colors duration-300 whitespace-nowrap ${
+        isActive ? "text-black font-medium" : "text-modern-primary font-normal"
       }`}
       onClick={() => onClick(value)}
     >
       {label}
     </button>
   );
-};
+});
+
+SegmentedControlButton.displayName = "SegmentedControlButton";
 
 export default SegmentedControlButton;
