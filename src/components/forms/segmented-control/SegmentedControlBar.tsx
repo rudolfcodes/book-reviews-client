@@ -21,7 +21,7 @@ const SegmentedControlBar = ({
 }: SegmentedControlBarProps) => {
   return (
     <div
-      className={`flex w-full py-2 px-8 justify-evenly lg:w-[530px] bg-tertiary-grey rounded-2xl overflow-hidden ${
+      className={`flex w-full px-11 py-2 justify-between lg:w-[530px] bg-tertiary-grey rounded-2xl overflow-hidden ${
         className || ""
       }`}
     >
