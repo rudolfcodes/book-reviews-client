@@ -80,6 +80,7 @@ module.exports = {
       boxShadow: {
         "custom-black": "0 0 50px 5px rgba(0, 0, 0, 0.05)",
         "soft-card": "0 0 4px 0 rgba(0, 0, 0, 0.25)",
+        smooth: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
       },
       spacing: {
         // Internal components
