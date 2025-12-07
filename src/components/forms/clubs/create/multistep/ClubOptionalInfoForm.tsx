@@ -10,6 +10,7 @@ import { languages } from "@/data/languages";
 import { useState } from "react";
 import SelectDropdown from "@/components/SelectDropdown";
 import GlobeIcon from "@/components/icons/GlobeIcon";
+import FileInput from "@/components/forms/FileInput";
 
 type ClubOptionalInfoFormProps = {
   onSubmit: (data: any) => void;
@@ -79,10 +80,9 @@ const ClubOptionalInfoForm = ({ onSubmit }: ClubOptionalInfoFormProps) => {
           placeholder="What book will you be discussing?"
         />
         <FlexContainer className="gap-4">
-          <FormInput
+          <FileInput
             className="w-1/2"
             label="Club image:"
-            type="file"
             register={register("clubimageUrl")}
             error={errors.clubimageUrl?.message}
             placeholder="Upload image"
