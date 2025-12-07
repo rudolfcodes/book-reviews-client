@@ -40,7 +40,7 @@ const ClubNameForm = ({ onSubmit }: ClubNameFormProps) => {
   return (
     <FlexContainer className="w-full flex flex-col gap-6 mt-6">
       <TitleContainer
-        className="text-black mb-4 text-center"
+        className="text-black mb-4"
         title="Create a new literary community"
       />
       <TextContainer text="A great club name will increase the chances of more engaged members" />
