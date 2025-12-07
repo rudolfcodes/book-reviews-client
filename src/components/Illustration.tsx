@@ -30,7 +30,7 @@ const Illustration = ({
     small: "w-16 h-16",
     medium: "w-48 h-48 lg:w-64 lg:h-64",
     large: "w-72 h-72 lg:w-96 lg:h-96 xl:w-[520px] xl:h-[520px]",
-    auto: "w-64 h-64 lg:w-1/2 lg:h-1/2 xl:w-auto xl:h-auto",
+    auto: "w-full max-w-[720px] h-auto",
   };
 
   return (
