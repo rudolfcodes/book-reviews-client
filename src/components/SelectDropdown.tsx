@@ -25,6 +25,7 @@ interface DropdownProps {
   hasImage?: boolean;
   selectedId?: string;
   onSelect: (selectedItem: DropdownItem) => void;
+  icon?: React.ReactNode;
 }
 
 const SelectDropdown = ({
@@ -35,6 +36,7 @@ const SelectDropdown = ({
   hasImage,
   selectedId,
   onSelect,
+  icon,
 }: DropdownProps) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -69,13 +71,14 @@ const SelectDropdown = ({
     <div ref={dropdownRef} className="relative">
       <BaseButton
         id={id}
-        className="flex justify-between items-center gap-5 rounded w-full py-2 px-4 bg-white font-openSans text-base font-semibold text-input-color border-border-grey"
+        className="flex justify-between items-center gap-5 shadow-input-shadow rounded w-full py-2 px-4 bg-white font-openSans text-base font-semibold text-input-color border-border-grey"
         type="button"
         ariaLabel={title}
         ariaHasPopup={isOpen}
         ariaExpanded={isOpen}
         onClick={() => setIsOpen(!isOpen)}
       >
+        {!selectedItem && icon}
         <span>{selectedItem ? selectedItem.name : title}</span>
         <FlexContainer className="flex flex-col ml-4 gap-2">
           <ChevronUpIcon />
