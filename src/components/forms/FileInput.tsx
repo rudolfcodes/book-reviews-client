@@ -61,8 +61,9 @@ const FileInput = ({
           }}
         />
         <div
-          className={`flex items-center gap-3 shadow-input-shadow rounded w-full py-2 px-4 bg-white font-openSans text-base font-semibold text-input-color border-border-grey ${
-            error ? "border-error" : ""
+          className={`flex items-center gap-5 input input-bordered w-full py-2 h-12 bg-white border-gray-200 shadow-input-shadow ${
+            icon ? "pl-2" : "px-4"
+          } ${error ? "border-error" : ""}
           }`}
         >
           {icon && <div>{icon}</div>}
