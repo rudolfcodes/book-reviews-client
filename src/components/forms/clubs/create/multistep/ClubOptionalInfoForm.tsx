@@ -6,9 +6,10 @@ import TitleContainer from "@/components/TitleContainer";
 import TextContainer from "@/components/TextContainer";
 import FormInput from "@/components/forms/FormInput";
 import ImageUploadIcon from "@/components/icons/ImageUpload";
-import DropdownMenu from "@/components/DropdownMenu";
 import { languages } from "@/data/languages";
 import { useState } from "react";
+import SelectDropdown from "@/components/SelectDropdown";
+import GlobeIcon from "@/components/icons/GlobeIcon";
 
 type ClubOptionalInfoFormProps = {
   onSubmit: (data: any) => void;
@@ -62,7 +63,7 @@ const ClubOptionalInfoForm = ({ onSubmit }: ClubOptionalInfoFormProps) => {
         title="Complete your club information"
       />
       <TextContainer text="Add a nice image, genre and explain where the club takes place" />
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className="flex flex-col gap-9" onSubmit={handleSubmit(onSubmit)}>
         <FormInput
           label="Genre:"
           type="text"
@@ -79,6 +80,7 @@ const ClubOptionalInfoForm = ({ onSubmit }: ClubOptionalInfoFormProps) => {
         />
         <FlexContainer className="gap-4">
           <FormInput
+            className="w-1/2"
             label="Club image:"
             type="file"
             register={register("clubimageUrl")}
@@ -86,14 +88,19 @@ const ClubOptionalInfoForm = ({ onSubmit }: ClubOptionalInfoFormProps) => {
             placeholder="Upload image"
             icon={<ImageUploadIcon />}
           />
-          <DropdownMenu
-            data={languages}
-            ariaLabel="language select dropdown"
-            handleChange={(language) => setSelectedLanguage(language.name)}
-            selectedId={selectedLanguage}
-            id="club-language"
-            hasImage
-          />
+
+          <div className="flex flex-col w-full justify-end">
+            <SelectDropdown
+              id="club-language"
+              title="Language"
+              data={languages}
+              onSelect={(language) => setSelectedLanguage(language.name)}
+              selectedId={selectedLanguage}
+              position="top-full-left-0"
+              icon={<GlobeIcon />}
+              hasImage
+            />
+          </div>
         </FlexContainer>
       </form>
     </FlexContainer>
