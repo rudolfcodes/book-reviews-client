@@ -2,6 +2,13 @@ import UserProvider from "@/context/UserProvider";
 import "./globals.css";
 import { Inter, Roboto_Slab, Open_Sans } from "next/font/google";
 import Providers from "./providers";
+import Navbar from "@/components/Navbar";
+import InnerWrapper from "@/components/InnerWrapper";
+import Link from "next/link";
+import Logo from "@/components/Logo";
+import NavMenu from "@/components/NavMenu";
+import UserProfileDropdown from "@/components/user/UserProfile";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto_Slab({
@@ -25,6 +32,13 @@ export const metadata = {
   description: "Join a community of book lovers across Switzerland!",
 };
 
+const navItems = [
+  { label: "Explore", href: "/" },
+  { label: "My Clubs", href: "/clubs" },
+  { label: "Messages", href: "/messages" },
+  { label: "Events", href: "/events" },
+];
+
 export default function RootLayout({
   children,
 }: {
@@ -39,11 +53,9 @@ export default function RootLayout({
       <body
         className={`${inter.className} ${roboto.variable} ${openSans.variable} ${plusJakarta.variable}`}
       >
-        <div className="flex flex-1">
-          <Providers>
-            <UserProvider>{children}</UserProvider>
-          </Providers>
-        </div>
+        <Providers>
+          <UserProvider>{children}</UserProvider>
+        </Providers>
       </body>
     </html>
   );
