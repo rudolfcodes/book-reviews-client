@@ -1,14 +1,12 @@
 import UserProvider from "@/context/UserProvider";
 import "./globals.css";
-import { Inter, Roboto_Slab, Open_Sans } from "next/font/google";
+import {
+  Inter,
+  Roboto_Slab,
+  Open_Sans,
+  Plus_Jakarta_Sans,
+} from "next/font/google";
 import Providers from "./providers";
-import Navbar from "@/components/Navbar";
-import InnerWrapper from "@/components/InnerWrapper";
-import Link from "next/link";
-import Logo from "@/components/Logo";
-import NavMenu from "@/components/NavMenu";
-import UserProfileDropdown from "@/components/user/UserProfile";
-import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto_Slab({
@@ -21,7 +19,7 @@ const openSans = Open_Sans({
   variable: "--font-open-sans",
   weight: ["400", "600", "700"],
 });
-const plusJakarta = Open_Sans({
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-plus-jakarta",
   weight: ["400", "600", "700"],
@@ -31,13 +29,6 @@ export const metadata = {
   title: "Swiss Book Club - Discover and Join Book Clubs",
   description: "Join a community of book lovers across Switzerland!",
 };
-
-const navItems = [
-  { label: "Explore", href: "/" },
-  { label: "My Clubs", href: "/clubs" },
-  { label: "Messages", href: "/messages" },
-  { label: "Events", href: "/events" },
-];
 
 export default function RootLayout({
   children,
