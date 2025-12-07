@@ -17,6 +17,7 @@ interface DropdownMenuProps {
   className?: string;
   hasImage?: boolean;
   selectedId?: string;
+  renderIcon?: (item: DropdownItem) => React.ReactNode;
 }
 
 const positionClasses: { [key: string]: string } = {
@@ -36,6 +37,7 @@ const DropdownMenu = ({
   id,
   className,
   hasImage,
+  renderIcon,
   selectedId,
 }: DropdownMenuProps) => {
   return (
@@ -61,6 +63,8 @@ const DropdownMenu = ({
             }`}
             onClick={() => handleChange(item)}
           >
+            {renderIcon && renderIcon(item)}
+
             {hasImage && (
               <NextImage
                 src={item.imageUrl || "/images/default-avatar.png"}
