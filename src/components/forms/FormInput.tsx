@@ -31,7 +31,7 @@ const FormInput = ({
 
   return (
     <div className={`${className || ""} w-full`}>
-      <label className="block text-auth-label">
+      <label htmlFor={register.name} className="block text-auth-label">
         {label} {required && <span className="text-red-500">*</span>}
       </label>
       <div className="relative mt-3">
@@ -41,6 +41,7 @@ const FormInput = ({
           </div>
         )}
         <input
+          id={register.name}
           className={`input input-bordered w-full py-2 ${
             icon ? "pl-12" : "px-4"
           } ${variants[variant]} ${error ? "border-error" : ""}`}
