@@ -12,14 +12,27 @@ interface SegmentedControlBarProps {
   options: Option[];
   selectedOption: string;
   onOptionSelect(option: string): void;
+  variant?: "large" | "small";
   className?: string;
 }
+
+const variants = {
+  large: {
+    container: "px-11 py-2",
+    button: "rounded-xl h-[calc(100%-16px)]",
+  },
+  small: {
+    container: "px-6 py-1",
+    button: "rounded-lg h-[calc(100%-8px)]",
+  },
+};
 
 const SegmentedControlBar = ({
   options,
   selectedOption,
   onOptionSelect,
   className,
+  variant = "large",
 }: SegmentedControlBarProps) => {
   const [sliderStyle, setSliderStyle] = useState({ left: 0, width: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
@@ -49,12 +62,12 @@ const SegmentedControlBar = ({
   return (
     <div
       ref={containerRef}
-      className={`relative flex w-full px-11 py-2 justify-between lg:w-[530px] bg-tertiary-grey rounded-2xl overflow-hidden ${
+      className={`relative flex w-full justify-between lg:w-[530px] bg-tertiary-grey rounded-2xl overflow-hidden ${
         className || ""
-      }`}
+      } ${variants[variant].container}`}
     >
       <div
-        className="absolute top-2 bg-white rounded-xl shadow-smooth h-[calc(100%-16px)] transition-all duration-300 ease-in-out"
+        className={`absolute top-2 bg-white shadow-smooth transition-all duration-300 ease-in-out ${variants[variant].button}`}
         style={{
           left: `${sliderStyle.left}px`,
           width: `${sliderStyle.width}px`,
