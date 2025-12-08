@@ -2,7 +2,7 @@ import FlexContainer from "@/components/FlexContainer";
 import FormInput from "@/components/forms/FormInput";
 import TextContainer from "@/components/TextContainer";
 import TitleContainer from "@/components/TitleContainer";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -14,7 +14,8 @@ type ClubNameInputFormProps = {
 };
 
 type ClubNameFormProps = {
-  onSubmit: (data: ClubNameInputFormProps) => void;
+  onDataChange: (data: ClubNameInputFormProps) => void;
+  onValidationChange: (isValid: boolean) => void;
 };
 
 const schema: yup.ObjectSchema<ClubNameInputFormProps> = yup.object({
@@ -28,14 +29,29 @@ const schema: yup.ObjectSchema<ClubNameInputFormProps> = yup.object({
     .max(200, "Club description must be at most 200 characters"),
 });
 
-const ClubNameForm = ({ onSubmit }: ClubNameFormProps) => {
+const ClubNameForm = ({
+  onDataChange,
+  onValidationChange,
+}: ClubNameFormProps) => {
   const {
     register,
-    handleSubmit,
-    formState: { errors },
+    watch,
+    formState: { errors, isValid },
   } = useForm({
     resolver: yupResolver(schema),
+    mode: "onChange",
   });
+
+  useEffect(() => {
+    const subscription = watch((value: ClubNameInputFormProps) => {
+      onDataChange(value);
+    }) as { unsubscribe: () => void };
+    return () => subscription.unsubscribe();
+  }, [watch, onDataChange]);
+
+  useEffect(() => {
+    onValidationChange(isValid);
+  }, [isValid, onValidationChange]);
 
   return (
     <FlexContainer className="w-full flex flex-col gap-6 mt-6">
@@ -44,7 +60,7 @@ const ClubNameForm = ({ onSubmit }: ClubNameFormProps) => {
         title="Create a new literary community"
       />
       <TextContainer text="A great club name will increase the chances of more engaged members" />
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form>
         <FormInput
           label="Club name:"
           type="text"
