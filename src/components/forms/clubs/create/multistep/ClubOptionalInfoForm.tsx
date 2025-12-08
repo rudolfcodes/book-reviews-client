@@ -11,9 +11,11 @@ import { useState } from "react";
 import SelectDropdown from "@/components/SelectDropdown";
 import GlobeIcon from "@/components/icons/GlobeIcon";
 import FileInput from "@/components/forms/FileInput";
+import SegmentedControlBar from "@/components/forms/segmented-control/SegmentedControlBar";
 
 type ClubOptionalInfoFormProps = {
   onSubmit: (data: any) => void;
+  setLocation?: (location: "online" | "in-person" | "hybrid") => void;
 };
 
 type ClubOptionalInfoInputFormProps = {
@@ -47,8 +49,20 @@ const schema: yup.ObjectSchema<ClubOptionalInfoInputFormProps> = yup.object({
     .oneOf(["online", "in-person", "hybrid"], "Invalid location selection"),
 });
 
-const ClubOptionalInfoForm = ({ onSubmit }: ClubOptionalInfoFormProps) => {
+const locationTypes = {
+  online: "Online",
+  "in-person": "In-Person",
+  hybrid: "Hybrid",
+};
+
+const ClubOptionalInfoForm = ({
+  setLocation,
+  onSubmit,
+}: ClubOptionalInfoFormProps) => {
   const [selectedLanguage, setSelectedLanguage] = useState<string>("English");
+  const [selectedLocation, setSelectedLocation] = useState<
+    "online" | "in-person" | "hybrid"
+  >("in-person");
   const {
     register,
     handleSubmit,
@@ -56,6 +70,15 @@ const ClubOptionalInfoForm = ({ onSubmit }: ClubOptionalInfoFormProps) => {
   } = useForm<ClubOptionalInfoInputFormProps>({
     resolver: yupResolver(schema),
   });
+
+  const handleLocationSelect = (type: string) => {
+    if (type in locationTypes) {
+      setSelectedLocation(type as "online" | "in-person" | "hybrid");
+      if (setLocation) {
+        setLocation(type as "online" | "in-person" | "hybrid");
+      }
+    }
+  };
 
   return (
     <FlexContainer className="w-full flex flex-col gap-6 mt-6">
@@ -102,6 +125,15 @@ const ClubOptionalInfoForm = ({ onSubmit }: ClubOptionalInfoFormProps) => {
             />
           </div>
         </FlexContainer>
+        <SegmentedControlBar
+          options={[
+            { value: "in-person", label: "In-Person" },
+            { value: "online", label: "Online" },
+            { value: "hybrid", label: "Hybrid" },
+          ]}
+          selectedOption={selectedLocation}
+          onOptionSelect={handleLocationSelect}
+        />
       </form>
     </FlexContainer>
   );
