@@ -39,7 +39,7 @@ const ClubNameForm = ({
     formState: { errors, isValid },
   } = useForm({
     resolver: yupResolver(schema),
-    mode: "onChange",
+    mode: "onBlur",
   });
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const ClubNameForm = ({
           type="text"
           register={register("name")}
           error={errors.name?.message}
-          placeholder="What’s the name of your club?"
+          placeholder="What's the name of your club?"
           required
         />
 
@@ -74,7 +74,7 @@ const ClubNameForm = ({
           label="Description:"
           register={register("description")}
           error={errors.description?.message}
-          placeholder="What’s  the subject of your club?"
+          placeholder="What's  the subject of your club?"
           rows={4}
         />
       </form>
