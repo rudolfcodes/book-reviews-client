@@ -115,7 +115,6 @@ export default function CreateClubPage() {
     if (formData.language) formDataToSend.append("language", formData.language);
     if (formData.location) formDataToSend.append("location", formData.location);
 
-    // Trigger mutation
     createClubMutation.mutate(formDataToSend);
   };
 
