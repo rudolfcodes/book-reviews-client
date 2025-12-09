@@ -114,11 +114,14 @@ const ClubOptionalInfoForm = ({
   return (
     <FlexContainer className="w-full flex flex-col gap-6 mt-6">
       <TitleContainer
-        className="text-black mb-4"
+        className="text-black !text-3xl"
         title="Complete your club information"
       />
-      <TextContainer text="Add a nice image, genre and explain where the club takes place" />
-      <form className="flex flex-col gap-9">
+      <TextContainer
+        className="text-sm text-light-grey"
+        text="Add a nice image, genre and explain where the club takes place"
+      />
+      <form className="flex flex-col gap-9 mt-3">
         <FormInput
           label="Genre:"
           type="text"

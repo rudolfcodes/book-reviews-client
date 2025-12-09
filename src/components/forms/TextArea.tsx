@@ -26,7 +26,7 @@ const TextArea = ({
       <label className="block text-auth-label">
         {label}
         <textarea
-          className={`w-full p-4 border border-border-grey rounded-md shadow-soft-card focus:outline-none focus:ring-2 focus:ring-blue-cream ${
+          className={`w-full mt-3 p-4 border border-border-grey rounded-md shadow-soft-card focus:outline-none focus:ring-2 focus:ring-blue-cream ${
             className || ""
           }`}
           rows={rows}

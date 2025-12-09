@@ -64,11 +64,14 @@ const ClubNameForm = ({
   return (
     <FlexContainer className="w-full flex flex-col gap-6 mt-6">
       <TitleContainer
-        className="text-black mb-4"
+        className="text-black !text-3xl"
         title="Create a new literary community"
       />
-      <TextContainer text="A great club name will increase the chances of more engaged members" />
-      <form>
+      <TextContainer
+        className="text-sm text-light-grey"
+        text="A great club name will increase the chances of more engaged members"
+      />
+      <form className="flex flex-col gap-9 mt-3">
         <FormInput
           label="Club name:"
           type="text"
