@@ -65,8 +65,6 @@ describe("ClubNameForm", () => {
     });
   });
 
-  // TODO: Save typed values in the form inputs when switching steps
-
   // TODO: Check that all the data is passed/collected in a formData object in the parent
   // TODO: That will onSubmit submit the full formData object to the backend in a POST request
 });
