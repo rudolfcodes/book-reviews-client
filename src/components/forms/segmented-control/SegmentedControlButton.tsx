@@ -14,6 +14,7 @@ const SegmentedControlButton = forwardRef<
   return (
     <button
       ref={ref}
+      type="button"
       className={`relative z-10 bg-transparent py-2 px-6 text-center cursor-pointer rounded-xl transition-colors duration-300 whitespace-nowrap ${
         isActive ? "text-black font-medium" : "text-modern-primary font-normal"
       }`}
