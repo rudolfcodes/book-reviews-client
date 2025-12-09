@@ -47,4 +47,13 @@ const joinClub = async (clubId: string) => {
   }
 };
 
-export { fetchClubs, joinClub };
+const createClub = async (clubData: FormData) => {
+  const response = await axiosInstance.post("api/bookclubs", clubData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+  return response.data;
+};
+
+export { fetchClubs, joinClub, createClub };
