@@ -9,7 +9,7 @@ import BaseButton from "@/components/buttons/BaseButton";
 import ClubNameForm from "@/components/forms/clubs/create/multistep/ClubNameForm";
 import ClubOptionalInfoForm from "@/components/forms/clubs/create/multistep/ClubOptionalInfoForm";
 import Illustration from "@/components/Illustration";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 /* Next.js Router structure:
   GET /clubs/new -> src/app/clubs/new/page.tsx
