@@ -10,13 +10,13 @@ import TextArea from "@/components/forms/TextArea";
 
 type ClubNameInputFormProps = {
   name: string;
-  description?: string;
+  description: string;
 };
 
 type ClubNameFormProps = {
-  defaultValues?: {
+  defaultValues: {
     name: string;
-    description?: string;
+    description: string;
   };
   onDataChange: (data: ClubNameInputFormProps) => void;
   onValidationChange: (isValid: boolean) => void;
@@ -30,6 +30,8 @@ const schema: yup.ObjectSchema<ClubNameInputFormProps> = yup.object({
     .max(50, "Club name must be at most 50 characters"),
   description: yup
     .string()
+    .required("Club description is required")
+    .min(10, "Club description must be at least 10 characters")
     .max(200, "Club description must be at most 200 characters"),
 });
 
@@ -42,16 +44,16 @@ const ClubNameForm = ({
     register,
     watch,
     formState: { errors, isValid },
-  } = useForm({
+  } = useForm<ClubNameInputFormProps>({
     resolver: yupResolver(schema),
     mode: "onBlur",
     defaultValues: defaultValues || { name: "", description: "" },
   });
 
   useEffect(() => {
-    const subscription = watch((value: ClubNameInputFormProps) => {
-      onDataChange(value);
-    }) as { unsubscribe: () => void };
+    const subscription = watch((value) => {
+      onDataChange(value as ClubNameInputFormProps);
+    });
     return () => subscription.unsubscribe();
   }, [watch, onDataChange]);
 

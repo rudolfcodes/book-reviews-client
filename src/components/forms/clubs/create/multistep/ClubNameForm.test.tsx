@@ -11,6 +11,7 @@ describe("ClubNameForm", () => {
   const renderComponent = () => {
     render(
       <ClubNameForm
+        defaultValues={{ name: "", description: "" }}
         onDataChange={mockOnDataChange}
         onValidationChange={mockOnValidationChange}
       />
