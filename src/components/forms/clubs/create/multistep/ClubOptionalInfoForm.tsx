@@ -7,21 +7,23 @@ import TextContainer from "@/components/TextContainer";
 import FormInput from "@/components/forms/FormInput";
 import ImageUploadIcon from "@/components/icons/ImageUpload";
 import { languages } from "@/data/languages";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SelectDropdown from "@/components/SelectDropdown";
 import GlobeIcon from "@/components/icons/GlobeIcon";
 import FileInput from "@/components/forms/FileInput";
 import SegmentedControlBar from "@/components/forms/segmented-control/SegmentedControlBar";
 
 type ClubOptionalInfoFormProps = {
-  onSubmit: (data: any) => void;
+  onDataChange: (data: ClubOptionalInfoInputFormProps) => void;
+  onValidationChange?: (isValid: boolean) => void;
+  defaultValues?: ClubOptionalInfoInputFormProps;
   setLocation?: (location: "online" | "in-person" | "hybrid") => void;
 };
 
 type ClubOptionalInfoInputFormProps = {
   genre?: string;
   bookTitle?: string;
-  clubimageUrl?: File;
+  clubimageUrl?: File | null;
   language?: "en" | "de" | "fr" | "it";
   location?: "online" | "in-person" | "hybrid";
 };
@@ -56,8 +58,10 @@ const locationTypes = {
 };
 
 const ClubOptionalInfoForm = ({
+  onDataChange,
+  onValidationChange,
   setLocation,
-  onSubmit,
+  defaultValues,
 }: ClubOptionalInfoFormProps) => {
   const [selectedLanguage, setSelectedLanguage] = useState<string>("English");
   const [selectedLocation, setSelectedLocation] = useState<
@@ -65,11 +69,38 @@ const ClubOptionalInfoForm = ({
   >("in-person");
   const {
     register,
-    handleSubmit,
-    formState: { errors },
+    watch,
+    formState: { errors, isValid },
   } = useForm<ClubOptionalInfoInputFormProps>({
     resolver: yupResolver(schema),
+    mode: "onBlur",
+    defaultValues: defaultValues || {
+      genre: "",
+      bookTitle: "",
+      clubimageUrl: null,
+      language: "en",
+      location: "in-person",
+    },
   });
+
+  useEffect(() => {
+    const subscription = watch((value: ClubOptionalInfoInputFormProps) => {
+      onDataChange({
+        ...value,
+      });
+    }) as { unsubscribe: () => void };
+    return () => subscription.unsubscribe();
+  }, [watch, onDataChange]);
+
+  useEffect(() => {
+    onValidationChange && onValidationChange(isValid);
+  }, [isValid, onValidationChange]);
+
+  useEffect(() => {
+    if (setLocation) {
+      setLocation(selectedLocation);
+    }
+  }, [selectedLocation, setLocation]);
 
   const handleLocationSelect = (type: string) => {
     if (type in locationTypes) {
@@ -87,13 +118,13 @@ const ClubOptionalInfoForm = ({
         title="Complete your club information"
       />
       <TextContainer text="Add a nice image, genre and explain where the club takes place" />
-      <form className="flex flex-col gap-9" onSubmit={handleSubmit(onSubmit)}>
+      <form className="flex flex-col gap-9">
         <FormInput
           label="Genre:"
           type="text"
           register={register("genre")}
           error={errors.genre?.message}
-          placeholder="What’s the genre of the discussed books?"
+          placeholder="What's the genre of the discussed books?"
         />
         <FormInput
           label="Book title:"

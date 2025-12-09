@@ -14,6 +14,10 @@ type ClubNameInputFormProps = {
 };
 
 type ClubNameFormProps = {
+  defaultValues?: {
+    name: string;
+    description?: string;
+  };
   onDataChange: (data: ClubNameInputFormProps) => void;
   onValidationChange: (isValid: boolean) => void;
 };
@@ -32,6 +36,7 @@ const schema: yup.ObjectSchema<ClubNameInputFormProps> = yup.object({
 const ClubNameForm = ({
   onDataChange,
   onValidationChange,
+  defaultValues,
 }: ClubNameFormProps) => {
   const {
     register,
@@ -40,6 +45,7 @@ const ClubNameForm = ({
   } = useForm({
     resolver: yupResolver(schema),
     mode: "onBlur",
+    defaultValues: defaultValues || { name: "", description: "" },
   });
 
   useEffect(() => {
