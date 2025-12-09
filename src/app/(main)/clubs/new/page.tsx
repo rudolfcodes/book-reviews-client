@@ -57,7 +57,12 @@ export default function CreateClubPage() {
 
   useEffect(() => {
     console.log("Current form data:", formData);
-  }, [formData]);
+    if (formData.name && formData.name.trim().length >= 3) {
+      setIsFormValid(true);
+    } else {
+      setIsFormValid(false);
+    }
+  }, [formData, selectedStep]);
 
   const handleOptionSelect = (option: string) => {
     if (formSteps.some((step) => step.value === option)) {
