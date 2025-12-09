@@ -39,6 +39,13 @@ export default function CreateClubPage() {
     language: "en",
     location: "in-person",
   });
+  const [stepValidation, setStepValidation] = useState<{
+    nameClub: boolean;
+    optionalInfo: boolean;
+  }>({
+    nameClub: false,
+    optionalInfo: true,
+  });
   const [isFormValid, setIsFormValid] = useState(false);
   const currentStep = selectedStep;
   // This is the page for creating a new club
@@ -57,12 +64,11 @@ export default function CreateClubPage() {
 
   useEffect(() => {
     console.log("Current form data:", formData);
-    if (formData.name && formData.name.trim().length >= 3) {
-      setIsFormValid(true);
-    } else {
-      setIsFormValid(false);
-    }
-  }, [formData, selectedStep]);
+  }, [formData]);
+
+  useEffect(() => {
+    setIsFormValid(stepValidation.nameClub);
+  }, [stepValidation]);
 
   const handleOptionSelect = (option: string) => {
     if (formSteps.some((step) => step.value === option)) {
@@ -96,8 +102,12 @@ export default function CreateClubPage() {
     []
   );
 
-  const handleValidationChange = useCallback((isValid: boolean) => {
-    setIsFormValid(isValid);
+  const handleNameValidationChange = useCallback((isValid: boolean) => {
+    setStepValidation((prev) => ({ ...prev, nameClub: isValid }));
+  }, []);
+
+  const handleOptionalInfoValidationChange = useCallback((isValid: boolean) => {
+    setStepValidation((prev) => ({ ...prev, optionalInfo: isValid }));
   }, []);
 
   return (
@@ -116,7 +126,7 @@ export default function CreateClubPage() {
               description: formData.description,
             }}
             onDataChange={handleNameFormDataChange}
-            onValidationChange={handleValidationChange}
+            onValidationChange={handleNameValidationChange}
           />
         )}
         {currentStep === "optional info" && (
@@ -129,7 +139,7 @@ export default function CreateClubPage() {
               location: formData.location,
             }}
             onDataChange={handleOptionalInfoDataChange}
-            onValidationChange={handleValidationChange}
+            onValidationChange={handleOptionalInfoValidationChange}
             setLocation={handleLocation}
           />
         )}
