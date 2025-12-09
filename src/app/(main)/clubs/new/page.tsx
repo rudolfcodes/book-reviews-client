@@ -1,12 +1,15 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { createClub } from "@/services/clubService";
 import FlexContainer from "@/components/FlexContainer";
 import SegmentedControlBar from "@/components/forms/segmented-control/SegmentedControlBar";
 import BaseButton from "@/components/buttons/BaseButton";
 import ClubNameForm from "@/components/forms/clubs/create/multistep/ClubNameForm";
 import ClubOptionalInfoForm from "@/components/forms/clubs/create/multistep/ClubOptionalInfoForm";
 import Illustration from "@/components/Illustration";
+import { useRouter } from "next/router";
 
 /* Next.js Router structure:
   GET /clubs/new -> src/app/clubs/new/page.tsx
@@ -21,10 +24,11 @@ import Illustration from "@/components/Illustration";
 */
 
 export default function CreateClubPage() {
+  const router = useRouter();
   const [selectedStep, setSelectedStep] = useState("name club");
   const [formData, setFormData] = useState<{
     name: string;
-    description?: string;
+    description: string;
     genre?: string;
     bookTitle?: string;
     clubimageUrl?: File | null;
@@ -62,6 +66,16 @@ export default function CreateClubPage() {
     },
   ];
 
+  const createClubMutation = useMutation({
+    mutationFn: createClub,
+    onSuccess: (data) => {
+      router.push(`/clubs/${data.id}`);
+    },
+    onError: (error) => {
+      console.error("Error creating club:", error);
+    },
+  });
+
   useEffect(() => {
     console.log("Current form data:", formData);
   }, [formData]);
@@ -84,12 +98,29 @@ export default function CreateClubPage() {
     []
   );
 
-  const handleSubmit = () => {
-    console.log("Form submitted with data:", formData);
+  const handleSubmit = async () => {
+    if (!isFormValid) {
+      console.error("Form is not valid. Please fill in all required fields.");
+      return;
+    }
+
+    const formDataToSend = new FormData();
+    formDataToSend.append("name", formData.name);
+    formDataToSend.append("description", formData.description);
+    if (formData.genre) formDataToSend.append("genre", formData.genre);
+    if (formData.bookTitle)
+      formDataToSend.append("bookTitle", formData.bookTitle);
+    if (formData.clubimageUrl)
+      formDataToSend.append("clubimageUrl", formData.clubimageUrl);
+    if (formData.language) formDataToSend.append("language", formData.language);
+    if (formData.location) formDataToSend.append("location", formData.location);
+
+    // Trigger mutation
+    createClubMutation.mutate(formDataToSend);
   };
 
   const handleNameFormDataChange = useCallback(
-    (data: { name: string; description?: string }) => {
+    (data: { name: string; description: string }) => {
       setFormData((prev) => ({ ...prev, ...data }));
     },
     []
@@ -113,6 +144,12 @@ export default function CreateClubPage() {
   return (
     <FlexContainer className="create-club-page lg:max-w-7xl mx-auto justify-between gap-12 p-8 mb-24 font-plusJakarta">
       <FlexContainer className="w-full flex-col max-w-[530px] bg-white gap-6">
+        {createClubMutation.isError && (
+          <p className="text-error text-base text-center mb-4">
+            Error creating club. Please try again.
+          </p>
+        )}
+
         <SegmentedControlBar
           options={formSteps}
           selectedOption={selectedStep}
@@ -147,10 +184,10 @@ export default function CreateClubPage() {
         <BaseButton
           className="bg-error text-white rounded-xl hover:scale-105 hover:bg-error transition-all duration-200 border-none max-w-64 !p-5 h-14"
           type="submit"
-          disabled={!isFormValid}
+          disabled={!isFormValid || createClubMutation.isPending}
           onClick={handleSubmit}
         >
-          Create club
+          {createClubMutation.isPending ? "Submitting..." : "Create Club"}
         </BaseButton>
       </FlexContainer>
 
