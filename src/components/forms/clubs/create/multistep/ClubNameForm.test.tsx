@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { expect } from "@jest/globals";
 import ClubNameForm from "./ClubNameForm";
 import "@testing-library/jest-dom";
@@ -45,7 +45,25 @@ describe("ClubNameForm", () => {
     });
   });
 
-  // TODO: Call onValidationChange on validation status change
+  it("calls onValidationChange with true when form is valid", async () => {
+    renderComponent();
+    const nameInput = screen.getByLabelText(/club name/i);
+    fireEvent.change(nameInput, { target: { value: "Book Lovers" } });
+    fireEvent.blur(nameInput);
+    await waitFor(() => {
+      expect(mockOnValidationChange).toHaveBeenCalledWith(true);
+    });
+  });
+
+  it("calls onValidationChange with false when form is invalid", async () => {
+    renderComponent();
+    const nameInput = screen.getByLabelText(/club name/i);
+    fireEvent.change(nameInput, { target: { value: "" } });
+    fireEvent.blur(nameInput);
+    await waitFor(() => {
+      expect(mockOnValidationChange).toHaveBeenCalledWith(false);
+    });
+  });
 
   // TODO: Save typed values in the form inputs when switching steps
 
