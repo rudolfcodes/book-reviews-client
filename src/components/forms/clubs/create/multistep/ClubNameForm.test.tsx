@@ -66,6 +66,7 @@ describe("ClubNameForm", () => {
     });
   });
 
+  // TODO: Create an integration test for the full multistep form flow that:
   // TODO: Check that all the data is passed/collected in a formData object in the parent
-  // TODO: That will onSubmit submit the full formData object to the backend in a POST request
+  // TODO: onSubmit submit the full formData object to the backend in a POST request
 });
