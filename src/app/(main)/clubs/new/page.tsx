@@ -10,6 +10,7 @@ import ClubNameForm from "@/components/forms/clubs/create/multistep/ClubNameForm
 import ClubOptionalInfoForm from "@/components/forms/clubs/create/multistep/ClubOptionalInfoForm";
 import Illustration from "@/components/Illustration";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
 
 export default function CreateClubPage() {
@@ -40,8 +41,6 @@ export default function CreateClubPage() {
     optionalInfo: true,
   });
   const [isFormValid, setIsFormValid] = useState(false);
-  const currentStep = selectedStep;
-  // This is the page for creating a new club
   // language should be fetched from a global state or context and the default value is "en"
   let lang: "de" | "fr" | "it" | "en" = "en" as "de" | "fr" | "it" | "en";
   const formSteps = [
@@ -62,7 +61,10 @@ export default function CreateClubPage() {
         position: "top-center",
         autoClose: 3000,
       });
-      router.push(`/clubs/${data.id}`);
+
+      setTimeout(() => {
+        router.push(`/clubs/${data._id}`);
+      }, 3000);
     },
     onError: (error) => {
       console.error("Error creating club:", error);
@@ -78,13 +80,6 @@ export default function CreateClubPage() {
       setSelectedStep(option);
     }
   };
-
-  const handleLocation = useCallback(
-    (location: "online" | "in-person" | "hybrid") => {
-      setFormData((prev) => ({ ...prev, location }));
-    },
-    []
-  );
 
   const handleSubmit = () => {
     if (!isFormValid) {
@@ -143,7 +138,7 @@ export default function CreateClubPage() {
           onOptionSelect={handleOptionSelect}
         />
 
-        {currentStep === "name club" && (
+        {selectedStep === "name club" && (
           <ClubNameForm
             defaultValues={{
               name: formData.name,
@@ -153,7 +148,7 @@ export default function CreateClubPage() {
             onValidationChange={handleNameValidationChange}
           />
         )}
-        {currentStep === "optional info" && (
+        {selectedStep === "optional info" && (
           <ClubOptionalInfoForm
             defaultValues={{
               genre: formData.genre,
@@ -164,7 +159,6 @@ export default function CreateClubPage() {
             }}
             onDataChange={handleOptionalInfoDataChange}
             onValidationChange={handleOptionalInfoValidationChange}
-            setLocation={handleLocation}
           />
         )}
 
