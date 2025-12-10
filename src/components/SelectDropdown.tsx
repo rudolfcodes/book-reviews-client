@@ -14,6 +14,7 @@ export interface DropdownItem {
 
 interface DropdownProps {
   id: string;
+  label?: string;
   title?: string;
   data: DropdownItem[];
   position:
@@ -30,6 +31,7 @@ interface DropdownProps {
 
 const SelectDropdown = ({
   id,
+  label,
   title = "Select",
   data,
   position = "top-left",
@@ -69,9 +71,14 @@ const SelectDropdown = ({
 
   return (
     <div ref={dropdownRef} className="relative">
+      {label && (
+        <label htmlFor={id} className="block text-auth-label mb-2">
+          {label}
+        </label>
+      )}
       <BaseButton
         id={id}
-        className="flex justify-between items-center gap-5 shadow-input-shadow rounded w-full py-2 px-4 bg-white font-openSans text-base font-semibold text-input-color border-border-grey"
+        className="flex justify-between items-center gap-5 shadow-input-shadow input-bordered w-full py-2 px-4 bg-white font-openSans text-base font-semibold text-input-color border-border-grey"
         type="button"
         ariaLabel={title}
         ariaHasPopup={isOpen}
@@ -94,7 +101,7 @@ const SelectDropdown = ({
           ariaOrientation="vertical"
           position={position}
           id={id}
-          className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded shadow-lg"
+          className="absolute z-20 mt-1 w-full bg-white border border-gray-300 rounded shadow-lg"
           hasImage={hasImage}
           selectedId={selectedItem ? selectedItem.id : undefined}
         />
