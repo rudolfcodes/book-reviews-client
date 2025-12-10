@@ -12,18 +12,6 @@ import Illustration from "@/components/Illustration";
 import { ToastContainer, toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 
-/* Next.js Router structure:
-  GET /clubs/new -> src/app/clubs/new/page.tsx
-  GET /clubs -> src/app/clubs/page.tsx
-  GET /clubs/[id] -> src/app/clubs/[id]/page.tsx
-
-  Events:
-   GET /clubs/[id]/events -> src/app/clubs/[id]/events/page.tsx
-   GET /clubs/[id]/events/new -> src/app/clubs/[id]/events/new/page.tsx
-   GET /clubs/[id]/events/[eventId] -> src/app/clubs/[id]/events/[eventId]/page.tsx
-
-*/
-
 export default function CreateClubPage() {
   const router = useRouter();
   const [selectedStep, setSelectedStep] = useState("name club");
