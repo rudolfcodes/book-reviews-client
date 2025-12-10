@@ -51,12 +51,6 @@ const schema: yup.ObjectSchema<ClubOptionalInfoInputFormProps> = yup.object({
     .oneOf(["online", "in-person", "hybrid"], "Invalid location selection"),
 });
 
-const locationTypes = {
-  online: "Online",
-  "in-person": "In-Person",
-  hybrid: "Hybrid",
-};
-
 const ClubOptionalInfoForm = ({
   onDataChange,
   onValidationChange,
