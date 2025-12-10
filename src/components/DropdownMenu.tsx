@@ -58,7 +58,7 @@ const DropdownMenu = ({
         {data.map((item) => (
           <li
             key={item.id}
-            className={`flex items-center justify-center cursor-pointer hover:bg-gray-200 px-3 ${
+            className={`flex items-center pl-4 cursor-pointer hover:bg-gray-200 px-3 ${
               selectedId === item.id ? "bg-gray-200" : ""
             }`}
             onClick={() => handleChange(item)}
