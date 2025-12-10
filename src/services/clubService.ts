@@ -48,11 +48,8 @@ const joinClub = async (clubId: string) => {
 };
 
 const createClub = async (clubData: FormData) => {
-  const response = await axiosInstance.post("api/bookclubs", clubData, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
+  console.log({ clubData });
+  const response = await axiosInstance.post("api/bookclubs", clubData);
   return response.data;
 };
 
