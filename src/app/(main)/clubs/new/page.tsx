@@ -70,10 +70,6 @@ export default function CreateClubPage() {
   });
 
   useEffect(() => {
-    console.log("Current form data:", formData);
-  }, [formData]);
-
-  useEffect(() => {
     setIsFormValid(stepValidation.nameClub);
   }, [stepValidation]);
 
@@ -85,13 +81,12 @@ export default function CreateClubPage() {
 
   const handleLocation = useCallback(
     (location: "online" | "in-person" | "hybrid") => {
-      console.log("Selected location in parent:", location);
       setFormData((prev) => ({ ...prev, location }));
     },
     []
   );
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     if (!isFormValid) {
       console.error("Form is not valid. Please fill in all required fields.");
       return;
