@@ -27,6 +27,7 @@ interface DropdownProps {
   selectedId?: string;
   onSelect: (selectedItem: DropdownItem) => void;
   icon?: React.ReactNode;
+  dropdownClassName?: string;
 }
 
 const SelectDropdown = ({
@@ -39,6 +40,7 @@ const SelectDropdown = ({
   selectedId,
   onSelect,
   icon,
+  dropdownClassName,
 }: DropdownProps) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -101,7 +103,7 @@ const SelectDropdown = ({
           ariaOrientation="vertical"
           position={position}
           id={id}
-          className="absolute z-20 mt-1 w-full bg-white border border-gray-300 rounded shadow-lg"
+          className={`absolute z-20 mt-1 w-full bg-white border border-gray-300 rounded shadow-lg ${dropdownClassName}`}
           hasImage={hasImage}
           selectedId={selectedItem ? selectedItem.id : undefined}
         />
