@@ -60,16 +60,12 @@ const locationTypes = {
 const ClubOptionalInfoForm = ({
   onDataChange,
   onValidationChange,
-  setLocation,
   defaultValues,
 }: ClubOptionalInfoFormProps) => {
-  const [selectedLanguage, setSelectedLanguage] = useState<string>("English");
-  const [selectedLocation, setSelectedLocation] = useState<
-    "online" | "in-person" | "hybrid"
-  >("in-person");
   const {
     register,
     watch,
+    setValue,
     formState: { errors, isValid },
   } = useForm<ClubOptionalInfoInputFormProps>({
     resolver: yupResolver(schema),
@@ -96,21 +92,6 @@ const ClubOptionalInfoForm = ({
     onValidationChange && onValidationChange(isValid);
   }, [isValid, onValidationChange]);
 
-  useEffect(() => {
-    if (setLocation) {
-      setLocation(selectedLocation);
-    }
-  }, [selectedLocation, setLocation]);
-
-  const handleLocationSelect = (type: string) => {
-    if (type in locationTypes) {
-      setSelectedLocation(type as "online" | "in-person" | "hybrid");
-      if (setLocation) {
-        setLocation(type as "online" | "in-person" | "hybrid");
-      }
-    }
-  };
-
   return (
     <FlexContainer className="w-full flex flex-col gap-6 mt-6">
       <TitleContainer
@@ -122,12 +103,20 @@ const ClubOptionalInfoForm = ({
         text="Add a nice image, genre and explain where the club takes place"
       />
       <form className="flex flex-col gap-9 mt-3">
-        <FormInput
+        <SelectDropdown
+          id="club-genre"
           label="Genre:"
-          type="text"
-          register={register("genre")}
-          error={errors.genre?.message}
-          placeholder="What's the genre of the discussed books?"
+          title="Select Genre"
+          data={[
+            { id: "fiction", name: "Fiction" },
+            { id: "non-fiction", name: "Non-Fiction" },
+            { id: "mystery", name: "Mystery" },
+            { id: "fantasy", name: "Fantasy" },
+            { id: "biography", name: "Biography" },
+          ]}
+          onSelect={(selectedGenre) => setValue("genre", selectedGenre.id)}
+          selectedId={watch("genre") || ""}
+          position="top-full-left-0"
         />
         <FormInput
           label="Book title:"
@@ -149,10 +138,13 @@ const ClubOptionalInfoForm = ({
           <div className="flex flex-col w-full justify-end">
             <SelectDropdown
               id="club-language"
+              label="Club language:"
               title="Language"
               data={languages}
-              onSelect={(language) => setSelectedLanguage(language.name)}
-              selectedId={selectedLanguage}
+              onSelect={(language) =>
+                setValue("language", language.id as "en" | "de" | "fr" | "it")
+              }
+              selectedId={watch("language") || "en"}
               position="top-full-left-0"
               icon={<GlobeIcon />}
               hasImage
@@ -165,8 +157,10 @@ const ClubOptionalInfoForm = ({
             { value: "online", label: "Online" },
             { value: "hybrid", label: "Hybrid" },
           ]}
-          selectedOption={selectedLocation}
-          onOptionSelect={handleLocationSelect}
+          selectedOption={watch("location") || "in-person"}
+          onOptionSelect={(type) => {
+            setValue("location", type as "online" | "in-person" | "hybrid");
+          }}
         />
       </form>
     </FlexContainer>
