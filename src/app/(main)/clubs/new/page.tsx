@@ -9,6 +9,7 @@ import BaseButton from "@/components/buttons/BaseButton";
 import ClubNameForm from "@/components/forms/clubs/create/multistep/ClubNameForm";
 import ClubOptionalInfoForm from "@/components/forms/clubs/create/multistep/ClubOptionalInfoForm";
 import Illustration from "@/components/Illustration";
+import { ToastContainer, toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 
 /* Next.js Router structure:
@@ -69,6 +70,10 @@ export default function CreateClubPage() {
   const createClubMutation = useMutation({
     mutationFn: createClub,
     onSuccess: (data) => {
+      toast.success("Club created successfully!", {
+        position: "top-center",
+        autoClose: 3000,
+      });
       router.push(`/clubs/${data.id}`);
     },
     onError: (error) => {
@@ -200,6 +205,7 @@ export default function CreateClubPage() {
           size="auto"
         />
       </div>
+      <ToastContainer />
     </FlexContainer>
   );
 }
