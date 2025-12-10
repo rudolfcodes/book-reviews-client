@@ -17,6 +17,7 @@ interface DropdownMenuProps {
   className?: string;
   hasImage?: boolean;
   selectedId?: string;
+  renderIcon?: (item: DropdownItem) => React.ReactNode;
 }
 
 const positionClasses: { [key: string]: string } = {
@@ -36,6 +37,7 @@ const DropdownMenu = ({
   id,
   className,
   hasImage,
+  renderIcon,
   selectedId,
 }: DropdownMenuProps) => {
   return (
@@ -56,12 +58,14 @@ const DropdownMenu = ({
         {data.map((item) => (
           <li
             key={item.id}
-            className={`flex items-center cursor-pointer hover:bg-gray-200 px-3 ${
+            className={`flex items-center pl-4 cursor-pointer hover:bg-gray-200 px-3 ${
               selectedId === item.id ? "bg-gray-200" : ""
             }`}
             onClick={() => handleChange(item)}
           >
-            {hasImage && (
+            {renderIcon && renderIcon(item)}
+
+            {item.imageUrl && (
               <NextImage
                 src={item.imageUrl || "/images/default-avatar.png"}
                 alt="image"

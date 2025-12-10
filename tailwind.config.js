@@ -18,6 +18,7 @@ module.exports = {
         inter: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
         robotoSlab: ["var(--font-roboto-slab)", "serif"],
         openSans: ["var(--font-open-sans)", "sans-serif"],
+        plusJakarta: ["var(--font-plus-jakarta)", "sans-serif"],
       },
       fontSize: {
         "auth-title": ["24px", { lineHeight: "normal" }],
@@ -62,11 +63,12 @@ module.exports = {
         "blue-cream": "#63ABC3",
         "primary-grey": "#7C7C7C",
         "secondary-grey": "#D7D7D7",
+        "tertiary-grey": "#F6F6F6",
+        "light-grey": "#575757",
         "modern-primary": "#2D2D2A",
         "modern-secondary": "#FAF3E0",
         "modern-accent": "#E4572E",
         "border-grey": "#E5E7EB",
-        "tertiary-grey": "#4B5563",
         "input-color": "#4B5563",
         "badge-green": "#33D71D",
         "badge-default": "#ECECEC",
@@ -78,7 +80,9 @@ module.exports = {
       },
       boxShadow: {
         "custom-black": "0 0 50px 5px rgba(0, 0, 0, 0.05)",
-        "dark-input": "0 2px 4px 0 rgba(0, 0, 0, 0.25)",
+        "soft-card": "0 0 4px 0 rgba(0, 0, 0, 0.25)",
+        smooth: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+        "input-shadow": "0 12px 30px 0 rgba(0, 0, 0, 0.08)",
       },
       spacing: {
         // Internal components
