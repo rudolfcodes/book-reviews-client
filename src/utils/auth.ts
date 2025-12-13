@@ -2,7 +2,12 @@ import { DecodedToken } from "@/types/token";
 import { jwtDecode } from "jwt-decode";
 import { cookies } from "next/headers";
 
-export async function getServerAuthToken() {
+export async function getServerAuthToken(): Promise<{
+  token: string | null;
+  isAuthenticated: boolean;
+  decodedToken: DecodedToken | null;
+  userId: string | null;
+}> {
   const cookieStore = cookies();
   const token = cookieStore.get("token")?.value;
 
