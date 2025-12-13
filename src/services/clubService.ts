@@ -28,6 +28,15 @@ const fetchClubs = async (params: ClubFilterParams = {}) => {
   }
 };
 
+const fetchClub = async (clubId: string) => {
+  try {
+    const response = await axiosInstance.get(`api/bookclubs/${clubId}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching club details:", error);
+  }
+};
+
 const joinClub = async (clubId: string) => {
   try {
     const token = localStorage.getItem("token");
@@ -52,4 +61,4 @@ const createClub = async (clubData: FormData) => {
   return response.data;
 };
 
-export { fetchClubs, joinClub, createClub };
+export { fetchClubs, fetchClub, joinClub, createClub };
