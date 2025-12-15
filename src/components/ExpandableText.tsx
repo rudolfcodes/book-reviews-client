@@ -24,7 +24,11 @@ const ExpandableText = ({
       <div>
         {isExpanded || !isExpandable
           ? paragraphs.map((p, index) => (
-              <TextContainer key={index} text={p} className="mb-4 last:mb-0" />
+              <TextContainer
+                key={index}
+                text={p}
+                className="mb-4 last:mb-0 text-font18 leading-8"
+              />
             ))
           : paragraphs
               .slice(0, maxParagraphs)
@@ -32,12 +36,13 @@ const ExpandableText = ({
                 <TextContainer
                   key={index}
                   text={p}
-                  className="mb-4 last:mb-0"
+                  className="mb-4 last:mb-0 text-font18 leading-8"
                 />
               ))}
       </div>
       <BaseButton
         id="expand-description"
+        className="font-semibold font-plusJakarta text-sm underline"
         type="button"
         onClick={() => setIsExpanded(!isExpanded)}
       >
