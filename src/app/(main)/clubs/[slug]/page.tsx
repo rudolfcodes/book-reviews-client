@@ -5,9 +5,10 @@ import ClubPageClient from "./ClubPageClient";
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: { slug: string };
 }): Promise<Metadata> {
-  const fetched = await fetchClub(params.id);
+  console.log({ params });
+  const fetched = await fetchClub(params.slug);
   const club = fetched.data;
 
   return {
@@ -18,10 +19,11 @@ export async function generateMetadata({
   };
 }
 
-const ClubDetailPage = async ({ params }: { params: { id: string } }) => {
-  const fetched = await fetchClub(params.id);
+const ClubDetailPage = async ({ params }: { params: { slug: string } }) => {
+  const fetched = await fetchClub(params.slug);
+  console.log({ fetched });
 
-  return <ClubPageClient clubId={params.id} initialData={fetched.data} />;
+  return <ClubPageClient clubSlug={params.slug} initialData={fetched.data} />;
 };
 
 export default ClubDetailPage;
