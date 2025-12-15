@@ -21,10 +21,9 @@ module.exports = {
         plusJakarta: ["var(--font-plus-jakarta)", "sans-serif"],
       },
       fontSize: {
-        "auth-title": ["24px", { lineHeight: "normal" }],
-        "auth-size": ["18px", { lineHeight: "normal" }],
+        font24: ["24px", { lineHeight: "normal" }],
+        font18: ["18px", { lineHeight: "normal" }],
         "big-title": ["48px", { lineHeight: "53px" }],
-        "menu-item": ["18px", { lineHeight: "normal" }],
         "card-title": ["20px", { lineHeight: "25px" }],
         "section-title": [
           "40px",
