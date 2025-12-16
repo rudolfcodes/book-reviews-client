@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import TextContainer from "./TextContainer";
 import BaseButton from "./buttons/BaseButton";
 
@@ -17,7 +17,7 @@ const ExpandableText = ({
 }: ExpandableTextProps) => {
   const paragraphs = text.split("\n").filter((p) => p.trim() !== "");
   const isExpandable = paragraphs.length > maxParagraphs;
-  const [isExpanded, setIsExpanded] = React.useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <div className={`${isExpandable ? "relative" : ""}`}>
