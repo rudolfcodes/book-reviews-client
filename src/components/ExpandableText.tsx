@@ -40,14 +40,16 @@ const ExpandableText = ({
                 />
               ))}
       </div>
-      <BaseButton
-        id="expand-description"
-        className="font-semibold font-plusJakarta text-sm underline"
-        type="button"
-        onClick={() => setIsExpanded(!isExpanded)}
-      >
-        {isExpanded ? showLessLabel : showMoreLabel}
-      </BaseButton>
+      {isExpandable && (
+        <BaseButton
+          id="expand-description"
+          className="font-semibold font-plusJakarta text-sm underline"
+          type="button"
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
+          {isExpanded ? showLessLabel : showMoreLabel}
+        </BaseButton>
+      )}
     </div>
   );
 };
