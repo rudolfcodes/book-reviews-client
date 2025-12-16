@@ -83,6 +83,10 @@ module.exports = {
         smooth: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
         "input-shadow": "0 12px 30px 0 rgba(0, 0, 0, 0.08)",
       },
+      backgroundImage: {
+        "gradient-club":
+          "linear-gradient(to right, #114669 0%, rgba(13, 66, 95, 0.7) 100%)",
+      },
       spacing: {
         // Internal components
         xs: "0.5rem",
