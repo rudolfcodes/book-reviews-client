@@ -53,7 +53,6 @@ export default function ClubPageClient({
           <div className="absolute inset-0 bg-tertiary-grey -skew-y-2 origin-top-left" />
           <div className="relative z-10 mx-auto w-screen max-w-screen-lg flex-grow py-20 font-plusJakarta">
             <Breadcrumbs path={pathname} />
-            {/* Main BookClub div: FlexContainer with title & new component which takes text and transforms it into an excerpt with show more link. The second div will be ClubOverviewCard. The outer div will be the grey angled background */}
             <FlexContainer>
               <FlexContainer className="flex-col gap-2">
                 <TitleContainer
