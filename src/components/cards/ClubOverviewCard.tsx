@@ -5,6 +5,7 @@ import FlexContainer from "../FlexContainer";
 import MembersIcon from "../icons/MembersIcon";
 import BaseButton from "../buttons/BaseButton";
 import Badge from "../Badge";
+import useUser from "@/hooks/useUser";
 
 const ClubOverviewCard = ({
   membersCount,
@@ -14,9 +15,16 @@ const ClubOverviewCard = ({
   language,
   avatarUrl,
 }: ClubOverviewCardProps) => {
+  const { user } = useUser();
+
   return (
-    <BaseCard className="gap-6">
-      <Avatar imageUrl={avatarUrl} size="md" altText="Club Avatar" />
+    <BaseCard className="w-full lg:!max-w-[450px] gap-6 flex-shrink-0">
+      <Avatar
+        imageUrl={avatarUrl}
+        size="md"
+        altText="Club Avatar"
+        fallbackText={user?.username || ""}
+      />
       <FlexContainer className="gap-2">
         <MembersIcon />
         <span>{membersCount !== undefined ? membersCount : "N/A"} members</span>
