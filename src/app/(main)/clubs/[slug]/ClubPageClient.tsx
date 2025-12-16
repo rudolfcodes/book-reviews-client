@@ -48,13 +48,13 @@ export default function ClubPageClient({
   return (
     <div className="flex flex-col min-h-screen w-full">
       <Header />
-      <main className="flex-grow">
+      <main>
         <div className="relative bg-tertiary-grey">
           <div className="absolute inset-0 bg-tertiary-grey -skew-y-2 origin-top-left" />
-          <div className="relative z-10 mx-auto w-screen max-w-screen-lg flex-grow py-20 font-plusJakarta">
+          <div className="relative z-10 mx-auto w-screen max-w-7xl flex-grow py-20 font-plusJakarta">
             <Breadcrumbs path={pathname} />
-            <FlexContainer>
-              <FlexContainer className="flex-col gap-2">
+            <FlexContainer className="gap-10">
+              <FlexContainer className="flex-col flex-1 gap-2">
                 <TitleContainer
                   title={club?.name}
                   className="text-6xl font-bold"
