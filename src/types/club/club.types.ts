@@ -63,6 +63,15 @@ interface ClubCardProps {
   image?: string;
 }
 
+interface ClubOverviewCardProps {
+  membersCount?: number;
+  onJoinClick?: () => void;
+  venueType?: "online" | "in-person" | "hybrid";
+  genre?: string;
+  language?: string;
+  avatarUrl?: string;
+}
+
 type ClubFilterParams = {
   limit?: number;
   language?: string;
@@ -123,4 +132,5 @@ export type {
   ClubSearchResponseDTO,
   ClubsStoreState,
   ClubsApiResponse,
+  ClubOverviewCardProps,
 };
