@@ -32,7 +32,7 @@ const ClubOverviewCard = ({
 
       <BaseButton
         type="button"
-        className="bg-error text-white px-8 py-3.5 rounded-md lg:w-[212px]"
+        className="bg-error text-white px-8 py-3.5 rounded-md lg:w-[212px] hover:scale-105 hover:bg-error transition-all duration-200"
         onClick={onJoinClick}
       >
         Join Club
