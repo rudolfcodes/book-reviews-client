@@ -21,11 +21,11 @@ const Avatar = ({
   className,
 }: AvatarProps) => {
   const config = AVATAR_CONFIG[size || "md"];
-  const initial = fallbackText?.[0].toUpperCase() || "?";
+  const initial = fallbackText?.charAt(0).toUpperCase() || "?";
 
   return (
     <div
-      className={`rounded-full overflow-hidden bg-gradient-club flex items-center justify-center ${
+      className={`rounded-full bg-gradient-club flex items-center justify-center ${
         className || ""
       }`}
     >
