@@ -37,7 +37,10 @@ const Avatar = ({
           alt={altText || "Avatar"}
         />
       ) : (
-        <span className={`text-white ${config.textClass} font-bold`}>
+        <span
+          className={`flex justify-center items-center text-white ${config.textClass} font-bold`}
+          style={{ width: `${config.size}px`, height: `${config.size}px` }}
+        >
           {initial}
         </span>
       )}
