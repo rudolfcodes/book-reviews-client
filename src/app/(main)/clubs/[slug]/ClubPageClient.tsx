@@ -9,6 +9,7 @@ import TitleContainer from "@/components/TitleContainer";
 import ExpandableText from "@/components/ExpandableText";
 import { useQuery } from "@tanstack/react-query";
 import ClubOverviewCard from "@/components/cards/ClubOverviewCard";
+import TextContainer from "@/components/TextContainer";
 
 const Map = dynamic(
   () => import("@/components/map/Map").then((mod) => mod.default),
@@ -56,9 +57,9 @@ export default function ClubPageClient({
   return (
     <div className="flex flex-col min-h-screen w-full">
       <main>
-        <div className="relative bg-tertiary-grey">
-          <div className="absolute inset-0 bg-tertiary-grey -skew-y-2 origin-top-left -bottom-16" />
-          <div className="flex flex-col gap-11 relative z-10 mx-auto w-screen max-w-7xl flex-grow py-20 font-plusJakarta">
+        <div className="relative max-h-[665px] overflow-hidden">
+          <div className="absolute inset-0 bg-tertiary-grey -skew-y-2 origin-top-left" />
+          <div className="flex flex-col gap-20 relative z-10 mx-auto w-screen max-w-7xl flex-grow py-20 font-plusJakarta">
             <Breadcrumbs path={pathname} />
             <FlexContainer className="gap-10">
               <FlexContainer className="flex-col flex-1 gap-2">
@@ -70,9 +71,24 @@ export default function ClubPageClient({
               </FlexContainer>
               <ClubOverviewCard {...club} />
             </FlexContainer>
-            <Map position={[47.365257, 8.547717]} zoom={19} />
           </div>
         </div>
+
+        <FlexContainer className="h-[400px] mt-20 mx-auto w-screen max-w-7xl">
+          <FlexContainer className="flex-col w-1/2 gap-6">
+            <FlexContainer className="flex-col">
+              <TitleContainer
+                title="Location"
+                className="text-3xl font-bold mb-6 w-full"
+              />
+              <TextContainer text="Sechseläutenplatz" />
+              <TextContainer text="8001 Zürich, Switzerland" />
+            </FlexContainer>
+            <div className="h-60">
+              <Map position={[47.365257, 8.547717]} zoom={19} />
+            </div>
+          </FlexContainer>
+        </FlexContainer>
       </main>
     </div>
   );
