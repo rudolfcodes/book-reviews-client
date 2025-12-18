@@ -1,4 +1,5 @@
 "use client";
+import { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { LatLngExpression, LatLngTuple } from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -12,7 +13,15 @@ interface MapProps {
 
 const DEFAULT_ZOOM = 19;
 
-const Map = ({ position, zoom = DEFAULT_ZOOM }: MapProps) => {
+export default function Map({ position, zoom = DEFAULT_ZOOM }: MapProps) {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) return null;
+
   return (
     <MapContainer
       attributionControl={false}
@@ -29,6 +38,4 @@ const Map = ({ position, zoom = DEFAULT_ZOOM }: MapProps) => {
       </Marker>
     </MapContainer>
   );
-};
-
-export default Map;
+}

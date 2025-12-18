@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import dynamic from "next/dynamic";
 import { fetchClub } from "@/services/clubService";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import FlexContainer from "@/components/FlexContainer";
@@ -8,6 +9,14 @@ import TitleContainer from "@/components/TitleContainer";
 import ExpandableText from "@/components/ExpandableText";
 import { useQuery } from "@tanstack/react-query";
 import ClubOverviewCard from "@/components/cards/ClubOverviewCard";
+
+const Map = dynamic(
+  () => import("@/components/map/Map").then((mod) => mod.default),
+  {
+    ssr: false,
+    loading: () => <div>Loading map...</div>,
+  }
+);
 
 interface ClubPageClientProps {
   clubSlug?: string;
@@ -61,6 +70,7 @@ export default function ClubPageClient({
               </FlexContainer>
               <ClubOverviewCard {...club} />
             </FlexContainer>
+            <Map position={[47.365257, 8.547717]} zoom={19} />
           </div>
         </div>
       </main>
