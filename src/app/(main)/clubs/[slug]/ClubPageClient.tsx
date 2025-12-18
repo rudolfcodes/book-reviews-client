@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
 import { fetchClub } from "@/services/clubService";
@@ -10,6 +11,9 @@ import ExpandableText from "@/components/ExpandableText";
 import { useQuery } from "@tanstack/react-query";
 import ClubOverviewCard from "@/components/cards/ClubOverviewCard";
 import TextContainer from "@/components/TextContainer";
+import OrganisedBy from "@/components/OrganisedBy";
+import { fetchUserByClubId } from "@/services/userService";
+import { capitalizeFirstLetter } from "@/utils/helpers";
 
 const Map = dynamic(
   () => import("@/components/map/Map").then((mod) => mod.default),
@@ -28,6 +32,7 @@ export default function ClubPageClient({
   clubSlug,
   initialData,
 }: ClubPageClientProps) {
+  const [, setMessageHost] = useState(false);
   const pathname = usePathname();
 
   const {
@@ -40,6 +45,12 @@ export default function ClubPageClient({
     queryFn: () => fetchClub(clubSlug as string),
     enabled: !!clubSlug,
     initialData,
+  });
+
+  const { data: user } = useQuery({
+    queryKey: ["user"],
+    queryFn: () => fetchUserByClubId(club._id),
+    enabled: !!club,
   });
 
   if (isLoading) {
@@ -74,20 +85,29 @@ export default function ClubPageClient({
           </div>
         </div>
 
-        <FlexContainer className="h-[400px] mt-20 mx-auto w-screen max-w-7xl">
+        <FlexContainer className="h-[400px] mt-20 mx-auto w-screen max-w-7xl justify-between">
           <FlexContainer className="flex-col w-1/2 gap-6">
             <FlexContainer className="flex-col">
               <TitleContainer
                 title="Location"
-                className="text-3xl font-bold mb-6 w-full"
+                className="text-font24 font-bold mb-6 w-full"
               />
-              <TextContainer text="Sechseläutenplatz" />
-              <TextContainer text="8001 Zürich, Switzerland" />
+              <TextContainer className="text-font18" text="Sechseläutenplatz" />
+              <TextContainer
+                className="text-font18"
+                text="8001 Zürich, Switzerland"
+              />
             </FlexContainer>
             <div className="h-60">
               <Map position={[47.365257, 8.547717]} zoom={19} />
             </div>
           </FlexContainer>
+
+          <OrganisedBy
+            hostName={capitalizeFirstLetter(user?.username)}
+            onClick={() => setMessageHost(true)}
+            hostAvatarUrl={club.organiserAvatarUrl}
+          />
         </FlexContainer>
       </main>
     </div>
