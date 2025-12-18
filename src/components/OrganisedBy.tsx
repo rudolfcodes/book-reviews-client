@@ -7,7 +7,7 @@ import TitleContainer from "./TitleContainer";
 
 interface OrganisedByProps {
   hostName: string;
-  onClick?: string;
+  onClick?: () => void;
   hostAvatarUrl?: string;
 }
 
