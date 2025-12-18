@@ -7,7 +7,7 @@ import TitleContainer from "./TitleContainer";
 
 interface OrganisedByProps {
   hostName: string;
-  onClick?: () => void;
+  onClick: () => void;
   hostAvatarUrl?: string;
 }
 
@@ -17,22 +17,22 @@ const OrganisedBy = ({
   hostAvatarUrl,
 }: OrganisedByProps) => {
   return (
-    <BaseCard className="flex-row w-full lg:!max-w-[450px] gap-6 flex-shrink-0 py-10 justify-between items-center border-none shadow-input-shadow">
-      <FlexContainer className="flex-col gap-4 items-center">
-        <TitleContainer title="Organised by:" />
-        <TextContainer text={hostName} className="text-lg font-semibold" />
+    <BaseCard className="flex-row w-full lg:!max-w-[450px] gap-6 flex-shrink-0 p-6 justify-between border-none shadow-input-shadow h-fit font-plusJakarta">
+      <FlexContainer className="flex-col gap-4">
+        <TitleContainer className="text-font24" title="Organised by:" />
+        <TextContainer text={hostName || "Unknown"} className="text-font18" />
 
         <BaseButton
           type="button"
           className="bg-modern-tertiary text-white"
-          onClick={() => onClick}
+          onClick={onClick}
         >
           Message Host
         </BaseButton>
       </FlexContainer>
 
       {hostAvatarUrl && (
-        <Avatar imageUrl={hostAvatarUrl} altText={`${hostName}'s avatar`} />
+        <Avatar imageUrl={hostAvatarUrl} altText={`Host's avatar`} />
       )}
     </BaseCard>
   );
