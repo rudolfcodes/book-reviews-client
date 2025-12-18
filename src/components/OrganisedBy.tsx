@@ -7,13 +7,13 @@ import TitleContainer from "./TitleContainer";
 
 interface OrganisedByProps {
   hostName: string;
-  messageOnClick?: string;
+  onClick?: string;
   hostAvatarUrl?: string;
 }
 
 const OrganisedBy = ({
   hostName,
-  messageOnClick,
+  onClick,
   hostAvatarUrl,
 }: OrganisedByProps) => {
   return (
@@ -25,7 +25,7 @@ const OrganisedBy = ({
         <BaseButton
           type="button"
           className="bg-modern-tertiary text-white"
-          onClick={() => messageOnClick}
+          onClick={() => onClick}
         >
           Message Host
         </BaseButton>
