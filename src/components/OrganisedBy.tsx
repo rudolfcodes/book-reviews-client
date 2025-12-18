@@ -24,7 +24,7 @@ const OrganisedBy = ({
 
         <BaseButton
           type="button"
-          className="bg-modern-tertiary text-white"
+          className="bg-modern-tertiary text-white hover:bg-modern-tertiary hover:scale-105 transition-all duration-200 px-6 py-2.5 rounded-md w-fit"
           onClick={onClick}
         >
           Message Host
