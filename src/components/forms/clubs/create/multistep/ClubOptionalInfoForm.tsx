@@ -129,7 +129,7 @@ const ClubOptionalInfoForm = ({
             icon={<ImageUploadIcon />}
           />
 
-          <div className="flex flex-col w-full justify-end">
+          <FlexContainer className="flex-col w-full justify-end">
             <SelectDropdown
               id="club-language"
               label="Club language:"
@@ -143,7 +143,7 @@ const ClubOptionalInfoForm = ({
               icon={<GlobeIcon />}
               hasImage
             />
-          </div>
+          </FlexContainer>
         </FlexContainer>
         <SegmentedControlBar
           options={[

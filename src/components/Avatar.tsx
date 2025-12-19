@@ -1,4 +1,5 @@
 import Image from "../components/Image";
+import FlexContainer from "./FlexContainer";
 
 interface AvatarProps {
   imageUrl?: string;
@@ -24,8 +25,8 @@ const Avatar = ({
   const initial = fallbackText?.charAt(0).toUpperCase() || "?";
 
   return (
-    <div
-      className={`rounded-full bg-gradient-club flex items-center justify-center ${
+    <FlexContainer
+      className={`rounded-full bg-gradient-club items-center justify-center ${
         className || ""
       }`}
     >
@@ -44,7 +45,7 @@ const Avatar = ({
           {initial}
         </span>
       )}
-    </div>
+    </FlexContainer>
   );
 };
 

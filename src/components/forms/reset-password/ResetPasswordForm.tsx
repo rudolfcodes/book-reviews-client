@@ -10,6 +10,7 @@ import BaseButton from "@/components/buttons/BaseButton";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import TitleContainer from "@/components/TitleContainer";
+import FlexContainer from "@/components/FlexContainer";
 
 const schema = yup.object().shape({
   oldPassword: yup.string().required("Old password is required"),
@@ -112,7 +113,7 @@ const ResetPasswordForm = () => {
 
   if (!isValidToken) {
     return (
-      <div className="flex flex-col items-center justify-center w-full mt-[150px] lg:mt-0">
+      <FlexContainer className="flex-col items-center justify-center w-full mt-[150px] lg:mt-0">
         <TitleContainer
           className="text-black mb-4 text-center"
           title="Invalid or Expired Token"
@@ -126,12 +127,12 @@ const ResetPasswordForm = () => {
         >
           Request New Link
         </BaseButton>
-      </div>
+      </FlexContainer>
     );
   }
 
   return (
-    <div className="flex flex-col items-center justify-center w-full mt-[150px] lg:mt-0">
+    <FlexContainer className="flex-col items-center justify-center w-full mt-[150px] lg:mt-0">
       <div className="w-full md:w-[700px]">
         <TitleContainer
           className="text-black mb-4 text-center"
@@ -189,7 +190,7 @@ const ResetPasswordForm = () => {
           <ToastContainer />
         </form>
       </div>
-    </div>
+    </FlexContainer>
   );
 };
 

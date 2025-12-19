@@ -66,11 +66,11 @@ export default function ClubPageClient({
   }
 
   return (
-    <div className="flex flex-col min-h-screen w-full">
+    <FlexContainer className="flex-col min-h-screen w-full">
       <main>
         <div className="relative max-h-[665px] overflow-hidden">
           <div className="absolute inset-0 bg-tertiary-grey -skew-y-2 origin-top-left" />
-          <div className="flex flex-col gap-20 relative z-10 mx-auto w-screen max-w-7xl flex-grow py-20 font-plusJakarta">
+          <FlexContainer className="flex-col gap-20 relative z-10 mx-auto w-screen max-w-7xl flex-grow py-20 font-plusJakarta">
             <Breadcrumbs path={pathname} />
             <FlexContainer className="gap-10">
               <FlexContainer className="flex-col flex-1 gap-2">
@@ -82,7 +82,7 @@ export default function ClubPageClient({
               </FlexContainer>
               <ClubOverviewCard {...club} />
             </FlexContainer>
-          </div>
+          </FlexContainer>
         </div>
 
         <FlexContainer className="h-[400px] mt-20 mx-auto w-screen max-w-7xl justify-between">
@@ -110,6 +110,6 @@ export default function ClubPageClient({
           />
         </FlexContainer>
       </main>
-    </div>
+    </FlexContainer>
   );
 }

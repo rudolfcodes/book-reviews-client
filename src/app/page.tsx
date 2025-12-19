@@ -13,6 +13,7 @@ import discoveryCTA from "@/data/discoveryCTA";
 import ChatTeaser from "@/components/ChatTeaser";
 import HowItWorks from "@/components/HowItWorks";
 import Link from "next/link";
+import FlexContainer from "@/components/FlexContainer";
 
 const navItems = [
   { label: "Explore", href: "/" },
@@ -23,7 +24,7 @@ const navItems = [
 
 export default async function Home() {
   return (
-    <div className="flex flex-col min-h-screen w-full">
+    <FlexContainer className="flex-col min-h-screen w-full">
       <Head>
         <title>
           Swiss BookClub - Find your club and share your love for books
@@ -65,6 +66,6 @@ export default async function Home() {
       <ChatTeaser />
       <HowItWorks />
       <Footer />
-    </div>
+    </FlexContainer>
   );
 }

@@ -2,6 +2,7 @@ import Logo from "@/components/Logo";
 import React from "react";
 import "../../app/globals.css";
 import NextImage from "../Image";
+import FlexContainer from "../FlexContainer";
 
 interface AuthPageWrapperProps {
   illustration: {
@@ -36,9 +37,9 @@ export default function AuthPageWrapper({
           />
         </div>
 
-        <div className="flex-1 flex justify-center">
+        <FlexContainer className="flex-1 justify-center">
           <div className="max-w-md w-full">{children}</div>
-        </div>
+        </FlexContainer>
       </div>
 
       <div className="hidden lg:visible w-1/2 lg:flex items-center justify-center bg-[#63ABC3]">

@@ -113,7 +113,7 @@ const VerifyForm = () => {
   };
 
   return (
-    <div className="flex flex-col w-full py-8">
+    <FlexContainer className="flex-col w-full py-8">
       <div className="w-full xs:pt-[35px] sm:pt-[85px] lg:pt-0 md:w-[700px] max-w-md">
         <form onSubmit={handleSubmit} className="flex flex-col items-center">
           <TitleContainer
@@ -130,8 +130,8 @@ const VerifyForm = () => {
             </p>
           )}
 
-          <div className="flex flex-col mt-4">
-            <div className="flex justify-evenly gap-4">
+          <FlexContainer className="flex-col mt-4">
+            <FlexContainer className="justify-evenly gap-4">
               {otp.map((singleOtpValue, index) => (
                 <OtpInput
                   key={index}
@@ -141,7 +141,7 @@ const VerifyForm = () => {
                   className="otp-input"
                 />
               ))}
-            </div>
+            </FlexContainer>
 
             <FlexContainer className="flex-col mt-5">
               <BaseButton
@@ -158,11 +158,11 @@ const VerifyForm = () => {
                 Verify
               </BaseButton>
             </FlexContainer>
-          </div>
+          </FlexContainer>
           <ToastContainer />
         </form>
       </div>
-    </div>
+    </FlexContainer>
   );
 };
 

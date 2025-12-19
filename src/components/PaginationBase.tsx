@@ -1,4 +1,5 @@
 import React from "react";
+import FlexContainer from "./FlexContainer";
 
 interface PaginationProps {
   currentPage: number;
@@ -95,7 +96,9 @@ const PaginationBase = ({
         Previous
       </button>
 
-      <div className="flex space-x-4 mx-6">{renderPagination()}</div>
+      <FlexContainer className="space-x-4 mx-6">
+        {renderPagination()}
+      </FlexContainer>
 
       <button
         onClick={() => onPageChange(currentPage + 1)}
