@@ -14,6 +14,8 @@ import TextContainer from "@/components/TextContainer";
 import OrganisedBy from "@/components/OrganisedBy";
 import { fetchUserByClubId } from "@/services/userService";
 import { capitalizeFirstLetter } from "@/utils/helpers";
+import CurrentlyReading from "@/components/CurrentlyReading";
+import PreviouslyReadBooks from "@/components/PreviouslyReadBooks";
 
 const Map = dynamic(
   () => import("@/components/map/Map").then((mod) => mod.default),
@@ -52,6 +54,12 @@ export default function ClubPageClient({
     queryFn: () => fetchUserByClubId(club._id),
     enabled: !!club,
   });
+  const currentlyReadingBook =
+    club?.currentBooks && club.currentBooks.length > 0
+      ? club.currentBooks[0]
+      : null;
+  const previouslyReadBooks =
+    club?.bookHistory && club.bookHistory.length > 0 ? club.bookHistory : [];
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -108,6 +116,18 @@ export default function ClubPageClient({
             onClick={() => setMessageHost(true)}
             hostAvatarUrl={club.organiserAvatarUrl}
           />
+
+          {currentlyReadingBook ||
+            (previouslyReadBooks.length > 0 && (
+              <FlexContainer className="bg-tertiary-grey">
+                {currentlyReadingBook && (
+                  <CurrentlyReading book={currentlyReadingBook} />
+                )}
+                {previouslyReadBooks.length > 0 && (
+                  <PreviouslyReadBooks books={previouslyReadBooks} />
+                )}
+              </FlexContainer>
+            ))}
         </FlexContainer>
       </main>
     </FlexContainer>
