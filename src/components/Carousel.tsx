@@ -5,17 +5,31 @@ import PrevIcon from "./icons/PrevIcon";
 import NextIcon from "./icons/NextIcon";
 import "swiper/css";
 import "swiper/css/navigation";
+import TitleContainer from "./TitleContainer";
 
 interface CarouselProps<T> {
   items: T[];
   renderItem: (item: T) => React.ReactNode;
+  title?: string;
   className?: string;
 }
 
-const Carousel = <T,>({ items, renderItem, className }: CarouselProps<T>) => {
+const Carousel = <T,>({
+  items,
+  renderItem,
+  title,
+  className,
+}: CarouselProps<T>) => {
   return (
     <div className="relative">
       <div className="flex gap-2 justify-end">
+        {title && (
+          <TitleContainer
+            title={title}
+            className="text-font24 font-bold flex-grow"
+          />
+        )}
+
         <BaseButton className="swiper-button-prev-custom" type="button">
           <PrevIcon />
         </BaseButton>
