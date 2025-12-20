@@ -113,18 +113,17 @@ export default function ClubPageClient({
             onClick={() => setMessageHost(true)}
             hostAvatarUrl={club.organiserAvatarUrl}
           />
-
-          {(currentlyReadingBook || previouslyReadBooks.length > 0) && (
-            <FlexContainer className="bg-tertiary-grey">
-              {currentlyReadingBook && (
-                <CurrentlyReading book={currentlyReadingBook} />
-              )}
-              {previouslyReadBooks.length > 0 && (
-                <PreviouslyReadBooks books={previouslyReadBooks} />
-              )}
-            </FlexContainer>
-          )}
         </FlexContainer>
+        {(currentlyReadingBook || previouslyReadBooks.length > 0) && (
+          <FlexContainer className="bg-tertiary-grey">
+            {currentlyReadingBook && (
+              <CurrentlyReading book={currentlyReadingBook} />
+            )}
+            {previouslyReadBooks.length > 0 && (
+              <PreviouslyReadBooks books={previouslyReadBooks} />
+            )}
+          </FlexContainer>
+        )}
       </main>
     </FlexContainer>
   );
