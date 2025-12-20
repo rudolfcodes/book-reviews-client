@@ -83,6 +83,7 @@ module.exports = {
         "soft-card": "0 0 4px 0 rgba(0, 0, 0, 0.25)",
         smooth: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
         "input-shadow": "0 12px 30px 0 rgba(0, 0, 0, 0.08)",
+        "light-shadow": "0 10px 26px 0 rgba(0, 0, 0, 0.08)",
       },
       backgroundImage: {
         "gradient-club":
