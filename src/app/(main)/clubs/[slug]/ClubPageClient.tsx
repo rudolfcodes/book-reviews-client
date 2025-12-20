@@ -114,14 +114,17 @@ export default function ClubPageClient({
             hostAvatarUrl={club.organiserAvatarUrl}
           />
         </FlexContainer>
+
         {(currentlyReadingBook || previouslyReadBooks.length > 0) && (
-          <FlexContainer className="bg-tertiary-grey">
-            {currentlyReadingBook && (
-              <CurrentlyReading book={currentlyReadingBook} />
-            )}
-            {previouslyReadBooks.length > 0 && (
-              <PreviouslyReadBooks books={previouslyReadBooks} />
-            )}
+          <FlexContainer className="flex-col bg-tertiary-grey">
+            <FlexContainer className="mx-auto w-screen max-w-7xl py-20 gap-16">
+              {currentlyReadingBook && (
+                <CurrentlyReading book={currentlyReadingBook} />
+              )}
+              {previouslyReadBooks.length > 0 && (
+                <PreviouslyReadBooks books={previouslyReadBooks} />
+              )}
+            </FlexContainer>
           </FlexContainer>
         )}
       </main>
