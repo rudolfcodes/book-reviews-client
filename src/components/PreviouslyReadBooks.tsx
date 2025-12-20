@@ -1,7 +1,7 @@
 import { Book } from "@/types/book/book.types";
 import FlexContainer from "./FlexContainer";
-import TitleContainer from "./TitleContainer";
 import BookCard from "./cards/BookCard";
+import Carousel from "./Carousel";
 
 interface PreviouslyReadBooksProps {
   books: Book[];
@@ -10,15 +10,12 @@ interface PreviouslyReadBooksProps {
 const PreviouslyReadBooks = ({ books }: PreviouslyReadBooksProps) => {
   return (
     <FlexContainer className="flex-col items-center gap-4">
-      <TitleContainer
+      <Carousel<Book>
+        items={books}
+        renderItem={(book) => <BookCard key={book._id} book={book} />}
         title="Previously read:"
-        className="text-font24 font-bold"
+        className="gap-4 flex-wrap justify-center"
       />
-      <FlexContainer className="gap-4 flex-wrap justify-center">
-        {books.map((book) => (
-          <BookCard key={book._id} book={book} />
-        ))}
-      </FlexContainer>
     </FlexContainer>
   );
 };
