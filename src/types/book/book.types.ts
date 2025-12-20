@@ -1,7 +1,7 @@
 interface Book {
   _id: string;
   title: string;
-  src: string;
+  coverUrl: string;
   slug?: string;
   author?: string;
 }
