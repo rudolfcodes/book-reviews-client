@@ -7,7 +7,7 @@ const nextConfig = {
     defaultLocale: "en",
   },
   images: {
-    domains: ["unsplash.com","images.unsplash.com"],
+    domains: ["unsplash.com", "images.unsplash.com", "covers.openlibrary.org"],
   },
 };
 const path = require("path");
