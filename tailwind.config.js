@@ -93,7 +93,7 @@ module.exports = {
         10: "10px",
       },
       borderRadius: {
-        "custom-lg": "16px",
+        "custom-lg": "20px",
       },
       spacing: {
         // Internal components
