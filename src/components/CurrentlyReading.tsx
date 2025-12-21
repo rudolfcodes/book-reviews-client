@@ -17,8 +17,8 @@ const CurrentlyReading = ({ book }: CurrentlyReadingProps) => {
         className="text-font24 font-bold"
       />
 
-      <BaseCard className="relative border-10 border-white rounded-xl shadow-input-shadow">
-        <div className="absolute top-right bg-black text-white px-2 py-1 border-t">
+      <BaseCard className="relative border-10 border-white rounded-custom-lg shadow-input-shadow">
+        <div className="absolute top-right right-0 rounded-tr-custom-lg -mt-[1px] bg-black text-white px-2 py-1 border-t">
           NOW
         </div>
         <NextImage
@@ -26,6 +26,7 @@ const CurrentlyReading = ({ book }: CurrentlyReadingProps) => {
             book.coverUrl ||
             "https://via.placeholder.com/150x220/D3D3D3/000000?text=No+Cover"
           }
+          className="rounded-custom-lg"
           alt={book.title}
           width={390}
           height={509}
