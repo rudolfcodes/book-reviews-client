@@ -57,6 +57,7 @@ export default function ClubPageClient({
   });
   const currentlyReadingBook = mockBooks[0];
   const previouslyReadBooks = mockBooks.slice(1, 5);
+  console.log({ currentlyReadingBook });
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -72,7 +73,7 @@ export default function ClubPageClient({
 
   return (
     <FlexContainer className="flex-col min-h-screen w-full">
-      <main>
+      <main className="overflow-x-hidden">
         <div className="relative max-h-[665px] overflow-hidden">
           <div className="absolute inset-0 bg-tertiary-grey -skew-y-2 origin-top-left" />
           <FlexContainer className="flex-col gap-20 relative z-10 mx-auto w-screen max-w-7xl flex-grow py-20 font-plusJakarta">
@@ -117,7 +118,7 @@ export default function ClubPageClient({
 
         {(currentlyReadingBook || previouslyReadBooks.length > 0) && (
           <FlexContainer className="flex-col bg-tertiary-grey">
-            <FlexContainer className="mx-auto w-screen max-w-7xl py-20 gap-16">
+            <FlexContainer className="mx-auto w-full py-20 gap-36 grid grid-cols-[350px_1fr]">
               {currentlyReadingBook && (
                 <CurrentlyReading book={currentlyReadingBook} />
               )}
