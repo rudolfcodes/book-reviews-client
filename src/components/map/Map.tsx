@@ -36,7 +36,7 @@ export default function Map({ position, zoom = DEFAULT_ZOOM }: MapProps) {
         attributionControl={false}
         center={position}
         zoom={zoom}
-        style={{ height: "100%", width: "100%" }}
+        style={{ height: "100%", width: "100%", zIndex: 20 }}
         scrollWheelZoom={false}
       >
         <TileLayer
