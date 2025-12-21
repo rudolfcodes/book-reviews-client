@@ -10,7 +10,7 @@ interface CurrentlyReadingProps {
 
 const CurrentlyReading = ({ book }: CurrentlyReadingProps) => {
   return (
-    <FlexContainer className="flex-col items-center gap-4">
+    <FlexContainer className="flex-col gap-4 min-w-80">
       <TitleContainer
         title="Currently reading:"
         className="text-font24 font-bold"
@@ -21,10 +21,13 @@ const CurrentlyReading = ({ book }: CurrentlyReadingProps) => {
           NOW
         </div>
         <NextImage
-          src={book.coverUrl || "https://via.placeholder.com/150x220/D3D3D3/000000?text=No+Cover"}
+          src={
+            book.coverUrl ||
+            "https://via.placeholder.com/150x220/D3D3D3/000000?text=No+Cover"
+          }
           alt={book.title}
-          width={120}
-          height={180}
+          width={390}
+          height={509}
           loading="lazy"
         />
         <FlexContainer className="flex-col gap-2 absolute bottom-0 bg-modern-tertiary text-white w-full py-2 rounded-b-xl justify-center">
