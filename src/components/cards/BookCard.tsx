@@ -2,6 +2,7 @@ import { Book } from "@/types/book/book.types";
 import BaseCard from "./BaseCard";
 import NextImage from "../Image";
 import FlexContainer from "../FlexContainer";
+import TextContainer from "../TextContainer";
 
 interface BookCardProps {
   book: Book;
@@ -20,10 +21,15 @@ const BookCard = ({ book }: BookCardProps) => {
         height={393}
         loading="lazy"
       />
-      <FlexContainer className="flex-col gap-2 absolute bottom-0 bg-modern-tertiary text-white w-full py-2 rounded-b-xl justify-center">
-        <span className="text-base font-extrabold">{book.title}</span>
-        <span className="text-sm">{book.author}</span>
-      </FlexContainer>
+      <div className="gap-1.5 absolute bottom-0 bg-modern-tertiary text-white w-full py-2 px-16 text-center rounded-b-xl justify-center items-center h-20">
+        <FlexContainer className="flex-col justify-center items-center h-full">
+          <TextContainer
+            className="text-sm font-extrabold line-clamp-2"
+            text={book.title}
+          />
+          <TextContainer className="text-sm" text={book.author as string} />
+        </FlexContainer>
+      </div>
     </BaseCard>
   );
 };
