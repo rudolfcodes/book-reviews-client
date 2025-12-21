@@ -92,6 +92,9 @@ module.exports = {
       borderWidth: {
         10: "10px",
       },
+      borderRadius: {
+        "custom-lg": "16px",
+      },
       spacing: {
         // Internal components
         xs: "0.5rem",
