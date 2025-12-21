@@ -89,6 +89,9 @@ module.exports = {
         "gradient-club":
           "linear-gradient(to right, #114669 0%, rgba(13, 66, 95, 0.7) 100%)",
       },
+      borderWidth: {
+        10: "10px",
+      },
       spacing: {
         // Internal components
         xs: "0.5rem",
