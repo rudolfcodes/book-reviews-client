@@ -37,7 +37,7 @@ const Carousel = <T,>({
             nextEl: ".swiper-button-next-custom",
           }}
           className={className}
-          spaceBetween={16}
+          spaceBetween={59}
           watchOverflow={false}
           allowTouchMove={true}
           slidesPerView="auto"
