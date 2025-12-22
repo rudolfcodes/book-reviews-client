@@ -91,8 +91,8 @@ export default function ClubPageClient({
           </FlexContainer>
         </div>
 
-        <FlexContainer className="h-[400px] mt-20 mx-auto w-screen max-w-7xl justify-between">
-          <FlexContainer className="flex-col w-1/2 gap-6">
+        <FlexContainer className="flex flex-col items-center justify-center lg:items-start lg:flex-row lg:justify-between lg:h-[400px] max-w-7xl mt-20 mx-auto w-screen gap-12">
+          <FlexContainer className="flex-col w-full lg:w-1/2 px-16 gap-6">
             <FlexContainer className="flex-col">
               <TitleContainer
                 title="Location"

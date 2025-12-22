@@ -17,7 +17,7 @@ const OrganisedBy = ({
   hostAvatarUrl,
 }: OrganisedByProps) => {
   return (
-    <BaseCard className="flex-row w-full lg:!max-w-[450px] gap-6 flex-shrink-0 p-6 justify-between border-none shadow-input-shadow h-fit font-plusJakarta">
+    <BaseCard className="flex-row w-full lg:!max-w-[450px] gap-6 flex-shrink-0 pb-20 px-16 lg:p-6 justify-between border-none lg:shadow-input-shadow h-fit font-plusJakarta">
       <FlexContainer className="flex-col gap-4">
         <TitleContainer className="text-font24" title="Organised by:" />
         <TextContainer text={hostName || "Unknown"} className="text-font18" />
