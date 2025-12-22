@@ -118,7 +118,7 @@ export default function ClubPageClient({
 
         {(currentlyReadingBook || previouslyReadBooks.length > 0) && (
           <FlexContainer className="flex-col bg-tertiary-grey">
-            <FlexContainer className="mx-auto w-full max-w-7xl py-20 gap-36 grid grid-cols-[350px_1fr]">
+            <FlexContainer className="mx-auto w-full max-w-7xl py-20 pb-52 gap-36 grid grid-cols-[350px_1fr]">
               {currentlyReadingBook && (
                 <CurrentlyReading book={currentlyReadingBook} />
               )}
