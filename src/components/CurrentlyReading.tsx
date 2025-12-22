@@ -11,7 +11,7 @@ interface CurrentlyReadingProps {
 
 const CurrentlyReading = ({ book }: CurrentlyReadingProps) => {
   return (
-    <FlexContainer className="flex-col gap-8 min-w-80 max-h-[480px]">
+    <FlexContainer className="flex-col mx-auto lg:mx-0 gap-8 min-w-80 max-h-[480px]">
       <TitleContainer
         title="Currently reading:"
         className="text-font24 font-bold"

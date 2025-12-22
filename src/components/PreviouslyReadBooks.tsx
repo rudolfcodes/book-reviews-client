@@ -12,7 +12,7 @@ interface PreviouslyReadBooksProps {
 
 const PreviouslyReadBooks = ({ books }: PreviouslyReadBooksProps) => {
   return (
-    <div className="relative min-w-0" style={{ width: "100%" }}>
+    <div className="relative min-w-0 mx-6 lg:ml-0" style={{ width: "100%" }}>
       <div
         style={{
           position: "absolute",
