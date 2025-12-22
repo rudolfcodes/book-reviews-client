@@ -33,10 +33,16 @@ const PreviouslyReadBooks = ({ books }: PreviouslyReadBooksProps) => {
         />
 
         <div className="flex gap-2">
-          <BaseButton className="swiper-button-prev-custom" type="button">
+          <BaseButton
+            className="swiper-button-prev-custom border-2 border-modern-tertiary/50 rounded-full bg-white w-12 h-12"
+            type="button"
+          >
             <PrevIcon />
           </BaseButton>
-          <BaseButton className="swiper-button-next-custom" type="button">
+          <BaseButton
+            className="swiper-button-next-custom border-2 border-modern-tertiary/50 rounded-full bg-white w-12 h-12"
+            type="button"
+          >
             <NextIcon />
           </BaseButton>
         </div>
