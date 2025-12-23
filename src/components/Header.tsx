@@ -5,6 +5,7 @@ import Link from "next/link";
 import useUser from "@/hooks/useUser";
 import Navbar from "./Navbar";
 import InnerWrapper from "./InnerWrapper";
+import FlexContainer from "./FlexContainer";
 
 const Header = () => {
   // Header should have: logo, current user avatar on the right, and links to sign up and login if no user is logged in
@@ -16,7 +17,7 @@ const Header = () => {
       <div className="h-full max-w-desktop flex justify-between items-center font-raleway">
         <InnerWrapper>
           {!user ? (
-            <div className="flex gap-4">
+            <FlexContainer className="gap-4">
               <Link
                 className="px-6 py-2 text-sm font-medium border border-gray-300 rounded-lg bg-white text-gray-700 hover:bg-gray-50 hover:scale-105 transition-all duration-200 transform"
                 href="/auth/login"
@@ -29,9 +30,9 @@ const Header = () => {
               >
                 Join community
               </Link>
-            </div>
+            </FlexContainer>
           ) : (
-            <div className="flex text-xl text-white gap-9">
+            <FlexContainer className="text-xl text-white gap-9">
               <div className="dropdown dropdown-end">
                 <div tabIndex={0} role="button" className="avatar placeholder">
                   <div className="bg-modern-accent w-11 rounded-full">
@@ -57,7 +58,7 @@ const Header = () => {
                   </li>
                 </ul>
               </div>
-            </div>
+            </FlexContainer>
           )}
         </InnerWrapper>
       </div>

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import NextImage from "./Image";
 import TextContainer from "./TextContainer";
+import FlexContainer from "./FlexContainer";
 
 const ClubCard = ({
   _id,
@@ -70,7 +71,7 @@ const ClubCard = ({
         )}
 
         {memberAvatars.length > 0 && (
-          <div className="flex -space-x-2 mt-3">
+          <FlexContainer className="-space-x-2 mt-3">
             {memberAvatars.slice(0, 3).map((avatar, index) => (
               <NextImage
                 key={index}
@@ -86,7 +87,7 @@ const ClubCard = ({
                 +{memberAvatars.length - 3}
               </div>
             )}
-          </div>
+          </FlexContainer>
         )}
       </div>
     </div>

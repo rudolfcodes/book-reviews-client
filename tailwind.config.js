@@ -21,10 +21,9 @@ module.exports = {
         plusJakarta: ["var(--font-plus-jakarta)", "sans-serif"],
       },
       fontSize: {
-        "auth-title": ["24px", { lineHeight: "normal" }],
-        "auth-size": ["18px", { lineHeight: "normal" }],
+        font24: ["24px", { lineHeight: "normal" }],
+        font18: ["18px", { lineHeight: "normal" }],
         "big-title": ["48px", { lineHeight: "53px" }],
-        "menu-item": ["18px", { lineHeight: "normal" }],
         "card-title": ["20px", { lineHeight: "25px" }],
         "section-title": [
           "40px",
@@ -67,6 +66,7 @@ module.exports = {
         "light-grey": "#575757",
         "modern-primary": "#2D2D2A",
         "modern-secondary": "#FAF3E0",
+        "modern-tertiary": "#0A2A3F",
         "modern-accent": "#E4572E",
         "border-grey": "#E5E7EB",
         "input-color": "#4B5563",
@@ -83,6 +83,17 @@ module.exports = {
         "soft-card": "0 0 4px 0 rgba(0, 0, 0, 0.25)",
         smooth: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
         "input-shadow": "0 12px 30px 0 rgba(0, 0, 0, 0.08)",
+        "light-shadow": "0 10px 26px 0 rgba(0, 0, 0, 0.08)",
+      },
+      backgroundImage: {
+        "gradient-club":
+          "linear-gradient(to right, #114669 0%, rgba(13, 66, 95, 0.7) 100%)",
+      },
+      borderWidth: {
+        10: "10px",
+      },
+      borderRadius: {
+        "custom-lg": "20px",
       },
       spacing: {
         // Internal components

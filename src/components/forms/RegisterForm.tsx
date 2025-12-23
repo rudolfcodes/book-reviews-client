@@ -80,7 +80,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full mt-[150px] lg:mt-0">
+    <FlexContainer className="flex-col items-center justify-center w-full mt-[150px] lg:mt-0">
       <div className="w-full md:w-[700px]">
         <TitleContainer
           className="text-black mb-4 text-center"
@@ -161,7 +161,7 @@ const RegisterForm = () => {
           <ToastContainer />
         </form>
       </div>
-    </div>
+    </FlexContainer>
   );
 };
 
