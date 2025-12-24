@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchClubs } from "@/services/clubService";
-import { ClubsApiResponse, ClubSimplified } from "@/types";
+import { ClubFilterParams, ClubsApiResponse, ClubSimplified } from "@/types";
 
 const useFetchPopularClubs = () => {
   const clubsQuery = useQuery<ClubsApiResponse>({
@@ -12,6 +12,22 @@ const useFetchPopularClubs = () => {
 
   return {
     popularClubs: clubsQuery.data?.data?.docs || [],
+    isLoading: clubsQuery.isLoading,
+    isError: clubsQuery.isError,
+    refetch: clubsQuery.refetch,
+  };
+};
+
+const useFetchClubsByFilters = (filters: ClubFilterParams) => {
+  const clubsQuery = useQuery<ClubsApiResponse>({
+    queryKey: ["clubs", filters],
+    queryFn: () => fetchClubs(filters),
+    placeholderData: { data: { docs: [] } },
+  });
+
+  return {
+    clubs: clubsQuery.data?.data?.docs || [],
+    totalClubs: clubsQuery.data?.data?.totalDocs || 0,
     isLoading: clubsQuery.isLoading,
     isError: clubsQuery.isError,
     refetch: clubsQuery.refetch,
@@ -32,4 +48,4 @@ const useFetchNewestClubs = () => {
   };
 };
 
-export { useFetchPopularClubs, useFetchNewestClubs };
+export { useFetchPopularClubs, useFetchNewestClubs, useFetchClubsByFilters };
