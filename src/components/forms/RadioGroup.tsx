@@ -25,6 +25,7 @@ const RadioGroup = ({
           {option}
           <input
             type="radio"
+            id={`${option}-button`}
             checked={selectedOption === option}
             onChange={() => onOptionSelect(option)}
           />
