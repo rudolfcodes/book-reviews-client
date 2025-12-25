@@ -76,6 +76,7 @@ type ClubFilterParams = {
   limit?: number;
   language?: string;
   name?: string;
+  genre?: string;
   location?: {
     city?: string;
     canton?: SwissCantonEnum;
