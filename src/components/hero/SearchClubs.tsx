@@ -6,54 +6,34 @@ import TitleContainer from "../TitleContainer";
 import TextContainer from "../TextContainer";
 import Input from "../Input";
 import { useRouter } from "next/navigation";
-import axiosInstance from "@/utils/axios";
-import { useQuery } from "@tanstack/react-query";
 import BaseButton from "../buttons/BaseButton";
 import LiveCitySearchResults from "./LiveClubSearchResults";
 import SelectDropdown from "../SelectDropdown";
 import { clubFilterData, useClubFilters } from "@/hooks/useClubFilters";
 import StatsBar from "./StatsBar";
 import stats from "@/data/statsData";
+import { useFetchCities } from "@/hooks/cities/useFetchCities";
 
 const SearchClubs = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [debouncedSearch, setDebouncedSearch] = useState(searchTerm);
   const [openCitySuggestions, setOpenCitySuggestions] = useState(false);
   const router = useRouter();
 
   const { handleFilterSelect } = useClubFilters();
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setDebouncedSearch(searchTerm);
-    }, 300);
-    return () => clearTimeout(timer);
-  }, [searchTerm]);
-
-  const {
-    data: cities = [],
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["cities", debouncedSearch],
-    queryFn: () =>
-      axiosInstance
-        .get(`/api/cities?search=${debouncedSearch}`)
-        .then((res) => res.data),
-    enabled: debouncedSearch.trim().length >= 3,
-    staleTime: 30 * 1000,
+  const { data: cities, isLoading } = useFetchCities(searchTerm, {
+    minSearchLength: 3,
+    debounceDelay: 300,
+    enabled: openCitySuggestions,
   });
 
   // Only navigate to search results upon clicking the search submit button
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
-    setDebouncedSearch(e.target.value);
     setOpenCitySuggestions(true);
   };
 
   const handleCitySelect = (city: { name: string }) => {
     setSearchTerm(city.name);
-    setDebouncedSearch(city.name);
     setOpenCitySuggestions(false);
     //router.push(`/clubs?search=${encodeURIComponent(city.name)}`);
   };
@@ -96,11 +76,12 @@ const SearchClubs = () => {
           Search
         </BaseButton>
 
-        {debouncedSearch.trim().length >= 3 &&
-          cities?.data?.length > 0 &&
+        {searchTerm.trim().length >= 3 &&
+          cities &&
+          cities.length > 0 &&
           openCitySuggestions && (
             <LiveCitySearchResults
-              cities={cities?.data}
+              cities={cities}
               isLoading={isLoading}
               handleCitySelect={handleCitySelect}
             />
