@@ -80,6 +80,7 @@ type ClubFilterParams = {
   location?: {
     city?: string;
     canton?: SwissCantonEnum;
+    address?: string;
     venueType?: VenueEnum;
     coordinates?: {
       lat?: number;
