@@ -6,6 +6,7 @@ interface InputProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
   placeholder?: string;
+  disabled?: boolean;
 }
 
 const Input = ({
@@ -14,6 +15,7 @@ const Input = ({
   onChange,
   className,
   placeholder,
+  disabled,
 }: InputProps) => {
   return (
     <input
@@ -22,6 +24,7 @@ const Input = ({
       onChange={onChange}
       className={`border rounded-md border-border-grey text-input-color px-8 w-full h-[54px] ${className}`}
       placeholder={placeholder}
+      disabled={disabled}
     />
   );
 };
