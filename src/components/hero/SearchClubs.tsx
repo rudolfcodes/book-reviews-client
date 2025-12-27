@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import FlexContainer from "../FlexContainer";
 import TitleContainer from "../TitleContainer";
 import TextContainer from "../TextContainer";
