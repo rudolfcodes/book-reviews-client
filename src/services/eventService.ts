@@ -54,4 +54,13 @@ const rsvpEvent = async (
   }
 };
 
-export { fetchEvents, rsvpEvent };
+const fetchEventDetails = async (eventId: string) => {
+  try {
+    const response = await axiosInstance.get(`/api/events/${eventId}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching event details:", error);
+  }
+};
+
+export { fetchEvents, rsvpEvent, fetchEventDetails };
