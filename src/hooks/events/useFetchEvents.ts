@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchEvents } from "@/services/eventService";
-import { EventApiResponse } from "@/types/event/event.types";
+import { EventApiResponse, EventFilterParams } from "@/types/event/event.types";
 
-const useFetchEvents = () => {
+const useFetchEvents = (filters: EventFilterParams) => {
   const eventsQuery = useQuery<EventApiResponse>({
-    queryKey: ["events", { sortBy: "date", limit: 6 }],
-    queryFn: () => fetchEvents({ sortBy: "date", limit: 6 }),
+    queryKey: ["events", filters || { sortBy: "date", limit: 6 }],
+    queryFn: () => fetchEvents(filters || { sortBy: "date", limit: 6 }),
     staleTime: 10 * 60 * 1000,
     refetchOnWindowFocus: false,
   });
