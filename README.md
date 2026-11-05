@@ -1,6 +1,6 @@
 # Swiss Book Club – Web App
 
-> **Status:** work in progress, currently paused. Other projects have priority for the foreseeable future, so this won't see active development for a while.
+> **Status:** Complete as a portfolio project: auth flow, club creation and club pages are fully working. Not in active development.
 
 Web app for finding, creating and joining local book clubs in Switzerland. Members sign up with email verification, create a club through a multi-step form and view club pages with reading details, a location map and organiser info.
 
