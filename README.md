@@ -1,5 +1,7 @@
 # Swiss Book Club – Web App
 
+> **Status:** work in progress, currently paused. Other projects have priority for the foreseeable future, so this won't see active development for a while.
+
 Web app for finding, creating and joining local book clubs in Switzerland. Members sign up with email verification, create a club through a multi-step form and view club pages with reading details, a location map and organiser info.
 
 Built with **Next.js 14 (App Router), TypeScript, React Query, React Hook Form, Tailwind CSS + DaisyUI, Leaflet and Tiptap**. It talks to the [book-reviews-backend-api](https://github.com/rudolfcodes/book-reviews-backend-api).
