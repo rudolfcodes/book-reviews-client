@@ -15,9 +15,9 @@ export const page = {
   },
 
   tickCheckbox: () => {
-    cy.get("input[name='rememberCheckbox']").should("be.visible");
-    cy.get("input[name='rememberCheckbox']").click();
-    cy.get("input[name='rememberCheckbox']").should("be.checked");
+    cy.get("#rememberMe").should("be.visible");
+    cy.get("#rememberMe").click();
+    cy.get("#rememberMe").should("be.checked");
   },
 
   login: (email: string, password: string) => {

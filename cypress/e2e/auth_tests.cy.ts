@@ -4,7 +4,6 @@ import {
   newUserPassword,
   page,
   password,
-  resetPassword,
   username,
 } from "../support/pages/AuthPage";
 
@@ -15,27 +14,24 @@ describe("Login page tests", () => {
   });
 
   it("should contain headings and a form", () => {
-    cy.get("h1").should("contain", "BookReview");
-    cy.get("h2").should("contain", "Sign In");
+    cy.get("h1").should("contain", "Welcome Back");
     cy.get("form").should("be.visible");
   });
 
   it("should have a forgot password link that should work", () => {
     cy.wait(2000);
-    page.clickLink("/auth/reset-password");
-    cy.url().should("eq", "http://localhost:3000/auth/reset-password");
-    cy.get("h2").should("contain", "Reset Password");
+    page.clickLink("/auth/forgot-password");
+    cy.url().should("eq", "http://localhost:3000/auth/forgot-password");
+    cy.get("h1").should("contain", "Reset Password");
 
-    page.typeEmailPassword(email, resetPassword);
-
-    cy.get("input[name='confirmPassword']").click();
-    cy.get("input[name='confirmPassword']").type(resetPassword);
+    cy.get('input[name="email"]').click();
+    cy.get('input[name="email"]').type(email);
     cy.get("button[type='submit']").click();
   });
 
   it("should sign me in on click of the Sign in button", () => {
     page.login(email, password);
-    cy.url().should("eq", "http://localhost:3000/");
+    cy.url().should("eq", "http://localhost:3000/auth/verify-otp");
   });
 
   it("should have a keep me signed in checkbox", () => {
