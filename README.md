@@ -1,34 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Swiss Book Club – Web App
 
-## Getting Started
+Web app for finding, creating and joining local book clubs in Switzerland. Members sign up with email verification, create a club through a multi-step form and view club pages with reading details, a location map and organiser info.
 
-First, run the development server:
+Built with **Next.js 14 (App Router), TypeScript, React Query, React Hook Form, Tailwind CSS + DaisyUI, Leaflet and Tiptap**. It talks to the [book-reviews-backend-api](https://github.com/rudolfcodes/book-reviews-backend-api).
 
+## Why
+
+Book clubs are hard to find. Most live in closed chat groups, so newcomers to a city don't know they exist. This app makes clubs discoverable by location, language and genre, and gives organisers an easy way to set one up.
+
+Technical highlights:
+- Server state via React Query, forms with React Hook Form + Yup validation
+- Full auth flow: register, OTP verification, login, forgot and reset password
+- Multi-step "create club" form
+- Rich-text club descriptions (Tiptap editor)
+- Interactive club location map with Leaflet
+- Mobile-first, responsive layout
+
+## Getting started
+
+**Requirements:** Node.js 18+ and the backend API running locally (see its README).
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Create a `.env.local` file in the project root:
+   ```env
+   NEXT_PUBLIC_API_URL=http://localhost:5000/
+   ```
+   If you leave this out, the app uses `http://localhost:5000/`.
+3. Start the dev server:
+   ```bash
+   npm run dev
+   ```
+4. Open **http://localhost:3000**.
+
+## Tests
+
+Unit and component tests (Jest + React Testing Library):
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+npm test
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+End-to-end tests for the auth flow (Cypress, specs in `cypress/e2e`). These need both the frontend and the backend running:
+```bash
+npx cypress open
+```
