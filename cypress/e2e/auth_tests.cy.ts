@@ -31,7 +31,9 @@ describe("Login page tests", () => {
 
   it("should sign me in on click of the Sign in button", () => {
     page.login(email, password);
-    cy.url().should("eq", "http://localhost:3000/auth/verify-otp");
+    // The app waits 3s (toast display) before redirecting, so the default
+    // 4s assertion timeout is too tight.
+    cy.url({ timeout: 8000 }).should("eq", "http://localhost:3000/auth/verify-otp");
   });
 
   it("should have a keep me signed in checkbox", () => {
