@@ -42,7 +42,10 @@ Unit and component tests (Jest + React Testing Library):
 npm test
 ```
 
-End-to-end tests for the auth flow (Cypress, specs in `cypress/e2e`). These need both the frontend and the backend running:
-```bash
-npx cypress open
-```
+End-to-end tests for the auth flow (Cypress, specs in `cypress/e2e`). These need both the frontend and the backend running, plus a test account:
+
+1. Copy `cypress.env.example.json` to `cypress.env.json` and fill in your test account details.
+2. Run:
+   ```bash
+   npx cypress open
+   ```
